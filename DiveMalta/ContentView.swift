@@ -63,6 +63,7 @@ struct ContentView: View {
                 .presentationDetents([.medium, .large])
         }
         .sheet(isPresented: $showAbout) { AboutView() }
+        .task { await setUpScreenshot() }
         .sheet(isPresented: $showList) {
             SiteListView(sites: sites) { site in
                 showList = false
@@ -135,6 +136,19 @@ struct ContentView: View {
                 .background(.thinMaterial, in: .capsule)
         }
         .padding(.bottom, 4)
+    }
+
+    /// Puts the app in a fixed state for App Store screenshots (only with `-screenshot <scene>`).
+    private func setUpScreenshot() async {
+        guard let scene = ScreenshotScene.current else { return }
+        showContours = true
+        try? await Task.sleep(for: .seconds(1))   // let the map load first
+        switch scene {
+        case .site: selected = sites.first { $0.id == ScreenshotScene.siteID }
+        case .list: showList = true
+        case .depth: lookUpDepth(at: ScreenshotScene.probe)
+        case .splash, .map, .contours: break
+        }
     }
 
     private func showToast(_ text: String) {

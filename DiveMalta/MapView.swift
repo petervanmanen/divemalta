@@ -25,8 +25,8 @@ struct MapView: UIViewRepresentable {
     /// What the bundled map covers.
     static let bounds = MLNCoordinateBounds(sw: .init(latitude: 35.75, longitude: 14.10),
                                             ne: .init(latitude: 36.12, longitude: 14.65))
-    static let malta = MLNCoordinateBounds(sw: .init(latitude: 35.78, longitude: 14.18),
-                                           ne: .init(latitude: 36.09, longitude: 14.58))
+    static let malta = MLNCoordinateBounds(sw: .init(latitude: 35.78, longitude: 14.16),
+                                           ne: .init(latitude: 36.09, longitude: 14.61))
 
     static func contains(_ c: CLLocationCoordinate2D) -> Bool {
         (bounds.sw.latitude...bounds.ne.latitude).contains(c.latitude)
@@ -43,9 +43,9 @@ struct MapView: UIViewRepresentable {
         map.compassView.isHidden = true
         map.logoView.isHidden = true
         map.attributionButton.isHidden = true   // credits are shown by ContentView
-        map.minimumZoomLevel = 9
+        map.minimumZoomLevel = 8.5
         map.maximumZoomLevel = 18
-        map.showsUserLocation = true
+        map.showsUserLocation = ScreenshotScene.current == nil
 
         let tap = UITapGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.tap(_:)))
         // Leave double taps to the map's zoom gesture.
@@ -199,6 +199,10 @@ struct MapView: UIViewRepresentable {
             contoursShown = nil
             applyContours(mapView)
             // Fit Malta once the view has its real size.
+            if !placed, let camera = ScreenshotScene.current?.camera {
+                placed = true
+                mapView.setCenter(camera.center, zoomLevel: camera.zoom, animated: false)
+            }
             if !placed {
                 placed = true
                 mapView.setVisibleCoordinateBounds(MapView.malta, edgePadding: UIEdgeInsets(top: 40, left: 10, bottom: 60, right: 10),

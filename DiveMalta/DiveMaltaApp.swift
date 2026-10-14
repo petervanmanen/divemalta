@@ -2,7 +2,8 @@ import SwiftUI
 
 @main
 struct DiveMaltaApp: App {
-    @State private var showSplash = true
+    // In screenshot mode the opening screen only shows for the "splash" scene, and then stays.
+    @State private var showSplash = ScreenshotScene.current == nil || ScreenshotScene.current == .splash
 
     var body: some Scene {
         WindowGroup {
@@ -16,6 +17,7 @@ struct DiveMaltaApp: App {
                 }
             }
             .task {
+                guard ScreenshotScene.current == nil else { return }
                 try? await Task.sleep(for: .seconds(2.5))
                 withAnimation(.easeOut(duration: 0.6)) { showSplash = false }
             }
