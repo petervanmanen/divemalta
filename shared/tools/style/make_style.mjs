@@ -83,6 +83,11 @@ const siteLayers = [
 ];
 
 const base = layers("protomaps", namedFlavor("light"), { lang: "en" });
+// Outside the bundled tiles (the open sea beyond Malta) only the background shows; make it look like
+// the sea instead of grey.
+const water = base.find((l) => l.id === "water")?.paint?.["fill-color"];
+const background = base.find((l) => l.id === "background");
+if (background && typeof water === "string") background.paint["background-color"] = water;
 // Contours go under the basemap's labels; dive sites on top of everything.
 const firstSymbol = base.findIndex((l) => l.type === "symbol");
 
