@@ -7,6 +7,7 @@ struct ContentView: View {
     @State private var selected: DiveSite?
     @State private var focus: DiveSite?
     @State private var showList = false
+    @State private var showAbout = false
     @State private var followUser = false
     @State private var probe: Probe?
     @State private var outside = false
@@ -61,6 +62,7 @@ struct ContentView: View {
             SiteDetailView(site: site)
                 .presentationDetents([.medium, .large])
         }
+        .sheet(isPresented: $showAbout) { AboutView() }
         .sheet(isPresented: $showList) {
             SiteListView(sites: sites) { site in
                 showList = false
@@ -97,6 +99,14 @@ struct ContentView: View {
                     .frame(width: 44, height: 44)
             }
             .accessibilityLabel("Show my location")
+
+            Button {
+                showAbout = true
+            } label: {
+                Image(systemName: "info.circle")
+                    .frame(width: 44, height: 44)
+            }
+            .accessibilityLabel("About and credits")
         }
         .font(.title3)
         .buttonStyle(.plain)
