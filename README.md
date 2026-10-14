@@ -47,6 +47,28 @@ Open `DiveMalta.xcodeproj` in Xcode and run on a simulator or your iPhone (team 
 bundle id `nl.petervanmanen.DiveMalta`). Everything the app needs is in the repo, so no data steps are
 needed just to build it.
 
+## TestFlight from GitHub
+
+`.github/workflows/testflight.yml` archives the app on a GitHub macOS runner and uploads it to App
+Store Connect (then it shows up in TestFlight). It runs when you push a tag like `v1.0.1`
+(`git tag v1.0.1 && git push origin v1.0.1`) or by hand under Actions › TestFlight › Run workflow.
+App Store Connect picks the build number (`ExportOptions.plist`), so runs never clash with each
+other or with uploads from Xcode. Raise `MARKETING_VERSION` in the project for a new version.
+
+One-time setup:
+
+1. The app must already exist in App Store Connect (bundle id `nl.petervanmanen.DiveMalta`).
+2. In App Store Connect › Users and Access › Integrations › App Store Connect API › Team Keys, create
+   a key with the **Admin** role (it needs to manage certificates and profiles for signing).
+   Download the `.p8` file (only possible once) and note the Key ID and the Issuer ID.
+3. Add the repository secrets:
+   ```bash
+   gh secret set ASC_KEY_ID --repo petervanmanen/divemalta
+   gh secret set ASC_ISSUER_ID --repo petervanmanen/divemalta
+   gh secret set ASC_PRIVATE_KEY --repo petervanmanen/divemalta < AuthKey_XXXXXXXXXX.p8
+   ```
+   Keep the `.p8` file somewhere safe and out of the repo.
+
 ## App Store screenshots
 
 ```bash
