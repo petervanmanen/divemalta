@@ -1,0 +1,6 @@
+.DS_Store
+build/
+xcuserdata/
+*.xcuserstate
+tools/cache/
+tools/style/node_modules/

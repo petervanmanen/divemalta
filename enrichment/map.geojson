@@ -1,0 +1,17 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "kind": "tunnel",
+        "name": "Inland Sea tunnel",
+        "note": "OSM way 23918914 (waterway=canal, tunnel=yes); the Protomaps basemap doesn't draw underground waterways."
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[14.1909532, 36.0541061], [14.190937, 36.0541464], [14.1906596, 36.0548359], [14.1905207, 36.0550735]]
+      }
+    }
+  ]
+}
