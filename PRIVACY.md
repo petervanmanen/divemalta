@@ -15,4 +15,4 @@ Dive Malta does not collect, store or share any personal data.
   privacy policies.
 - **Settings.** The app only remembers on your device whether the depth contours are switched on.
 
-Questions: CONTACT-EMAIL-OR-LINK (fill in before publishing)
+Questions: tandrad-vierde-9q@icloud.com
