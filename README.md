@@ -68,5 +68,10 @@ swift tools/make_icon.swift DiveMalta/Assets.xcassets/AppIcon.appiconset/AppIcon
   `MaltaMap.bundle` is copied into the app as one folder; the app points the style at it when it starts.
 - The icon is the dive flag with the George Cross from the Maltese flag, drawn by `tools/make_icon.swift`.
 
+Opening screen photo: [Blue Hole, Gozo](https://commons.wikimedia.org/wiki/File:Agujero_Azul,_isla_de_Gozo,_Malta,_2021-08-22,_DD_71.jpg)
+by Diego Delso (delso.photo), licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/);
+resized for the app (`DiveMalta/Assets.xcassets/Splash.imageset/BlueHole.jpg`), and that resized
+copy is under the same licence. The credit is shown on the opening screen.
+
 Map data © OpenStreetMap contributors (ODbL), map tiles by Protomaps. Bathymetry © EMODnet Bathymetry
 Consortium (CC BY 4.0).
