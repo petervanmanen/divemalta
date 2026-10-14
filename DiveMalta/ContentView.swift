@@ -24,6 +24,7 @@ struct ContentView: View {
             resetToken: resetToken,
             onSelectSite: { selected = $0 },
             onProbe: { lookUpDepth(at: $0) },
+            onTapMap: { probe = nil },
             onOutsideMalta: { outside = $0 },
             onStopFollowing: { followUser = false },
             onUserOutsideMap: { showToast("You're outside Malta. This app only has the map of Malta, Gozo and Comino.") }

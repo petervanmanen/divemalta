@@ -15,6 +15,8 @@ struct MapView: UIViewRepresentable {
     var resetToken: Int
     var onSelectSite: (DiveSite) -> Void
     var onProbe: (CLLocationCoordinate2D) -> Void
+    /// A tap on the map that didn't hit a dive site (closes the depth card).
+    var onTapMap: () -> Void
     /// The view has been panned away from the bundled map (true) or is back (false).
     var onOutsideMalta: (Bool) -> Void
     /// Called when following stops on its own: the user panned, or their location is outside the map.
@@ -179,7 +181,10 @@ struct MapView: UIViewRepresentable {
             let point = gesture.location(in: map)
             let rect = CGRect(x: point.x - 22, y: point.y - 22, width: 44, height: 44)
             let features = map.visibleFeatures(in: rect, styleLayerIdentifiers: ["sites", "site-clusters"])
-            guard let feature = features.first else { return }
+            guard let feature = features.first else {
+                parent.onTapMap()
+                return
+            }
             if feature.attribute(forKey: "point_count") != nil {
                 map.setCenter(feature.coordinate, zoomLevel: min(map.zoomLevel + 2, 16), animated: true)
             } else if let id = feature.attribute(forKey: "id") as? String,
