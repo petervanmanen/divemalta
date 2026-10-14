@@ -1,7 +1,7 @@
 import CoreLocation
 import Foundation
 
-/// A dive site from OpenStreetMap, as written by tools/make_data.py.
+/// A dive site from OpenStreetMap, as written by shared/tools/make_data.py.
 struct DiveSite: Identifiable, Decodable, Hashable {
     let id: String          // "node/123", "way/456"
     let name: String?
@@ -31,7 +31,7 @@ struct DiveSite: Identifiable, Decodable, Hashable {
     var difficulty: String? { tags["scuba_diving:difficulty"] }
     var details: String? { tags["description"] ?? tags["note"] }
 
-    // Our own research (../enrichment/sites.json), stored as dive:* tags.
+    // Our own research (shared/enrichment/sites.json), stored as dive:* tags.
     var level: String? { tags["dive:level"] }
     var typicalDepth: String? { tags["dive:depth_avg"] }
     var shoreAccess: String? { tags["dive:shore_access"] }
@@ -41,7 +41,7 @@ struct DiveSite: Identifiable, Decodable, Hashable {
     }
 
     static func loadBundled() -> [DiveSite] {
-        guard let url = Bundle.main.url(forResource: "malta-dive-sites", withExtension: "json"),
+        guard let url = Bundle.main.url(forResource: "malta-dive-sites", withExtension: "json", subdirectory: "data"),
               let data = try? Data(contentsOf: url),
               let sites = try? JSONDecoder().decode([DiveSite].self, from: data)
         else { return [] }

@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		D1000000000000000000A012 /* MapLibre in Frameworks */ = {isa = PBXBuildFile; productRef = D1000000000000000000A011 /* MapLibre */; };
+		D1000000000000000000A014 /* data in Resources */ = {isa = PBXBuildFile; fileRef = D1000000000000000000A013 /* data */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D1000000000000000000A001 /* DiveMalta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiveMalta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1000000000000000000A013 /* data */ = {isa = PBXFileReference; lastKnownFileType = folder; name = data; path = ../shared/data; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -38,6 +40,7 @@
 			isa = PBXGroup;
 			children = (
 				D1000000000000000000A002 /* DiveMalta */,
+				D1000000000000000000A013 /* data */,
 				D1000000000000000000A005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -118,6 +121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D1000000000000000000A014 /* data in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

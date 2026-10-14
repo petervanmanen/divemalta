@@ -1,6 +1,7 @@
 // Draws the Dive Malta app icon: the dive flag (red with a white diagonal stripe) carrying the
 // George Cross from the Maltese flag in its upper red corner, edged in white instead of red.
-// Run: swift tools/make_icon.swift DiveMalta/Assets.xcassets/AppIcon.appiconset/AppIcon.png
+// Run (from the repo root): swift shared/tools/make_icon.swift ios/DiveMalta/Assets.xcassets/AppIcon.appiconset/AppIcon.png
+// The same 1024 px PNG can be used for the Android launcher icon.
 import AppKit
 import CoreGraphics
 

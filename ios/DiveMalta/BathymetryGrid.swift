@@ -1,7 +1,7 @@
 import CoreLocation
 import Foundation
 
-/// The bundled depth grid written by tools/make_data.py: EMODnet Bathymetry resampled to ~38 m, with
+/// The bundled depth grid written by shared/tools/make_data.py: EMODnet Bathymetry resampled to ~38 m, with
 /// land and sea from the OpenStreetMap coastline.
 final class BathymetryGrid: Sendable {
     enum Sample: Equatable {
@@ -24,8 +24,8 @@ final class BathymetryGrid: Sendable {
     static let malta = BathymetryGrid(resource: "malta-depth")
 
     init?(resource: String) {
-        guard let headerURL = Bundle.main.url(forResource: resource, withExtension: "json"),
-              let dataURL = Bundle.main.url(forResource: resource, withExtension: "bin"),
+        guard let headerURL = Bundle.main.url(forResource: resource, withExtension: "json", subdirectory: "data"),
+              let dataURL = Bundle.main.url(forResource: resource, withExtension: "bin", subdirectory: "data"),
               let headerData = try? Data(contentsOf: headerURL),
               let header = try? JSONDecoder().decode(Header.self, from: headerData),
               let data = try? Data(contentsOf: dataURL),

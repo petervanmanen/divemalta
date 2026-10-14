@@ -1,7 +1,7 @@
 // Writes the offline map style for the app: the Protomaps "light" basemap reading the bundled
 // malta.pmtiles, with fonts and sprites from the app bundle, plus the depth contours and dive sites
-// written by ../make_data.py. "{ASSETS}" is replaced at runtime by the file URL of MaltaMap.bundle.
-// Run: node make_style.mjs ../../DiveMalta/MaltaMap.bundle/style.json
+// written by ../make_data.py. "{ASSETS}" is replaced at runtime by the URL of the bundled data folder
+// (shared/data, copied into each app). Run: node make_style.mjs ../../data/style.json
 import { writeFileSync } from "node:fs";
 import { layers, namedFlavor } from "@protomaps/basemaps";
 

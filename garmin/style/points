@@ -1,0 +1,2 @@
+# Dive sites show up under Attractions > Landmark.
+dive=site { name '${name}' | 'Dive site' } [0x2c04 resolution 16]

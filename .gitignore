@@ -1,7 +1,14 @@
 .DS_Store
 build/
+cache/
+node_modules/
 xcuserdata/
 *.xcuserstate
-tools/cache/
-tools/style/node_modules/
-screenshots/
+
+# iOS
+ios/screenshots/
+
+# Garmin: mkgmap, downloads and built map
+garmin/tools/
+garmin/europe-dive-sites.geojson
+garmin/*.img

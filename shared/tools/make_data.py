@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the bundled data for the DiveMalta app.
+"""Build the data the Dive Malta apps bundle (iOS now, Android later) into ../data/.
 
 - malta-dive-sites.json (+ .geojson for the map): OSM dive sites around Malta, Gozo and Comino, taken from
   OpenStreetMap (via Overpass, cached in cache/osm-dive-sites.json), plus places around Malta whose
@@ -30,8 +30,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from osm_rules import depth_of, entry_of, is_centre_like, site_type  # noqa: E402
 
-OUT = os.path.join(HERE, "..", "DiveMalta", "Data")
-MAP = os.path.join(HERE, "..", "DiveMalta", "MaltaMap.bundle")  # read by the map style (see style/)
+# Everything the apps bundle lives in one folder; the map style refers to it as {ASSETS}.
+OUT = MAP = os.path.join(HERE, "..", "data")
 ENRICH = os.path.join(HERE, "..", "enrichment")
 CACHE = os.path.join(HERE, "cache")  # downloaded EMODnet grid and OSM coastline; delete to refresh
 
@@ -386,7 +386,7 @@ def corrected_grid():
 
 
 def write_extras():
-    """../enrichment/map.geojson -> MaltaMap.bundle/malta-extras.geojson for the map style."""
+    """../enrichment/map.geojson -> ../data/malta-extras.geojson for the map style."""
     extras = load_enrichment("map.geojson", {"type": "FeatureCollection", "features": []})
     for feature in extras["features"]:
         feature["properties"].pop("note", None)

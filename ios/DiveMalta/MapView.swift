@@ -1,7 +1,7 @@
 import MapLibre
 import SwiftUI
 
-/// MapLibre map drawn entirely from the bundled MaltaMap.bundle (OpenStreetMap vector tiles, depth
+/// MapLibre map drawn entirely from the bundled data folder (shared/data: OpenStreetMap vector tiles, depth
 /// contours and dive sites; see tools/style/make_style.mjs), so it works offline. Always north up,
 /// no tilting.
 struct MapView: UIViewRepresentable {
@@ -100,9 +100,9 @@ struct MapView: UIViewRepresentable {
         c.showProbe(probe, on: map)
     }
 
-    /// The bundled style with "{ASSETS}" pointing at MaltaMap.bundle, written to Caches.
+    /// The bundled style with "{ASSETS}" pointing at the bundled data folder, written to Caches.
     private static func styleURL() -> URL? {
-        guard let assets = Bundle.main.url(forResource: "MaltaMap", withExtension: "bundle"),
+        guard let assets = Bundle.main.url(forResource: "data", withExtension: nil),
               let template = try? String(contentsOf: assets.appendingPathComponent("style.json"), encoding: .utf8)
         else { return nil }
         let base = assets.absoluteString.hasSuffix("/") ? String(assets.absoluteString.dropLast()) : assets.absoluteString
