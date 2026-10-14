@@ -4,6 +4,9 @@
 #   tools/screenshots.sh                      # default devices (see below)
 #   tools/screenshots.sh "iPhone 18 Pro Max"  # one or more simulator names
 #
+# Then makes the App Store header and search result images from the 6.9" iPhone screenshots
+# (ios/tools/make_promo.swift -> promo/); skip that with PROMO=0.
+#
 # Output: screenshots/<device>/<n>-<scene>.jpg at the device's native resolution, without alpha
 # channel (App Store Connect rejects transparency), checked against the accepted sizes below.
 # The app is started with `-screenshot <scene>` (DiveMalta/ScreenshotMode.swift), which opens it in a
@@ -83,4 +86,14 @@ for DEVICE in "${DEVICES[@]}"; do
   xcrun simctl status_bar "$UDID" clear
 done
 
-echo "Done. Upload these in App Store Connect › your app › the version › Previews and Screenshots."
+if [ "${PROMO:-1}" != 0 ]; then
+  if [ -f "screenshots/iPhone-18-Pro-Max/3-contours.jpg" ]; then
+    echo "== Header and search result images -> promo/"
+    (cd .. && swift ios/tools/make_promo.swift) | sed 's|^Wrote .*/ios/|   |'
+  else
+    echo "Skipping header and search result images: they need the iPhone 18 Pro Max screenshots."
+  fi
+fi
+
+echo "Done. Upload the screenshots in App Store Connect › your app › the version › Previews and Screenshots,"
+echo "and the promo images under the product page header and search results."

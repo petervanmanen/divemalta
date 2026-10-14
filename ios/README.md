@@ -68,8 +68,10 @@ Set `WAIT=10` if the map hasn't finished drawing in a shot.
 
 ## Promotional images
 
+`ios/tools/screenshots.sh` makes these at the end (set `PROMO=0` to skip); to make only these:
+
 ```bash
-swift ios/tools/make_promo.swift   # after ios/tools/screenshots.sh
+swift ios/tools/make_promo.swift   # needs the 6.9" iPhone screenshots
 ```
 
 Makes PNGs in `ios/promo/` (not in git), sized per App Store Connect's creative assets
