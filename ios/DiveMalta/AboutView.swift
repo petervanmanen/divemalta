@@ -2,7 +2,7 @@ import SwiftUI
 
 /// Credits for the data and photo, and the open-source licences (Licenses.txt).
 struct AboutView: View {
-    private let licences: String = Bundle.main.url(forResource: "Licenses", withExtension: "txt")
+    private let licences: String = Bundle.main.url(forResource: "Licenses", withExtension: "txt", subdirectory: "data")
         .flatMap { try? String(contentsOf: $0, encoding: .utf8) } ?? ""
 
     private var version: String {
