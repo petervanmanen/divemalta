@@ -66,6 +66,15 @@ channel, and the script checks each size against the sizes App Store Connect acc
 iPhone and the 13" iPad are required; the 6.9" iPhone is recommended.
 Set `WAIT=10` if the map hasn't finished drawing in a shot.
 
+## Promotional images
+
+```bash
+swift ios/tools/make_promo.swift   # after ios/tools/screenshots.sh
+```
+
+Makes a header image (5244 × 2950) and a search result banner (3840 × 1646) in `ios/promo/` (not in
+git): the opening-screen photo with icon, name and tagline, and the 6.9" iPhone contours screenshot.
+
 ## Credits
 
 Opening screen photo (`ios/DiveMalta/Assets.xcassets/Splash.imageset/Splash.jpg`): sunset over the cliffs of
