@@ -1,23 +1,23 @@
 import SwiftUI
 
-/// Opening screen: the Blue Hole at Dwejra, Gozo.
-/// Photo by Diego Delso (delso.photo), CC BY-SA 4.0, resized:
-/// https://commons.wikimedia.org/wiki/File:Agujero_Azul,_isla_de_Gozo,_Malta,_2021-08-22,_DD_71.jpg
+/// Opening screen: sunset over the cliffs of Gozo. Photo by the app's author, all rights reserved.
 struct SplashView: View {
-    static let photoCredit = "Photo: Blue Hole, Gozo · Diego Delso · CC BY-SA 4.0"
-    static let photoURL = URL(string: "https://commons.wikimedia.org/wiki/File:Agujero_Azul,_isla_de_Gozo,_Malta,_2021-08-22,_DD_71.jpg")!
+    private static let photo = UIImage(named: "Splash")
+    /// Where the interesting part of the photo is, across its width (the sun and the cliff edge).
+    private static let focusX = 0.5
 
     var body: some View {
         GeometryReader { geo in
-            // The photo is 3:2. Fill the screen and, on a tall screen, shift it so the Blue Hole pool
-            // and the cliff (about 60% across the photo) stay in view, without showing an edge.
-            let width = max(geo.size.width, geo.size.height * 1.5)
+            // Fill the screen and, on a tall screen, shift the photo so its focus stays in view,
+            // without showing an edge.
+            let aspect = Self.photo.map { $0.size.width / $0.size.height } ?? 4.0 / 3.0
+            let width = max(geo.size.width, geo.size.height * aspect)
             let spare = (width - geo.size.width) / 2
             Image("Splash")
                 .resizable()
                 .scaledToFill()
                 .frame(width: width, height: geo.size.height)
-                .offset(x: min(spare, max(-spare, (0.5 - 0.6) * width)))
+                .offset(x: min(spare, max(-spare, (0.5 - Self.focusX) * width)))
                 .frame(width: geo.size.width, height: geo.size.height)
                 .clipped()
         }
@@ -37,12 +37,6 @@ struct SplashView: View {
             .foregroundStyle(.white)
             .shadow(color: .black.opacity(0.4), radius: 6)
             .padding(.top, 80)
-        }
-        .overlay(alignment: .bottom) {
-            Text(Self.photoCredit)
-                .font(.caption2)
-                .foregroundStyle(.white.opacity(0.85))
-                .padding(.bottom, 16)
         }
         .accessibilityElement(children: .combine)
     }

@@ -61,6 +61,10 @@ for DEVICE in "${DEVICES[@]}"; do
   for SCENE in "${SCENES[@]}"; do
     xcrun simctl terminate "$UDID" "$BUNDLE_ID" 2>/dev/null || true
     xcrun simctl launch "$UDID" "$BUNDLE_ID" -screenshot "$SCENE" >/dev/null
+    # The simulator sometimes starts the app in the background; launching the running app again
+    # brings it to the front (it keeps its state and launch arguments).
+    sleep 2
+    xcrun simctl launch "$UDID" "$BUNDLE_ID" -screenshot "$SCENE" >/dev/null
     sleep "$WAIT"
     RAW="$OUT/.raw.png"
     FILE="$OUT/$n-$SCENE.jpg"

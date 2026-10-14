@@ -68,10 +68,8 @@ Set `WAIT=10` if the map hasn't finished drawing in a shot.
 
 ## Credits
 
-Opening screen photo: [Blue Hole, Gozo](https://commons.wikimedia.org/wiki/File:Agujero_Azul,_isla_de_Gozo,_Malta,_2021-08-22,_DD_71.jpg)
-by Diego Delso (delso.photo), licensed [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/);
-resized for the app (`ios/DiveMalta/Assets.xcassets/Splash.imageset/BlueHole.jpg`), and that resized
-copy is under the same licence. The credit is shown on the opening screen.
+Opening screen photo (`ios/DiveMalta/Assets.xcassets/Splash.imageset/Splash.jpg`): sunset over the cliffs of
+Gozo, by the app's author; all rights reserved, not covered by the repo's other licences.
 
 Map data, bathymetry and open-source licences: see [../shared/README.md](../shared/README.md) and the
 About screen in the app.

@@ -33,11 +33,6 @@ struct AboutView: View {
                            nil)
                 }
 
-                Section("Photo") {
-                    credit("Blue Hole, Gozo, by Diego Delso (delso.photo), CC BY-SA 4.0, resized",
-                           SplashView.photoURL.absoluteString)
-                }
-
                 Section("Open-source licences") {
                     Text(licences)
                         .font(.caption.monospaced())
