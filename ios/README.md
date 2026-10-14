@@ -72,8 +72,8 @@ Set `WAIT=10` if the map hasn't finished drawing in a shot.
 swift ios/tools/make_promo.swift   # after ios/tools/screenshots.sh
 ```
 
-Makes a header image (5244 × 2950) and a search result banner (3840 × 1646) in `ios/promo/` (not in
-git): the opening-screen photo with icon, name and tagline, and the 6.9" iPhone contours screenshot.
+Makes a header image (5244 × 2950) and a search result banner (3840 × 1646) as PNG in `ios/promo/`
+(not in git): the opening-screen photo with icon, name and tagline, and the 6.9" iPhone contours screenshot.
 
 ## Credits
 

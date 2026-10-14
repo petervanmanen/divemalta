@@ -2,7 +2,7 @@
 // (3840 × 1646). Your sunset photo as background, icon, name and tagline on the left, an iPhone
 // screenshot on the right. Run from the repo root after ios/tools/screenshots.sh:
 //   swift ios/tools/make_promo.swift
-// Output: ios/promo/*.jpg (exact sizes, no alpha channel).
+// Output: ios/promo/*.png (exact sizes, RGB without alpha channel).
 import AppKit
 
 let root = FileManager.default.currentDirectoryPath
@@ -116,10 +116,10 @@ func make(width: Int, height: Int, name: String) {
     ]).draw(in: CGRect(x: left, y: y, width: phoneRect.minX - left - W * 0.04, height: tagSize * 1.3 * 2 + tagSize))
     NSGraphicsContext.restoreGraphicsState()
 
-    let out = root + "/ios/promo/\(name).jpg"
+    let out = root + "/ios/promo/\(name).png"
     try! FileManager.default.createDirectory(atPath: root + "/ios/promo", withIntermediateDirectories: true)
     let rep = NSBitmapImageRep(cgImage: ctx.makeImage()!)
-    try! rep.representation(using: .jpeg, properties: [.compressionFactor: 0.92])!
+    try! rep.representation(using: .png, properties: [:])!
         .write(to: URL(fileURLWithPath: out))
     print("Wrote \(out) (\(width) × \(height))")
 }
