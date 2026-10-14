@@ -72,8 +72,10 @@ Set `WAIT=10` if the map hasn't finished drawing in a shot.
 swift ios/tools/make_promo.swift   # after ios/tools/screenshots.sh
 ```
 
-Makes a header image (5244 × 2950) and a search result banner (3840 × 1646) as PNG in `ios/promo/`
-(not in git): the opening-screen photo with icon, name and tagline, and the 6.9" iPhone contours screenshot.
+Makes PNGs in `ios/promo/` (not in git), sized per App Store Connect's creative assets
+specifications: `universal-5244x2950` (16:9, for both the product page header and search results),
+`header-3840x1646` (21:9, product page header) and `search-3840x2560` (3:2, search results). Each
+shows the opening-screen photo with icon, name and tagline, and the 6.9" iPhone contours screenshot.
 
 ## Credits
 

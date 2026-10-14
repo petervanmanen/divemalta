@@ -1,5 +1,7 @@
-// App Store promotional images for Dive Malta: a header (5244 × 2950) and a search result banner
-// (3840 × 1646). Your sunset photo as background, icon, name and tagline on the left, an iPhone
+// App Store promotional images for Dive Malta (App Store Connect › Creative assets specifications):
+//   universal-5244x2950   16:9, usable for both the product page header and search results (PNG only)
+//   header-3840x1646      21:9, product page header
+//   search-3840x2560      3:2, search results (allowed: 1920 × 1280 up to 3840 × 2560) Your sunset photo as background, icon, name and tagline on the left, an iPhone
 // screenshot on the right. Run from the repo root after ios/tools/screenshots.sh:
 //   swift ios/tools/make_promo.swift
 // Output: ios/promo/*.png (exact sizes, RGB without alpha channel).
@@ -124,5 +126,6 @@ func make(width: Int, height: Int, name: String) {
     print("Wrote \(out) (\(width) × \(height))")
 }
 
-make(width: 5244, height: 2950, name: "header-5244x2950")
-make(width: 3840, height: 1646, name: "search-result-3840x1646")
+make(width: 5244, height: 2950, name: "universal-5244x2950")
+make(width: 3840, height: 1646, name: "header-3840x1646")
+make(width: 3840, height: 2560, name: "search-3840x2560")
