@@ -4,7 +4,8 @@
 #   tools/screenshots.sh                      # default devices (see below)
 #   tools/screenshots.sh "iPhone 18 Pro Max"  # one or more simulator names
 #
-# Output: screenshots/<device>/<n>-<scene>.png at the device's native resolution.
+# Output: screenshots/<device>/<n>-<scene>.jpg at the device's native resolution, without alpha
+# channel (App Store Connect rejects transparency), checked against the accepted sizes below.
 # The app is started with `-screenshot <scene>` (DiveMalta/ScreenshotMode.swift), which opens it in a
 # fixed state; the status bar is set to 9:41 with full battery and signal.
 set -euo pipefail
@@ -12,9 +13,13 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 export DEVELOPER_DIR="${DEVELOPER_DIR:-/Applications/Xcode.app/Contents/Developer}"
 
-# 6.9" iPhone (required) and 13" iPad (required because the app also runs on iPad).
+# 6.3" iPhone (required), 6.9" iPhone (recommended, otherwise App Store Connect scales the 6.5")
+# and 13" iPad (required because the app also runs on iPad).
 DEVICES=("$@")
-[ ${#DEVICES[@]} -eq 0 ] && DEVICES=("iPhone 18 Pro Max" "iPad Pro 13-inch (M5)")
+[ ${#DEVICES[@]} -eq 0 ] && DEVICES=("iPhone 18 Pro" "iPhone 18 Pro Max" "iPad Pro 13-inch (M5)")
+
+# Portrait sizes App Store Connect accepts (developer.apple.com › Screenshot specifications).
+ACCEPTED="1179x2556 1206x2622 1260x2736 1290x2796 1320x2868 1242x2688 1284x2778 2048x2732 2064x2752"
 
 # Order = order in the App Store.
 SCENES=(splash map contours site depth list)
@@ -42,6 +47,7 @@ for DEVICE in "${DEVICES[@]}"; do
   UDID=$(udid_for "$DEVICE")
   OUT="screenshots/$(echo "$DEVICE" | tr ' ()"' '-' | tr -s '-' | sed 's/-$//')"
   mkdir -p "$OUT"
+  rm -f "$OUT"/*.png "$OUT"/*.jpg
   echo "== $DEVICE ($UDID) -> $OUT"
 
   xcrun simctl boot "$UDID" 2>/dev/null || true
@@ -56,9 +62,16 @@ for DEVICE in "${DEVICES[@]}"; do
     xcrun simctl terminate "$UDID" "$BUNDLE_ID" 2>/dev/null || true
     xcrun simctl launch "$UDID" "$BUNDLE_ID" -screenshot "$SCENE" >/dev/null
     sleep "$WAIT"
-    FILE="$OUT/$n-$SCENE.png"
-    xcrun simctl io "$UDID" screenshot --type=png "$FILE" >/dev/null 2>&1
-    echo "   $FILE  $(sips -g pixelWidth -g pixelHeight "$FILE" | awk '/pixel/ {printf "%s ", $2}')"
+    RAW="$OUT/.raw.png"
+    FILE="$OUT/$n-$SCENE.jpg"
+    xcrun simctl io "$UDID" screenshot --type=png "$RAW" >/dev/null 2>&1
+    # JPEG has no alpha channel; quality 95 keeps text sharp.
+    sips -s format jpeg -s formatOptions 95 "$RAW" --out "$FILE" >/dev/null
+    rm -f "$RAW"
+    SIZE=$(sips -g pixelWidth -g pixelHeight "$FILE" | awk '/pixelWidth/ {w=$2} /pixelHeight/ {h=$2} END {print w "x" h}')
+    ALPHA=$(sips -g hasAlpha "$FILE" | awk '/hasAlpha/ {print $2}')
+    case " $ACCEPTED " in *" $SIZE "*) OK="ok" ;; *) OK="NOT an App Store size" ;; esac
+    echo "   $FILE  $SIZE  alpha=$ALPHA  $OK"
     n=$((n + 1))
   done
 

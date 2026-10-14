@@ -16,7 +16,7 @@ enum ScreenshotScene: String {
     var camera: (center: CLLocationCoordinate2D, zoom: Double)? {
         switch self {
         case .contours, .depth: return (.init(latitude: 36.0100, longitude: 14.3330), 12.8)  // Comino and Ċirkewwa
-        case .site: return (.init(latitude: 35.8110, longitude: 14.4496), 14.6)             // Um El Faroud above the sheet
+        case .site: return (.init(latitude: 35.8128, longitude: 14.4496), 14.6)             // Um El Faroud above the sheet
         default: return nil
         }
     }

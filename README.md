@@ -72,14 +72,16 @@ One-time setup:
 ## App Store screenshots
 
 ```bash
-tools/screenshots.sh                       # 6.9" iPhone and 13" iPad (the sizes App Store Connect requires)
+tools/screenshots.sh                       # 6.3" and 6.9" iPhone and 13" iPad
 tools/screenshots.sh "iPhone 18 Pro Max"   # or any simulators by name
 ```
 
 The script builds the app, boots each simulator, sets the status bar to 9:41 with full battery, and
 starts the app with `-screenshot <scene>` (see `DiveMalta/ScreenshotMode.swift`) for six fixed scenes:
 opening screen, map of Malta, contours around Comino, a site page (Um El Faroud), a depth lookup and
-the site list. The PNGs land in `screenshots/<device>/` (not in git) at the device's native size.
+the site list. The JPEGs land in `screenshots/<device>/` (not in git) at the device's native size, without alpha
+channel, and the script checks each size against the sizes App Store Connect accepts. The 6.3"
+iPhone and the 13" iPad are required; the 6.9" iPhone is recommended.
 Set `WAIT=10` if the map hasn't finished drawing in a shot.
 
 ## Data
