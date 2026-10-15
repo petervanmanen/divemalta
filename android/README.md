@@ -62,9 +62,16 @@ One-time setup:
    gh secret set PLAY_SERVICE_ACCOUNT_JSON --repo petervanmanen/divemalta < ~/Downloads/service-account.json
    ```
 
+## Store listing
+
+Texts (name, short and full description), store settings and the answers for the Data safety form
+are in [PlayStore.md](PlayStore.md).
+
 ## Store graphics
 
 `swift android/tools/make_icons.swift` (from the repo root) draws the adaptive launcher icon in
 `app/src/main/res/mipmap-*`, the 512 px Play icon and the 1024 × 500 feature graphic in `play/`.
-The app also has a screenshot mode (`adb shell am start -n nl.petervanmanen.divemalta/.MainActivity
---es screenshot map`, scenes: splash, map, contours, site, depth, list).
+`android/tools/screenshots.sh` makes the Play screenshots: it starts its own emulators with 9:16
+screens (phone 1080 × 1920, tablet 1440 × 2560; most phone emulators are taller than the 2:1 Play
+allows), sets a clean status bar, opens the app in six fixed scenes (`--es screenshot <scene>`,
+see `ScreenshotScene.kt`) and saves JPEGs without alpha in `play/screenshots/` (not in git).

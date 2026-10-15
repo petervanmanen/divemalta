@@ -75,9 +75,9 @@ for (folder, px) in [("mdpi", 108), ("hdpi", 162), ("xhdpi", 216), ("xxhdpi", 32
     save(mono, "\(res)/mipmap-\(folder)/ic_launcher_monochrome.png")
 }
 
-// Google Play icon: 512 × 512, full square (Play applies its own rounding).
+// Google Play icon: 512 × 512, full square (Play applies its own rounding); Play wants a 32-bit PNG.
 do {
-    let ctx = context(512, 512, alpha: false)
+    let ctx = context(512, 512, alpha: true)
     let t = CGAffineTransform(scaleX: 0.5, y: 0.5)
     drawFlag(ctx, canvas: CGRect(x: 0, y: 0, width: 512, height: 512), t: t); drawCross(ctx, t: t)
     save(ctx, "\(play)/icon-512.png")
