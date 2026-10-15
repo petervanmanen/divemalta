@@ -65,6 +65,9 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showAbout) { AboutView() }
         .task { await setUpScreenshot() }
+        // Load the 3.4 MB depth grid in the background now, instead of on the main thread the first
+        // time a site page or depth lookup needs it.
+        .task(priority: .utility) { await Task.detached(priority: .utility) { _ = BathymetryGrid.malta }.value }
         .sheet(isPresented: $showList) {
             SiteListView(sites: sites) { site in
                 showList = false

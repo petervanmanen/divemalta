@@ -49,8 +49,17 @@ private val Glass = Color(0xE6F2FBFD)
 fun DiveMaltaApp(scene: ScreenshotScene?) {
     val context = LocalContext.current
     MaterialTheme(colorScheme = lightColorScheme(primary = Accent)) {
-        val sites = remember { DiveSite.load(context) }
-        val grid = remember { BathymetryGrid.load(context) }
+        // Loaded in the background so the first frame isn't held up (the depth grid is 3.4 MB).
+        var sites by remember { mutableStateOf(emptyList<DiveSite>()) }
+        var grid by remember { mutableStateOf<BathymetryGrid?>(null) }
+        LaunchedEffect(Unit) {
+            withContext(Dispatchers.IO) {
+                val loadedSites = DiveSite.load(context)
+                withContext(Dispatchers.Main) { sites = loadedSites }
+                val loadedGrid = BathymetryGrid.load(context)
+                withContext(Dispatchers.Main) { grid = loadedGrid }
+            }
+        }
         val map = remember { MaltaMap(context) }
 
         var showSplash by remember { mutableStateOf(scene == null || scene == ScreenshotScene.SPLASH) }
@@ -83,8 +92,8 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
             if (scene == null) { delay(2500); showSplash = false }
         }
         // Screenshot scenes.
-        LaunchedEffect(mapReady) {
-            if (!mapReady || scene == null) return@LaunchedEffect
+        LaunchedEffect(mapReady, sites) {
+            if (!mapReady || scene == null || sites.isEmpty()) return@LaunchedEffect
             delay(1000)
             when (scene) {
                 ScreenshotScene.SITE -> selected = sites.firstOrNull { it.id == ScreenshotScene.SITE_ID }
@@ -165,7 +174,8 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
             ) {
                 val p = probe
                 if (p != null) {
-                    ProbeCard(p.first, p.second, grid.sample(p.first, p.second).text()) { probe = null }
+                    val depth = grid?.sample(p.first, p.second).let { if (grid == null) "Looking up depth…" else it.text() }
+                    ProbeCard(p.first, p.second, depth) { probe = null }
                 } else {
                     Surface(shape = RoundedCornerShape(50), color = Glass, shadowElevation = 2.dp) {
                         Text("Touch and hold the sea to see its depth", Modifier.padding(horizontal = 12.dp, vertical = 6.dp),

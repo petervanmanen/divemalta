@@ -41,6 +41,7 @@ LEVELS = [5, 10, 15, 20, 30, 40, 50, 60, 80, 100, 150, 200]
 SAME_SITE_M = 200      # sites with the same name this close together are one site mapped twice
 MIN_LINE_M = 300       # drop contour scraps shorter than this
 SMOOTHING = 1          # Chaikin passes; rounds off the grid's staircase corners
+SIMPLIFY_M = 2         # drop contour points that move the line less than this (the grid is ~38 m), ~4x fewer points
 UPSAMPLE = 3           # resample the 115 m EMODnet grid to ~38 m so it can follow the coastline
 LAND = 32767
 NO_DATA = -32768
@@ -435,6 +436,32 @@ def smooth(coords):
     return [(round(x, 5), round(y, 5)) for x, y in coords]
 
 
+def simplify(coords, tolerance_m=SIMPLIFY_M):
+    """Douglas–Peucker in metres: keeps the shape, drops points that don't change it."""
+    if len(coords) < 3:
+        return coords
+    kx = 111_320 * math.cos(math.radians(coords[0][1]))
+    xy = [(x * kx, y * 111_320) for x, y in coords]
+    keep = [False] * len(coords)
+    keep[0] = keep[-1] = True
+    stack = [(0, len(coords) - 1)]
+    while stack:
+        a, b = stack.pop()
+        (x1, y1), (x2, y2) = xy[a], xy[b]
+        dx, dy = x2 - x1, y2 - y1
+        length = math.hypot(dx, dy)
+        best, index = 0.0, None
+        for i in range(a + 1, b):
+            x, y = xy[i]
+            d = abs(dy * (x - x1) - dx * (y - y1)) / length if length > 1e-6 else math.hypot(x - x1, y - y1)
+            if d > best:
+                best, index = d, i
+        if index is not None and best > tolerance_m:
+            keep[index] = True
+            stack += [(a, index), (index, b)]
+    return [p for p, k in zip(coords, keep) if k]
+
+
 def length_m(coords):
     total = 0.0
     for (x1, y1), (x2, y2) in zip(coords, coords[1:]):
@@ -449,7 +476,7 @@ def make_contours(rows, lon0, lat0, step):
     for depth in LEVELS:
         lines = 0
         for chain in trace(rows, -depth):
-            coords = smooth([edge_point(rows, k, -depth, lon0, lat0, step) for k in chain])
+            coords = simplify(smooth([edge_point(rows, k, -depth, lon0, lat0, step) for k in chain]))
             length = length_m(coords)
             if length < MIN_LINE_M:
                 continue

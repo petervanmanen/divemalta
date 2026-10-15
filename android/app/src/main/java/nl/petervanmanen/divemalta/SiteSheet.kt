@@ -22,10 +22,10 @@ import androidx.core.net.toUri
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SiteSheet(site: DiveSite, grid: BathymetryGrid, onDismiss: () -> Unit) {
+fun SiteSheet(site: DiveSite, grid: BathymetryGrid?, onDismiss: () -> Unit) {
     val uri = LocalUriHandler.current
     val context = LocalContext.current
-    val seabed = when (val s = grid.sample(site.lat, site.lon)) {
+    val seabed = if (grid == null) "…" else when (val s = grid.sample(site.lat, site.lon)) {
         // Shore sites (cave entrances, entry points) are often mapped on the coastline itself.
         BathymetryGrid.Sample.Land -> "On the shore"
         BathymetryGrid.Sample.NoData -> "No data this close to shore"
