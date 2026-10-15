@@ -1,0 +1,26 @@
+{
+  "id": "node/13614878293",
+  "name": "Mini Blue Hole",
+  "lat": 35.869826,
+  "lon": 14.5720377,
+  "type": "cave",
+  "maxDepth": "15m",
+  "typicalDepth": "10m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Small hole in the rock near Żonqor Point, Marsaskala, connected to the sea by a 10 m tunnel whose entrance is a few metres from the entry, at 7 m. The hole itself is only 3 m deep; beautiful light for photos.",
+  "sources": [
+    "https://maltadives.com/sites/minibluehole-marsaskala"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614878293"
+    ],
+    "tags": {
+      "name": "Mini Blue Hole (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

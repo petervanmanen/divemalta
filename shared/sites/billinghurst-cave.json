@@ -1,0 +1,37 @@
+{
+  "id": "node/6239720385",
+  "name": "Billinghurst Cave",
+  "lat": 36.081178,
+  "lon": 14.235426,
+  "type": "cave",
+  "maxDepth": "35m",
+  "typicalDepth": "30m",
+  "level": "Experienced (Advanced Open Water and deep experience)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Large cave west of Reqqa Point. The entrance is at about 28 m and rises to about 14 m inside. Two big chambers reach about 150 m into the rock; the inner one has an air pocket, but the air is not breathable. Take plenty of air.",
+  "conditions": "Only in flat calm conditions; sharp rocks at the entry.",
+  "sources": [
+    "https://maltadives.com/sites/billinghurstcave-reqqapoint",
+    "https://www.calypsosac.org/billinghurst-cave-l-ghar-il-kbir/",
+    "https://www.calypsosac.org/reqqa-point/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/6239720385",
+      "node/384934491"
+    ],
+    "tags": {
+      "name": "Billinghurst Cave",
+      "natural": "cave_entrance",
+      "scuba_diving:depth": "20",
+      "scuba_diving:entry": "ladder",
+      "scuba_diving:maxdepth": "25",
+      "scuba_diving:type:cave": "yes",
+      "scuba_diving:type:cavern": "yes",
+      "sport": "scuba_diving",
+      "verified": "yes"
+    }
+  }
+}

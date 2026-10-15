@@ -1,0 +1,37 @@
+{
+  "id": "node/4159831403",
+  "name": "MV Xlendi",
+  "lat": 36.016828,
+  "lon": 14.285003,
+  "type": "wreck",
+  "maxDepth": "44m",
+  "typicalDepth": "32m",
+  "level": "Experienced (Advanced Open Water and deep experience)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Former Gozo Channel ferry, about 80 m long, scuttled in 1999. It lies upside down at 42–44 m with the propellers at about 32 m. Don't go inside: the wreck is unstable.",
+  "sources": [
+    "https://maltadives.com/sites/mvxlendi-xattlahmar"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831403"
+    ],
+    "tags": {
+      "historic": "wreck",
+      "name": "MV Xlendi",
+      "scuba_diving:depth": "40",
+      "scuba_diving:maxdepth": "44",
+      "scuba_diving:type:wreck": "yes",
+      "seamark:type": "wreck",
+      "seamark:wreck:category": "non-dangerous",
+      "sport": "scuba_diving",
+      "tourism": "attraction",
+      "wreck:date_sunk": "1999-11-12",
+      "wreck:type": "ship",
+      "wreck:visible_at_high_tide": "no",
+      "wreck:visible_at_low_tide": "no"
+    }
+  }
+}

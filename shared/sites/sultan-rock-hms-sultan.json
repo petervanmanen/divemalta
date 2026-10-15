@@ -1,0 +1,30 @@
+{
+  "id": "node/4159831399",
+  "name": "Sultan Rock (HMS Sultan)",
+  "lat": 36.005099,
+  "lon": 14.336121,
+  "type": "wreck",
+  "maxDepth": "18m",
+  "typicalDepth": "8m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Sultan Rock at the south-east point of Comino: big boulders covered in algae, seagrass with wrasse, moray eels and groupers, and scattered remains of the wreck of HMS Sultan. Not deep, but the currents make it a dive for experienced divers.",
+  "conditions": "Protected from north-westerlies, but the surface can get rough and currents are strong.",
+  "sources": [
+    "https://www.calypsosac.org/sultan-rock/",
+    "https://maltadives.com/sites/sultanrock"
+  ],
+  "note": "Researched October 2026. OSM only calls this 'Dive Site and Shipwreck'; we take it to be Sultan Rock (HMS Sultan) by location (about 900 m from maltadives' approximate position).",
+  "osm": {
+    "ids": [
+      "node/4159831399"
+    ],
+    "tags": {
+      "historic": "wreck",
+      "name": "Dive Site and Shipwreck",
+      "seamark:type": "wreck",
+      "sport": "scuba_diving",
+      "tourism": "attraction"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "node/10203592554",
+  "name": "MT Hephaestus",
+  "lat": 36.016772,
+  "lon": 14.290096,
+  "type": "wreck",
+  "maxDepth": "42m",
+  "typicalDepth": "32m",
+  "level": "Experienced (Advanced Open Water and deep experience)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Oil tanker, about 60 m long, that ran aground at Qawra Point in a storm in 2018 and was scuttled off Xatt l-Aħmar in August 2022 as a dive site.",
+  "sources": [
+    "https://maltadives.com/sites/hephaestus-xattlahmar"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/10203592554"
+    ],
+    "tags": {
+      "historic": "wreck",
+      "name": "MT Hephaestus",
+      "note": "Scuttled 2022-08 as an attraction for scuba divers",
+      "scuba_diving:depth": "32",
+      "scuba_diving:maxdepth": "46",
+      "scuba_diving:type:wreck": "yes",
+      "seamark:type": "wreck",
+      "seamark:wreck:category": "non-dangerous",
+      "sport": "scuba_diving",
+      "tourism": "attraction",
+      "wreck:date_sunk": "2022-08-29",
+      "wreck:type": "ship",
+      "wreck:visible_at_high_tide": "no",
+      "wreck:visible_at_low_tide": "no"
+    }
+  }
+}

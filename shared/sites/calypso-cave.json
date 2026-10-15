@@ -1,0 +1,28 @@
+{
+  "id": "node/384934092",
+  "name": "Calypso Cave",
+  "lat": 36.081745,
+  "lon": 14.248695,
+  "type": "cave",
+  "maxDepth": "40m+",
+  "typicalDepth": "30m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Cave and arches off the Xwejni–Qbajjar coast near Marsalforn, also called Calypso Tunnel or Triple Arch, in the same area as Double Arch. Not the Calypso Cave on land above Ramla Bay.",
+  "sources": [
+    "https://maltadives.com/sites/calypsocave-xwejnibay"
+  ],
+  "note": "Researched October 2026. Matched to maltadives' Calypso Cave (Xwejni Bay) by location.",
+  "osm": {
+    "ids": [
+      "node/384934092"
+    ],
+    "tags": {
+      "name": "Calypso Cave",
+      "natural": "cave_entrance",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

@@ -8,18 +8,14 @@ bundled with the app, so everything works offline.
   [Protomaps](https://protomaps.com) daily build), drawn with [MapLibre](https://maplibre.org) in the
   Protomaps "light" style. Always north up, no tilting. When you pan away from Malta a message says the app only has Malta, with a button to go back;
   the location button only follows you inside Malta and otherwise shows a short message.
-- **Dive sites**: 68 sites from OSM: those tagged as dive sites plus those named as one ("... (Dive
-  Site)") but tagged as a reef or statue. Dive centres, shops and clubs are left out; a site mapped
-  twice (same or alternative name, close together) is merged into one. "(Dive Site)" and similar are dropped from the
-  names, and a place known to be a dive site (by its name or listed in `shared/enrichment/`) isn't shown as a
-  reef just because OSM tags it `natural=reef`. Wrecks are purple, caves
-  brown; nearby sites are grouped until you zoom in. Tap one for its depth, type, entry, description,
-  website, level, conditions, sources, the seabed depth there and directions in Apple Maps. The list button searches
-  all sites.
+- **Dive sites**: the 67 sites in `../shared/sites/` (one JSON file each, see its README). Wrecks are
+  purple, caves brown; nearby sites are grouped until you zoom in. Tap one for its depth, type,
+  entry, level, description, conditions, sources, the seabed depth there and directions in Apple
+  Maps. The list button searches all sites.
 - **Depth contours**: 5, 10, 15, 20, 30, 40, 50, 60, 80, 100, 150 and 200 m, labelled along the lines.
   The contour button switches them off.
 - **Depth anywhere**: touch and hold the sea to look up the depth at that point.
-- **Our additions**: researched site info, known depths and tunnels from `../shared/enrichment/`.
+- **Our additions**: known depths and tunnels from `../shared/enrichment/`.
 
 Where the data comes from and how good it is: [../shared/README.md](../shared/README.md).
 
@@ -27,7 +23,9 @@ Where the data comes from and how good it is: [../shared/README.md](../shared/RE
 
 Open `DiveMalta.xcodeproj` in Xcode and run on a simulator or your iPhone (team 9XCZUWMGXB,
 bundle id `nl.petervanmanen.DiveMalta`). The app bundles `../shared/data/` as a folder (`data/` in the
-app); everything it needs is in the repo, so no data steps are needed just to build it.
+app), and the build phase "Gather dive sites" adds the sites from `../shared/sites/` to it
+(`shared/tools/gather_sites.py`, needs `python3`). Everything it needs is in the repo, so no data
+steps are needed just to build it.
 
 ## TestFlight from GitHub
 

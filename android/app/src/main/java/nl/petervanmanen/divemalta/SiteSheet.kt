@@ -59,7 +59,7 @@ fun SiteSheet(site: DiveSite, grid: BathymetryGrid, onDismiss: () -> Unit) {
                     context.startActivity(Intent(Intent.ACTION_VIEW, url.toUri()))
                 }
                 site.website?.let { w -> LinkRow(Icons.Outlined.Language, "Website") { uri.openUri(w) } }
-                LinkRow(Icons.Outlined.Map, "View or edit on OpenStreetMap") { uri.openUri(site.osmUrl) }
+                site.osmUrl?.let { osm -> LinkRow(Icons.Outlined.Map, "View or edit on OpenStreetMap") { uri.openUri(osm) } }
             }
             if (site.sources.isNotEmpty()) {
                 Section("Sources") {

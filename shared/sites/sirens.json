@@ -1,0 +1,25 @@
+{
+  "id": "node/13614926334",
+  "name": "Sirens",
+  "lat": 35.9497265,
+  "lon": 14.4046861,
+  "maxDepth": "12m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shallow reef by the Sirens quay in St. Paul's Bay, down to 12 m: rocks, sand and seagrass with octopus, moray eels and cuttlefish. Mostly used for training and try dives.",
+  "sources": [
+    "https://maltadives.com/sites/sirens"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614926334"
+    ],
+    "tags": {
+      "name": "Sirens (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

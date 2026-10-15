@@ -1,0 +1,6 @@
+{
+  "note": "OpenStreetMap entries that are not dive sites; tools/import_sites.py never adds them.",
+  "ids": [
+    "node/9666388238"
+  ]
+}

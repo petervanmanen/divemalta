@@ -1,0 +1,30 @@
+{
+  "id": "node/384935638",
+  "name": "Għar il-Katidral",
+  "lat": 36.081085,
+  "lon": 14.230078,
+  "type": "cave",
+  "maxDepth": "30m",
+  "typicalDepth": "12m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Cathedral Cave (Blue Dome) near Wied il-Għasri, on the stretch from Forna Point to Reqqa Point. The entrance starts at 5 m; inside you surface in a huge dome lit blue by the light coming through the water. Outside, depths reach 30 m.",
+  "conditions": "Sheltered inlet. Best between 10:00 and noon. Reaching it from land means a tough scramble down the rocks.",
+  "sources": [
+    "https://maltadives.com/sites/cathedralcave",
+    "https://www.calypsosac.org/the-blue-dome-ghasri-valley-cathedral-cave/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/384935638"
+    ],
+    "tags": {
+      "name": "Għar il-Katidral",
+      "name:en": "Cathedral Cave",
+      "natural": "cave_entrance",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

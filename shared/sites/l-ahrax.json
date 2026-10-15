@@ -1,0 +1,25 @@
+{
+  "id": "node/4159831408",
+  "name": "L-Aħrax",
+  "lat": 35.9975949,
+  "lon": 14.3684043,
+  "maxDepth": "18m",
+  "typicalDepth": "7m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Northern tip of Malta with several shore dives: a small cave at the point, the North Reef, a tunnel open to the surface into a small inland sea, and a cavern known as the Inland Sea or Coral Lagoon.",
+  "sources": [
+    "https://maltadives.com/sites/lahraxpoint"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831408"
+    ],
+    "tags": {
+      "name": "L-Aħrax (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

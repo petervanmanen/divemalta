@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Build the data the Dive Malta apps bundle (iOS now, Android later) into ../data/.
 
-- malta-dive-sites.json (+ .geojson for the map): OSM dive sites around Malta, Gozo and Comino, taken from
-  OpenStreetMap (via Overpass, cached in cache/osm-dive-sites.json), plus places around Malta whose
-  name says they are a dive site ("... (Dive Site)") but which OSM tags as a reef, statue etc. Dive
-  centres, shops and clubs are left out, using the same rules as the Garmin map.
+The dive sites themselves are one JSON file each in ../sites/ (see import_sites.py to add new ones
+from OpenStreetMap, and gather_sites.py, which the apps run while building). This script keeps the
+OpenStreetMap rules for what counts as a dive site (used by import_sites.py) and builds the rest:
+
 - malta-depth.bin / malta-depth.json: the EMODnet Bathymetry DTM (about 115 m grid) resampled to
   ~38 m, with land and sea taken from the OSM coastline. EMODnet's own coastline is only as good as
   its 115 m cells, so it puts land in the sea and sea on land in places (e.g. around MV Xlendi).
@@ -13,8 +13,8 @@
 - malta-contours.geojson: depth contours at diving depths traced from that grid. EMODnet's own
   contour layer only has 50/100/200/500 m.
 
-Our own additions in ../enrichment/ (see its README) are merged over the OSM and EMODnet data:
-extra or corrected dive sites, areas with a known depth, and extra map lines (malta-extras.geojson).
+Our own additions in ../enrichment/ (see its README) are merged over the EMODnet data: areas with a
+known depth, and extra map lines (malta-extras.geojson).
 
 Standard library only.
 """
@@ -135,58 +135,12 @@ def osm_dive_sites():
         yield site_record(f"{el['type']}/{el['id']}", c["lon"], c["lat"], tags)
 
 
-def make_sites():
-    sites = list(osm_dive_sites())
-    known = {s["id"] for s in sites}
-    extra = [s for s in named_dive_sites() if s["id"] not in known and not is_centre_like(s["tags"])]
-    print(f"  {len(extra)} more sites named as dive sites: {', '.join(s['name'] for s in extra)}", file=sys.stderr)
-    sites += extra
-    sites = enrich_sites(merge_duplicates(sites))
-    sites.sort(key=lambda s: (s["name"] or "~").lower())
-    with open(os.path.join(OUT, "malta-dive-sites.json"), "w") as f:
-        json.dump(sites, f, ensure_ascii=False, separators=(",", ":"))
-    with open(os.path.join(MAP, "malta-dive-sites.geojson"), "w") as f:
-        json.dump({"type": "FeatureCollection", "features": [
-            {"type": "Feature", "geometry": {"type": "Point", "coordinates": [s["lon"], s["lat"]]},
-             "properties": {"id": s["id"], "name": s["name"] or "Dive site", "type": s["type"] or "site"}}
-            for s in sites]}, f, ensure_ascii=False, separators=(",", ":"))
-    print(f"{len(sites)} dive sites", file=sys.stderr)
-
-
 def load_enrichment(name, default):
     path = os.path.join(ENRICH, name)
     if not os.path.exists(path):
         return default
     with open(path) as f:
         return json.load(f)
-
-
-def enrich_sites(sites):
-    """Apply ../enrichment/sites.json: update or remove sites by id, add new ones."""
-    by_id = {s["id"]: s for s in sites}
-    for entry in load_enrichment("sites.json", []):
-        site = by_id.get(entry["id"])
-        if entry.get("remove"):
-            if site:
-                sites.remove(site)
-                print(f"  enrichment: removed {entry['id']}", file=sys.stderr)
-            continue
-        if site is None:
-            tags = {"name": entry["name"], **entry.get("tags", {})}
-            site = {"id": entry["id"], "name": entry["name"], "lat": entry["lat"], "lon": entry["lon"],
-                    "maxDepth": depth_of(tags), "type": dive_site_type(tags, True), "entry": entry_of(tags), "tags": tags}
-            sites.append(site)
-            by_id[site["id"]] = site
-            action = "added"
-        else:
-            site["tags"].update(entry.get("tags", {}))
-            site["type"] = dive_site_type(site["tags"], True)   # listed by us, so it is a dive site
-            action = "updated"
-        for field in ("name", "lat", "lon", "maxDepth", "type", "entry"):
-            if field in entry:
-                site[field] = entry[field]
-        print(f"  enrichment: {action} {site['name']} ({site['id']})", file=sys.stderr)
-    return sites
 
 
 def merge_duplicates(sites):
@@ -199,6 +153,7 @@ def merge_duplicates(sites):
         if twin is None:
             kept.append(site)
             continue
+        twin.setdefault("mergedIds", []).append(site["id"])
         for key, value in site["tags"].items():
             twin["tags"].setdefault(key, value)
         for field in ("maxDepth", "type", "entry"):
@@ -508,7 +463,6 @@ def make_contours(rows, lon0, lat0, step):
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
-    make_sites()
     write_extras()
     grid = corrected_grid()
     write_grid(*grid)

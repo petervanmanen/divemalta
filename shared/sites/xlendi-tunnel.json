@@ -1,0 +1,28 @@
+{
+  "id": "node/384941960",
+  "name": "Xlendi Tunnel",
+  "lat": 36.029642,
+  "lon": 14.214495,
+  "type": "cave",
+  "maxDepth": "10m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Hard",
+  "description": "Shallow tunnel, about 70 m long, through the headland on the north side of Xlendi Bay. The entrance is at 5 m and it's 8 m at the deepest. You can surface in many places, so it suits less experienced divers.",
+  "conditions": "Watch out for boats in the bay.",
+  "sources": [
+    "https://maltadives.com/sites/xlenditunnel-xlendibay"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/384941960"
+    ],
+    "tags": {
+      "name": "Xlendi Tunnel",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

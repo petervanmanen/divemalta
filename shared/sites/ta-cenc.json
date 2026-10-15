@@ -1,0 +1,27 @@
+{
+  "id": "node/4159831406",
+  "name": "Ta' Ċenċ",
+  "lat": 36.016273,
+  "lon": 14.272172,
+  "maxDepth": "37m+",
+  "typicalDepth": "25m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Wall dive near Mġarr ix-Xini: from the canyon over boulders to a steep sloping wall. On the way back there's a cave at 14 m that goes far in.",
+  "conditions": "Sheltered from north-westerly winds.",
+  "sources": [
+    "https://www.calypsosac.org/ta-cenc/",
+    "https://maltadives.com/sites/tacencreef"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831406"
+    ],
+    "tags": {
+      "name": "Ta' Ċenċ Dive Site",
+      "sport": "scuba_diving",
+      "tourism": "attraction"
+    }
+  }
+}

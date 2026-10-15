@@ -1,0 +1,29 @@
+{
+  "id": "node/3767235079",
+  "name": "Santa Marija Caves",
+  "lat": 36.017993,
+  "lon": 14.34023,
+  "type": "cave",
+  "maxDepth": "12m",
+  "typicalDepth": "7m",
+  "level": "Beginner (Open Water)",
+  "entry": "boat",
+  "description": "Connected caves and tunnels in an inlet near Santa Marija Bay on Comino, 8–12 m deep. Bream swarm around divers here. Safe and fun for less experienced divers.",
+  "conditions": "Sheltered from north-westerly winds.",
+  "sources": [
+    "https://www.calypsosac.org/santa-marija-caves/",
+    "https://maltadives.com/sites/santamarijacaves"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/3767235079"
+    ],
+    "tags": {
+      "name": "Santa Marija Caves Dive Site",
+      "natural": "reef",
+      "sport": "scuba_diving",
+      "tourism": "attraction"
+    }
+  }
+}

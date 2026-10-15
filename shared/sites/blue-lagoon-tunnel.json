@@ -1,0 +1,29 @@
+{
+  "id": "node/4159831393",
+  "name": "Blue Lagoon Tunnel",
+  "lat": 36.010636,
+  "lon": 14.32624,
+  "type": "cave",
+  "maxDepth": "12m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "boat",
+  "description": "Small bay north of the Blue Lagoon, full of friendly bream. A cave on the bay's right leads through the rock point and out to open water. Halfway along, a rock pool lets you come up to open air.",
+  "conditions": "Sheltered, but very busy with tourist boats in summer.",
+  "sources": [
+    "https://www.calypsosac.org/blue-lagoon/",
+    "https://maltadives.com/sites/bluelagoon-cominotto"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831393"
+    ],
+    "tags": {
+      "name": "Blue Lagoon Tunnel Dive Site",
+      "sport": "scuba_diving",
+      "tourism": "attraction",
+      "wheelchair": "no"
+    }
+  }
+}

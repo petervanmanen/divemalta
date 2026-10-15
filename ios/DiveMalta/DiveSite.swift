@@ -1,19 +1,34 @@
 import CoreLocation
 import Foundation
 
-/// A dive site from OpenStreetMap, as written by shared/tools/make_data.py.
+/// A dive site, from one file in shared/sites/. The build gathers all of them into
+/// data/malta-dive-sites.json (shared/tools/gather_sites.py).
 struct DiveSite: Identifiable, Decodable, Hashable {
-    let id: String          // "node/123", "way/456"
-    let name: String?
+    let id: String              // OpenStreetMap id ("node/123"), or our own ("custom/…")
+    let name: String
     let lat: Double
     let lon: Double
-    let maxDepth: String?   // "30m", "5-30m"
-    let type: String?       // wreck, wall, cave, reef, ...
-    let entry: String?      // shore, boat
-    let tags: [String: String]
+    let type: String?           // wreck, cave, reef, statue, ...
+    let maxDepth: String?       // "36m", "30m+"
+    let typicalDepth: String?
+    let level: String?          // "Advanced (Advanced Open Water)"
+    let entry: String?          // shore, boat
+    let shoreAccess: String?    // Easy, Medium, Hard
+    let difficulty: String?
+    let details: String?
+    let conditions: String?
+    private let websiteString: String?
+    private let sourceStrings: [String]?
+
+    private enum CodingKeys: String, CodingKey {
+        case id, name, lat, lon, type, maxDepth, typicalDepth, level, entry, shoreAccess, difficulty, conditions
+        case details = "description"
+        case websiteString = "website"
+        case sourceStrings = "sources"
+    }
 
     var coordinate: CLLocationCoordinate2D { .init(latitude: lat, longitude: lon) }
-    var displayName: String { name ?? "Dive site" }
+    var displayName: String { name }
 
     /// "36m · wreck · shore entry · Advanced"
     var summary: String? {
@@ -22,23 +37,14 @@ struct DiveSite: Identifiable, Decodable, Hashable {
         return parts.isEmpty ? nil : parts.joined(separator: " · ")
     }
 
-    var osmURL: URL { URL(string: "https://www.openstreetmap.org/\(id)")! }
-
-    var website: URL? {
-        (tags["website"] ?? tags["contact:website"] ?? tags["url"]).flatMap(URL.init(string:))
+    /// OpenStreetMap page, for sites that come from OSM.
+    var osmURL: URL? {
+        id.hasPrefix("node/") || id.hasPrefix("way/") || id.hasPrefix("relation/")
+            ? URL(string: "https://www.openstreetmap.org/\(id)") : nil
     }
 
-    var difficulty: String? { tags["scuba_diving:difficulty"] }
-    var details: String? { tags["description"] ?? tags["note"] }
-
-    // Our own research (shared/enrichment/sites.json), stored as dive:* tags.
-    var level: String? { tags["dive:level"] }
-    var typicalDepth: String? { tags["dive:depth_avg"] }
-    var shoreAccess: String? { tags["dive:shore_access"] }
-    var conditions: String? { tags["dive:conditions"] }
-    var sources: [URL] {
-        (tags["dive:sources"] ?? "").split(separator: " ").compactMap { URL(string: String($0)) }
-    }
+    var website: URL? { websiteString.flatMap(URL.init(string:)) }
+    var sources: [URL] { (sourceStrings ?? []).compactMap(URL.init(string:)) }
 
     static func loadBundled() -> [DiveSite] {
         guard let url = Bundle.main.url(forResource: "malta-dive-sites", withExtension: "json", subdirectory: "data"),

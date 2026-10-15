@@ -1,0 +1,27 @@
+{
+  "id": "node/4159831400",
+  "name": "Fessej Rock",
+  "lat": 36.015427,
+  "lon": 14.27575,
+  "maxDepth": "50m+",
+  "typicalDepth": "30m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Free-standing rock off the mouth of Mġarr ix-Xini, rising from about 50 m to 15 m. Usually dived by circling the rock; large groupers and bream on the deep side.",
+  "conditions": "Currents and swell can be strong here; a good choice when the wind is north-westerly.",
+  "sources": [
+    "https://maltadives.com/sites/fessejrock-rasilhobz",
+    "https://www.calypsosac.org/fessej-rock-black-rock/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831400"
+    ],
+    "tags": {
+      "name": "Fessej Rock",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

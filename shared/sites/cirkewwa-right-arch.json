@@ -1,0 +1,27 @@
+{
+  "id": "node/4159831409",
+  "name": "Cirkewwa - Right Arch",
+  "lat": 35.989919,
+  "lon": 14.327322,
+  "maxDepth": "25m",
+  "typicalDepth": "15m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Ċirkewwa's best-known feature: a natural arch, really a cavern whose roof collapsed, with its top at 12 m and 8 m above the seabed. Caves and tunnels on the way; easily combined with the tug Rozi.",
+  "sources": [
+    "https://maltadives.com/sites/arch-cirkewwa"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831409"
+    ],
+    "tags": {
+      "name": "Cirkewwa - Right Arch (Dive Site)",
+      "natural": "reef",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

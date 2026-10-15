@@ -5,16 +5,18 @@ app, a Garmin watch map, and (later) an Android app. All of them are built from 
 
 ```
 shared/     data and tools all apps use
-  enrichment/   our own additions: researched site info, known depths, tunnels
-  tools/        make_data.py (sites, depth grid, contours), osm_rules.py, map style, icon generator
-  data/         the generated data the apps bundle: map tiles, style, fonts, contours, sites, depths
+  sites/        the dive sites, one JSON file each (gathered by both apps while building)
+  enrichment/   our own additions to the map: known depths, tunnels
+  tools/        gather_sites.py, import_sites.py, make_data.py (depth grid, contours), map style, icon
+  data/         the generated data the apps bundle: map tiles, style, fonts, contours, depths
 ios/        iPhone/iPad app (SwiftUI + MapLibre), screenshots, TestFlight export settings
 android/    Android app (Kotlin + Compose + MapLibre), Play Store graphics
 garmin/     transparent Garmin watch map of the dive sites of Europe (mkgmap)
 ```
 
 - [shared/README.md](shared/README.md): where the data comes from, how to regenerate it, licences
-- [shared/enrichment/README.md](shared/enrichment/README.md): how to add or correct sites, depths and tunnels
+- [shared/sites/README.md](shared/sites/README.md): the dive site files and their fields
+- [shared/enrichment/README.md](shared/enrichment/README.md): known depths and tunnels
 - [ios/README.md](ios/README.md): building, screenshots, TestFlight
 - [android/README.md](android/README.md): building, signing, Google Play
 - [garmin/README.md](garmin/README.md): the Garmin map

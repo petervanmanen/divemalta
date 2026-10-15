@@ -1,0 +1,29 @@
+{
+  "id": "node/13614875986",
+  "name": "Bottleneck Cave",
+  "lat": 36.083099,
+  "lon": 14.235127,
+  "type": "cave",
+  "maxDepth": "58m",
+  "typicalDepth": "37m",
+  "level": "Technical",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Deep cave close to Reqqa Point in northern Gozo, along the same coast as Billinghurst Cave. A technical dive.",
+  "sources": [
+    "https://maltadives.com/sites/bottleneckcave-reqqapoint",
+    "https://www.visitgozo.com/what-to-do-in-gozo/escape/diving/dive-sites/bottleneck-cave/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614875986"
+    ],
+    "tags": {
+      "name": "Bottleneck Cave (Dive Site)",
+      "natural": "reef",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

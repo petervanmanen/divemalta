@@ -1,0 +1,26 @@
+{
+  "id": "node/13614906770",
+  "name": "Balluta Bay",
+  "lat": 35.915438,
+  "lon": 14.4945009,
+  "maxDepth": "12m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shallow bay in St Julian's: rocky reef with sand and seagrass down to about 12 m. Octopus and cuttlefish are common, and there are sometimes seahorses in the seagrass. A popular night dive.",
+  "conditions": "Currents can be tricky; best in calm weather.",
+  "sources": [
+    "https://www.diveplannerpro.com/spots/mt/malta/malta-balluta-bayreef",
+    "https://www.padi.com/diving-in/malta/balluta-bay/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614906770"
+    ],
+    "tags": {
+      "name": "Balluta Bay (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

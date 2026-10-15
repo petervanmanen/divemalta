@@ -1,0 +1,31 @@
+{
+  "id": "way/23738627",
+  "name": "Ħondoq ir-Rummien",
+  "lat": 36.027946,
+  "lon": 14.322082,
+  "maxDepth": "12m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Sandy bay on the south-east coast of Gozo facing Comino, 5–12 m deep. Good for courses and introductory dives.",
+  "sources": [
+    "https://maltadives.com/sites/hondoqreef-hondoq",
+    "https://www.divessi.com/blog/malta-diving-best-dive-sites-2860"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "way/23738627"
+    ],
+    "tags": {
+      "name": "Ħondoq ir-Rummien",
+      "natural": "beach",
+      "source:description": "en:wikipedia",
+      "sport": "scuba_diving",
+      "surface": "sand",
+      "wikidata": "Q8080010",
+      "wikipedia": "en:Ħondoq ir-Rummien"
+    }
+  }
+}

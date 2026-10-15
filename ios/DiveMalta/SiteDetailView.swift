@@ -40,7 +40,9 @@ struct SiteDetailView: View {
                     if let website = site.website {
                         Link(destination: website) { Label("Website", systemImage: "safari") }
                     }
-                    Link(destination: site.osmURL) { Label("View or edit on OpenStreetMap", systemImage: "map") }
+                    if let osm = site.osmURL {
+                        Link(destination: osm) { Label("View or edit on OpenStreetMap", systemImage: "map") }
+                    }
                 }
 
                 if !site.sources.isEmpty {

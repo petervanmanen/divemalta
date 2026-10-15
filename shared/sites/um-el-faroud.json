@@ -1,0 +1,34 @@
+{
+  "id": "node/663869707",
+  "name": "Um El Faroud",
+  "lat": 35.81758,
+  "lon": 14.449558,
+  "type": "wreck",
+  "maxDepth": "36m",
+  "typicalDepth": "20m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Libyan tanker, about 110 m long, scuttled off Wied iż-Żurrieq in 1998 after a fatal explosion in dry dock. Sits upright on sand at 36 m; widely seen as Malta's best wreck dive.",
+  "website": "http://www.dive-links.com/tauchplatz.php?id=1175",
+  "sources": [
+    "https://maltadives.com/sites/umelfaroud-wiedizzurrieq"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/663869707"
+    ],
+    "tags": {
+      "historic": "wreck",
+      "name": "Um El Faroud",
+      "seamark:type": "wreck",
+      "source": "Maltese Islands Diving Guide, =BjP= (SSI Instructor Trainer)",
+      "sport": "scuba_diving",
+      "website": "http://www.dive-links.com/tauchplatz.php?id=1175",
+      "wreck:date_sunk": "1998-09-02",
+      "wreck:visible_at_high_tide": "no",
+      "wreck:visible_at_low_tide": "no"
+    }
+  }
+}

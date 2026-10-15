@@ -1,0 +1,28 @@
+{
+  "id": "node/4159831401",
+  "name": "Ras il-Ħobż",
+  "lat": 36.015626,
+  "lon": 14.279398,
+  "maxDepth": "100m+",
+  "typicalDepth": "12m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Middle Finger: a pinnacle rising from 40+ m to about 10 m, with amberjack, dentex and moray eels. The slope keeps going past 80 m, so it's used for technical training from the shore; the best parts are within 25 m.",
+  "sources": [
+    "https://maltadives.com/sites/middlefinger-rasilhobz"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831401"
+    ],
+    "tags": {
+      "alt_name": "Middle Finger",
+      "name": "Ras il-Ħobż (Dive Site)",
+      "natural": "reef",
+      "scuba_diving:depth": "30",
+      "sport": "scuba_diving"
+    }
+  }
+}

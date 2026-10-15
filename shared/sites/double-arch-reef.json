@@ -1,0 +1,27 @@
+{
+  "id": "node/384933337",
+  "name": "Double Arch Reef",
+  "lat": 36.081738,
+  "lon": 14.246514,
+  "maxDepth": "45m+",
+  "typicalDepth": "30m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Two natural arches, one stacked above the other, about 200 m off Xwejni Bay. The reef top is at 15–18 m, the arches start at 20 m, it's 34 m under the arches and the reef ends at about 45 m. Barracuda shoals are common. Can be done from shore with a long surface swim.",
+  "conditions": "Best in flat calm; easterly winds blow it out.",
+  "sources": [
+    "https://maltadives.com/sites/doublearch-xwejnibay",
+    "https://www.calypsosac.org/double-arch/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/384933337"
+    ],
+    "tags": {
+      "name": "Double Arch Reef",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

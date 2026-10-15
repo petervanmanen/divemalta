@@ -1,0 +1,27 @@
+{
+  "id": "node/13614906765",
+  "name": "Filfla",
+  "lat": 35.7862936,
+  "lon": 14.4111365,
+  "maxDepth": "70m+",
+  "typicalDepth": "25m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Uninhabited islet south of Malta, used for target practice until the 1970s and now a nature reserve. Walls go past 70 m. Unexploded munitions lie around the island: keep away from them.",
+  "conditions": "Diving needs a permit and a licensed boat. Strong currents at times.",
+  "sources": [
+    "https://www.calypsosac.org/filfla-island/",
+    "https://maltadives.com/sites/filfla",
+    "https://maltainfoguide.com/filfla-island.html"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614906765"
+    ],
+    "tags": {
+      "name": "Filfla (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

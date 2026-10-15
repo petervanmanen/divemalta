@@ -1,0 +1,25 @@
+{
+  "id": "node/13614926341",
+  "name": "Cirkewwa - Outer Reef",
+  "lat": 35.9908691,
+  "lon": 14.3278706,
+  "maxDepth": "45m+",
+  "typicalDepth": "20m",
+  "level": "Technical",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "The Ċirkewwa reef continuing north past the tug Rozi and the Arch. The top stays at 15–20 m. About 10 minutes past the Arch the wall gets steeper and drops beyond 40 m.",
+  "sources": [
+    "https://maltadives.com/sites/reefbeyondrozi-cirkewwa"
+  ],
+  "note": "Researched October 2026. Matched to maltadives' 'Reef Beyond Rozi' by location; may not be exactly the same site.",
+  "osm": {
+    "ids": [
+      "node/13614926341"
+    ],
+    "tags": {
+      "name": "Cirkewwa - Outer Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

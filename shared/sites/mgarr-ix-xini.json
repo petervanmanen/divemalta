@@ -1,0 +1,30 @@
+{
+  "id": "node/4159831407",
+  "name": "Mġarr ix-Xini",
+  "lat": 36.017765,
+  "lon": 14.27288,
+  "type": "cave",
+  "maxDepth": "14m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Narrow inlet on the south coast of Gozo. Easy shore dive along the right-hand cliff to a large cave near the mouth of the bay, then back over the sandy bottom.",
+  "conditions": "Still diveable when the wind is north-westerly, which few sites are; popular with swimmers.",
+  "sources": [
+    "https://www.calypsosac.org/mgarr-ix-xini/",
+    "https://maltadives.com/sites/mgarrixxini"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831407"
+    ],
+    "tags": {
+      "name": "Mġarr ix-Xini",
+      "natural": "beach",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

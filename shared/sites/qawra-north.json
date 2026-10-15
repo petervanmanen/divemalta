@@ -1,0 +1,25 @@
+{
+  "id": "node/13614926336",
+  "name": "Qawra North",
+  "lat": 35.9604427,
+  "lon": 14.4262325,
+  "maxDepth": "22m",
+  "typicalDepth": "15m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Reef north of Qawra Point: the seabed slopes to 10 m, then a small wall to sand at 15 m. Near the west end a small arch at 18 m is big enough to swim through.",
+  "sources": [
+    "https://maltadives.com/sites/northreefarch-qawrapoint"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614926336"
+    ],
+    "tags": {
+      "name": "Qawra North (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

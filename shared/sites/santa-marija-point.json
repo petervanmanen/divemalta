@@ -1,0 +1,26 @@
+{
+  "id": "node/384931936",
+  "name": "Santa Marija Point",
+  "lat": 36.075111,
+  "lon": 14.258579,
+  "maxDepth": "10m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Probably the Santa Maria breakwater at Marsalforn: a gently sloping, shallow site (6–10 m) mainly used for training.",
+  "sources": [
+    "https://www.duikersgids.nl/en/dive-spots/santa-maria-breakwater"
+  ],
+  "note": "Researched October 2026. Matched by name and location only; not certain it's the same site.",
+  "osm": {
+    "ids": [
+      "node/384931936"
+    ],
+    "tags": {
+      "name": "Santa Marija Point",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

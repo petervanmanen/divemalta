@@ -1,0 +1,25 @@
+{
+  "id": "node/13614831478",
+  "name": "L-Ahair Point",
+  "lat": 35.9964781,
+  "lon": 14.3665897,
+  "maxDepth": "30m",
+  "typicalDepth": "10m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Long reef off L-Aħrax Point at the northern tip of Malta: rocks, little canyons, passages to swim through and seagrass. It's a long way from where you get in, so a boat is often used.",
+  "sources": [
+    "https://maltadives.com/sites/northreef-lahraxpoint"
+  ],
+  "note": "Researched October 2026. Matched to maltadives' L'Ahrax Point North Reef by location.",
+  "osm": {
+    "ids": [
+      "node/13614831478"
+    ],
+    "tags": {
+      "name": "L-Ahair Point (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

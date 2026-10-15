@@ -1,0 +1,25 @@
+{
+  "id": "node/13614926337",
+  "name": "Qawra South",
+  "lat": 35.9590998,
+  "lon": 14.4262215,
+  "maxDepth": "10m",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Protected bay on the south-eastern flank of Qawra Point, 2–10 m deep over sand and seagrass. Used for training and try dives.",
+  "sources": [
+    "https://maltadives.com/sites/qawrabay-qawrapoint"
+  ],
+  "note": "Researched October 2026. Matched to maltadives' Qawra Bay (Inner Reef) by location.",
+  "osm": {
+    "ids": [
+      "node/13614926337"
+    ],
+    "tags": {
+      "name": "Qawra South (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

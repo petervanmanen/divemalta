@@ -1,0 +1,28 @@
+{
+  "id": "node/4159831405",
+  "name": "Xatt l-Aħmar Reef",
+  "lat": 36.017731,
+  "lon": 14.286689,
+  "maxDepth": "30m",
+  "typicalDepth": "9m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Reef along the south side of Xatt l-Aħmar bay, from the same entry as the three wrecks. A long snorkel out leads to a drop-off with boulders, nooks and crannies, small groupers, octopus and bream.",
+  "conditions": "A good option when a north-westerly wind closes other sites. A 4x4 helps on the dirt track.",
+  "sources": [
+    "https://www.calypsosac.org/xatt-l-ahmar/",
+    "https://maltadives.com/sites/xattlahmarreef-xattlahmar"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831405"
+    ],
+    "tags": {
+      "name": "Xatt l-Aħmar Reef",
+      "natural": "reef",
+      "sport": "scuba_diving"
+    }
+  }
+}

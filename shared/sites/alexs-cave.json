@@ -1,0 +1,29 @@
+{
+  "id": "node/4159831391",
+  "name": "Alex's Cave",
+  "lat": 36.010541,
+  "lon": 14.325167,
+  "type": "cave",
+  "maxDepth": "16m",
+  "typicalDepth": "8m",
+  "level": "Beginner (Open Water)",
+  "entry": "boat",
+  "description": "Cave carved by the waves into the islet between Comino and Cominotto, with a sandy floor and smooth walls. In calm weather you can see daylight through a chimney at the back. With enough air you can continue through a tunnel to Crystal Lagoon. Usually dived after Lantern Point West.",
+  "conditions": "Dangerous in a southerly storm, otherwise sheltered.",
+  "sources": [
+    "https://maltadives.com/sites/alexscave-cominotto",
+    "https://www.calypsosac.org/cominitto-cave-alexs-cave/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831391"
+    ],
+    "tags": {
+      "name": "Alex's Cave Dive Site",
+      "natural": "reef",
+      "sport": "scuba_diving",
+      "wheelchair": "no"
+    }
+  }
+}

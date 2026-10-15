@@ -3,7 +3,8 @@
 The Android version of the app: Kotlin, Jetpack Compose and [MapLibre Native for
 Android](https://github.com/maplibre/maplibre-native), with the same features as the iOS app and
 built from the same data (`../shared/data`, bundled as `assets/data` by the `copySharedData` Gradle
-task). Package name `nl.petervanmanen.divemalta`.
+task, which also gathers the dive sites from `../shared/sites/` with `shared/tools/gather_sites.py`;
+needs `python3`). Package name `nl.petervanmanen.divemalta`.
 
 - Map: offline OpenStreetMap vector tiles in the same style as iOS, always north up, no tilting.
   Panning away from Malta shows "Outside the map" with a button back; the location button only

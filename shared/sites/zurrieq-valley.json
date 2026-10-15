@@ -1,0 +1,25 @@
+{
+  "id": "node/13614878292",
+  "name": "Zurrieq - Valley",
+  "lat": 35.8200294,
+  "lon": 14.4514997,
+  "maxDepth": "14m",
+  "typicalDepth": "3m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "The narrow inlet where all Wied iż-Żurrieq shore dives start, sloping gently to about 15 m. Used for training and night dives; from here you reach East Reef, West Reef and the Um El Faroud.",
+  "sources": [
+    "https://maltadives.com/sites/valley-wiedizzurrieq"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614878292"
+    ],
+    "tags": {
+      "name": "Zurrieq - Valley (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

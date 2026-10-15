@@ -1,0 +1,32 @@
+{
+  "id": "node/4159847956",
+  "name": "Wreck of SS Margit",
+  "lat": 35.890482,
+  "lon": 14.522715,
+  "type": "wreck",
+  "maxDepth": "24m",
+  "typicalDepth": "16m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Passenger steamship bombed and sunk in Kalkara Creek in April 1941. Lies broken on a silty bottom at about 22 m. Visibility is lower than elsewhere because it's in the harbour.",
+  "sources": [
+    "https://maltadives.com/sites/ssmargit"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159847956"
+    ],
+    "tags": {
+      "historic": "wreck",
+      "name": "Wreck of SS Margit",
+      "seamark:type": "wreck",
+      "sport": "scuba_diving",
+      "tourism": "attraction",
+      "wreck:date_sunk": "1941-04-19",
+      "wreck:depth": "24",
+      "wreck:length": "100"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "id": "node/4159831402",
+  "name": "MV Karwela",
+  "lat": 36.016902,
+  "lon": 14.286296,
+  "type": "wreck",
+  "maxDepth": "41m",
+  "typicalDepth": "30m",
+  "level": "Experienced (Advanced Open Water and deep experience)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Former Captain Morgan harbour ferry, about 50 m long, scuttled in 2006. Upright on sand with its bow at 39 m and stern at 41 m; the upper deck begins at 30 m. Prepared for safe penetration.",
+  "sources": [
+    "https://maltadives.com/sites/mvkarwela-xattlahmar"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831402"
+    ],
+    "tags": {
+      "historic": "wreck",
+      "name": "MV Karwela",
+      "scuba_diving:depth": "40",
+      "scuba_diving:maxdepth": "44",
+      "scuba_diving:type:wreck": "yes",
+      "seamark:type": "wreck",
+      "seamark:wreck:category": "non-dangerous",
+      "sport": "scuba_diving",
+      "tourism": "attraction",
+      "wreck:date_sunk": "2006-08-12",
+      "wreck:type": "ship",
+      "wreck:visible_at_high_tide": "no",
+      "wreck:visible_at_low_tide": "no"
+    }
+  }
+}

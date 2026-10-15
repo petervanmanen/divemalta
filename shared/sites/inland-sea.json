@@ -1,0 +1,27 @@
+{
+  "id": "node/13614875987",
+  "name": "Inland Sea",
+  "lat": 36.0540139,
+  "lon": 14.1909433,
+  "maxDepth": "26m",
+  "typicalDepth": "18m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Dive site in the Dwejra Inland Sea (Qawra tad-Dwejra). The lagoon itself is about 2 m deep. An 80 m tunnel through the cliff leads to the open sea, from 3 m on the lagoon side to 26 m at the seaward end; outside, the seabed keeps dropping past 40 m.",
+  "conditions": "Watch out for the tourist boats that use the tunnel.",
+  "sources": [
+    "https://maltadives.com/sites/inlandseatunnel-dwejra",
+    "https://www.diveworldwide.com/locations/gozo"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614875987"
+    ],
+    "tags": {
+      "name": "Inland Sea",
+      "natural": "reef"
+    }
+  }
+}

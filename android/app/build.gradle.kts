@@ -1,5 +1,6 @@
 import java.util.Properties
 import javax.inject.Inject
+import org.gradle.process.ExecOperations
 
 plugins {
     id("com.android.application")
@@ -54,24 +55,34 @@ android {
     }
 }
 
-// The app bundles shared/data as assets/data, like the iOS app bundles it as data/.
+// The app bundles shared/data as assets/data, like the iOS app bundles it as data/, plus the dive
+// sites gathered from shared/sites/ (one JSON file per site) by shared/tools/gather_sites.py.
 abstract class CopySharedData : DefaultTask() {
     @get:InputDirectory abstract val source: DirectoryProperty
+    @get:InputDirectory abstract val sites: DirectoryProperty
+    @get:InputFile abstract val gatherScript: RegularFileProperty
     @get:OutputDirectory abstract val output: DirectoryProperty
 
     @get:Inject abstract val fs: FileSystemOperations
+    @get:Inject abstract val exec: ExecOperations
 
     @TaskAction
     fun copy() {
+        val data = output.dir("data").get().asFile
         fs.sync {
             from(source)
-            into(output.dir("data"))
+            into(data)
+        }
+        exec.exec {
+            commandLine("python3", gatherScript.get().asFile.path, sites.get().asFile.path, data.path)
         }
     }
 }
 
 val copySharedData = tasks.register<CopySharedData>("copySharedData") {
     source.set(rootProject.layout.projectDirectory.dir("../shared/data"))
+    sites.set(rootProject.layout.projectDirectory.dir("../shared/sites"))
+    gatherScript.set(rootProject.layout.projectDirectory.file("../shared/tools/gather_sites.py"))
 }
 
 androidComponents {

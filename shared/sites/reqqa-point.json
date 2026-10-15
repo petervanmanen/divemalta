@@ -1,0 +1,32 @@
+{
+  "id": "node/663869711",
+  "name": "Reqqa Point",
+  "lat": 36.082002,
+  "lon": 14.236345,
+  "maxDepth": "70m+",
+  "typicalDepth": "25m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Northernmost point of Gozo: a wall with excellent visibility and large groupers, dropping past 70 m. Billinghurst Cave is about 150 m left of where you get in.",
+  "conditions": "Hard to get in and out when the sea is choppy; sharp rocks.",
+  "website": "http://www.dive-links.com/tauchplatz.php?id=1180",
+  "sources": [
+    "https://maltadives.com/sites/thepoint-reqqapoint",
+    "https://www.calypsosac.org/reqqa-point/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/663869711"
+    ],
+    "tags": {
+      "name": "Reqqa Point",
+      "natural": "cliff",
+      "scuba_diving:depth": "30",
+      "scuba_diving:maxdepth": "70",
+      "sport": "scuba_diving",
+      "website": "http://www.dive-links.com/tauchplatz.php?id=1180"
+    }
+  }
+}

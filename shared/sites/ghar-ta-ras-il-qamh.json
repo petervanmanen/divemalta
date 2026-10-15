@@ -1,0 +1,29 @@
+{
+  "id": "node/13348045172",
+  "name": "Għar ta' Ras il-Qamħ",
+  "lat": 36.081354,
+  "lon": 14.230215,
+  "type": "cave",
+  "maxDepth": "30m+",
+  "typicalDepth": "10m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Cave and reef at Ras il-Kanun (Ta' Lenk) in northern Gozo, near Cathedral Cave.",
+  "sources": [
+    "https://maltadives.com/sites/rasilkanun"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13348045172"
+    ],
+    "tags": {
+      "name": "Għar ta' Ras il-Qamħ",
+      "name:en": "Cave of Wheat",
+      "natural": "cave_entrance",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "node/13614878291",
+  "name": "Zurrieq - Left Reef",
+  "lat": 35.8191652,
+  "lon": 14.4520291,
+  "maxDepth": "36m",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Wall reef on the east side of Wied iż-Żurrieq, going past 30 m, with good visibility and shoals of small fish.",
+  "sources": [
+    "https://maltadives.com/sites/eastreef-wiedizzurrieq"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614878291"
+    ],
+    "tags": {
+      "name": "Zurrieq - Left Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

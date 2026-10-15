@@ -1,0 +1,28 @@
+{
+  "id": "node/4159831398",
+  "name": "Santa Marija Reef",
+  "lat": 36.019037,
+  "lon": 14.340423,
+  "maxDepth": "21m",
+  "typicalDepth": "9m",
+  "level": "Beginner (Open Water)",
+  "entry": "boat",
+  "description": "Low rocky reef off the northern point of Comino with gullies, caverns and swim-throughs; schools of bream, salema and mullet.",
+  "conditions": "Getting back on the boat can be hard in chop and swell.",
+  "sources": [
+    "https://www.calypsosac.org/santa-marija-reef/",
+    "https://maltadives.com/sites/santamarijareef",
+    "https://www.duikersgids.nl/en/santa-maria-reef"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831398"
+    ],
+    "tags": {
+      "name": "Santa Marija Reef Dive Site",
+      "sport": "scuba_diving",
+      "tourism": "attraction"
+    }
+  }
+}

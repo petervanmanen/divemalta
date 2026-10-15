@@ -1,0 +1,26 @@
+{
+  "id": "node/13614926339",
+  "name": "Scorpion Cave",
+  "lat": 35.9588394,
+  "lon": 14.3388424,
+  "type": "cave",
+  "maxDepth": "10m",
+  "typicalDepth": "7m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Large shallow cavern on the south side of Anchor Bay, about 150 m from the jetty. The entrance is behind a large boulder in 6 to 10 m of water; inside there's a big dome where you can come up into air.",
+  "sources": [
+    "https://maltadives.com/sites/cave-anchorbay"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614926339"
+    ],
+    "tags": {
+      "name": "Scorpion Cave (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "node/4159831394",
+  "name": "Lantern Point West",
+  "lat": 36.004674,
+  "lon": 14.325768,
+  "maxDepth": "50m",
+  "typicalDepth": "30m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Just north of the lighthouse on Comino: a vertical wall into large boulders and seagrass, and a shallow cave where the rock is split by a vertical crack.",
+  "conditions": "Sheltered from south-easterly winds, but surge and current are possible.",
+  "sources": [
+    "https://www.calypsosac.org/inner-lantern-point/",
+    "https://maltadives.com/sites/innerlanternpoint-lanternpoint"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831394"
+    ],
+    "tags": {
+      "name": "Lantern Point West Dive Site",
+      "sport": "scuba_diving",
+      "tourism": "attraction",
+      "wheelchair": "no"
+    }
+  }
+}

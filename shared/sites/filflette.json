@@ -1,0 +1,24 @@
+{
+  "id": "node/13614906764",
+  "name": "Filflette",
+  "lat": 35.7868664,
+  "lon": 14.4069347,
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Filfoletta, the rock next to Filfla. Filfla and the sea around it are a nature reserve with unexploded munitions on the seabed.",
+  "conditions": "Diving needs a permit and a licensed boat.",
+  "sources": [
+    "https://www.calypsosac.org/filfla-island/",
+    "https://maltadives.com/sites/filfla"
+  ],
+  "note": "Researched October 2026. No depth found for this spot itself; facts are for the Filfla area.",
+  "osm": {
+    "ids": [
+      "node/13614906764"
+    ],
+    "tags": {
+      "name": "Filflette (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

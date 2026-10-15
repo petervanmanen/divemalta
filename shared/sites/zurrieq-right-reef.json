@@ -1,0 +1,26 @@
+{
+  "id": "node/13614878290",
+  "name": "Zurrieq - Right Reef",
+  "lat": 35.8195861,
+  "lon": 14.4501834,
+  "type": "cave",
+  "maxDepth": "28m",
+  "typicalDepth": "5m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Reef on the west side of Wied iż-Żurrieq with drop-offs, gullies and two caves: Bell Tower Cave (three entrances, the deepest at 27 m) and Mouse Hole Cave (25 m). A diving-helmet statue sits on the sand at about 28 m.",
+  "sources": [
+    "https://maltadives.com/sites/westreefcaves-wiedizzurrieq"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614878290"
+    ],
+    "tags": {
+      "name": "Zurrieq - Right Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "id": "node/1245126314",
+  "name": "HMS Maori",
+  "lat": 35.902662,
+  "lon": 14.515598,
+  "type": "wreck",
+  "maxDepth": "16m",
+  "typicalDepth": "12m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "British WWII destroyer sunk in Grand Harbour in 1942; its front part was later scuttled in St. Elmo Bay off Valletta. About 42 m of fairly broken wreck on sand at up to 16 m: a real war wreck that beginners can dive from the shore.",
+  "sources": [
+    "https://maltadives.com/sites/hmsmaori-valletta"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/1245126314"
+    ],
+    "tags": {
+      "end_date": "1942-02-12",
+      "historic": "wreck",
+      "name": "HMS Maori",
+      "seamark:type": "wreck",
+      "source": "Maltese Islands Diving Guide;survey",
+      "source:description": "en:wikipedia",
+      "sport": "scuba_diving",
+      "start_date": "1937-09-02",
+      "wikidata": "Q495405",
+      "wikimedia_commons": "Category:HMS Maori (F24)",
+      "wikipedia": "en:HMS Maori (F24)",
+      "wreck:date_sunk": "1942-02-12",
+      "wreck:visible_at_high_tide": "no",
+      "wreck:visible_at_low_tide": "no"
+    }
+  }
+}

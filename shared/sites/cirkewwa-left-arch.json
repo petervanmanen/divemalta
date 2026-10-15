@@ -1,0 +1,25 @@
+{
+  "id": "node/13614926340",
+  "name": "Cirkewwa - Left Arch",
+  "lat": 35.9871155,
+  "lon": 14.3273822,
+  "maxDepth": "30m",
+  "typicalDepth": "10m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Part of the Paradise Bay reef at Ċirkewwa: boulder fields, sand and seagrass, drop-offs and swim-throughs. The White Arch is a smaller natural arch at about 11 m that reaches almost to the surface.",
+  "sources": [
+    "https://maltadives.com/sites/paradisebay-cirkewwa"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614926340"
+    ],
+    "tags": {
+      "name": "Cirkewwa - Left Arch (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "node/13624763581",
+  "name": "Qbajjar Reef",
+  "lat": 36.07925,
+  "lon": 14.251167,
+  "maxDepth": "15m+",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shallow reef along the Xwejni–Qbajjar coast west of Marsalforn.",
+  "sources": [
+    "https://maltadives.com/sites/reef-xwejnibay"
+  ],
+  "note": "Researched October 2026. Matched to maltadives' Xwejni Bay Reef by location.",
+  "osm": {
+    "ids": [
+      "node/13624763581"
+    ],
+    "tags": {
+      "name": "Qbajjar Reef",
+      "scuba_diving:divespot": "yes",
+      "shower": "yes",
+      "sport": "scuba_diving",
+      "swimming": "yes",
+      "toilets": "yes"
+    }
+  }
+}

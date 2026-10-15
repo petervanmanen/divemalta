@@ -1,0 +1,30 @@
+{
+  "id": "node/384942080",
+  "name": "Big Bear-Little Bear",
+  "lat": 36.051525,
+  "lon": 14.188094,
+  "type": "cave",
+  "maxDepth": "30m+",
+  "typicalDepth": "15m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Two rocks (Big Bear and Little Bear) about 30 m off the Dwejra coast; the site is also called Skuljetti or Rogers Cave. From about 5 m a drop-off leads to Rogers Cave right below the rocks, its walls covered in small corals and sponges, often with slipper lobsters. Boulders with groupers around the bigger rock.",
+  "sources": [
+    "https://maltadives.com/sites/rogerscave-dwejra",
+    "https://www.atlantisgozo.com/dive-sites/skuljetti-rogers-cave/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/384942080",
+      "node/13614875989"
+    ],
+    "tags": {
+      "name": "Big Bear-Little Bear",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving",
+      "natural": "reef"
+    }
+  }
+}

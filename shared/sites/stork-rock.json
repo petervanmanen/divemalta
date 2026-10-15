@@ -1,0 +1,23 @@
+{
+  "id": "node/13614906763",
+  "name": "Stork Rock",
+  "lat": 35.7869933,
+  "lon": 14.405663,
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Near Filfla. Filfla and the sea around it are a nature reserve with unexploded munitions on the seabed.",
+  "conditions": "Diving needs a permit and a licensed boat.",
+  "sources": [
+    "https://www.calypsosac.org/filfla-island/"
+  ],
+  "note": "Researched October 2026. Nothing found about Stork Rock itself; facts are for the Filfla area.",
+  "osm": {
+    "ids": [
+      "node/13614906763"
+    ],
+    "tags": {
+      "name": "Stork Rock (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

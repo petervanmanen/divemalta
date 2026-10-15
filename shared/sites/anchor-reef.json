@@ -1,0 +1,29 @@
+{
+  "id": "node/4159831397",
+  "name": "Anchor Reef",
+  "lat": 36.012537,
+  "lon": 14.31771,
+  "maxDepth": "36m",
+  "typicalDepth": "18m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Wall along the south side of Cominotto, 15–25 m at the top with overhangs and ledges. At about 35 m there's an old anchor with four flukes.",
+  "conditions": "Exposed to north-westerly winds.",
+  "sources": [
+    "https://maltadives.com/sites/anchorreef-cominotto",
+    "https://www.duikersgids.nl/en/anchor-reef-comino",
+    "https://paradisediving.com/cominotto-reef/"
+  ],
+  "note": "Researched October 2026. maltadives rates it Beginner, but the anchor is at about 35 m, so we list Advanced.",
+  "osm": {
+    "ids": [
+      "node/4159831397"
+    ],
+    "tags": {
+      "name": "Anchor Reef (Dive Site)",
+      "natural": "reef",
+      "sport": "scuba_diving",
+      "wheelchair": "no"
+    }
+  }
+}

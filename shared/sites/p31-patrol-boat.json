@@ -1,0 +1,32 @@
+{
+  "id": "node/4159831390",
+  "name": "P31 - Patrol Boat",
+  "lat": 36.009265,
+  "lon": 14.323686,
+  "type": "wreck",
+  "maxDepth": "20m",
+  "typicalDepth": "15m",
+  "level": "Beginner (Open Water)",
+  "entry": "boat",
+  "description": "Former Armed Forces of Malta patrol boat, 52 m long, scuttled in 2009 off the west coast of Comino. Rests nearly level on white sand at about 20 m with its top at 7 m; a good training wreck.",
+  "sources": [
+    "https://maltadives.com/sites/p31"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831390"
+    ],
+    "tags": {
+      "historic": "wreck",
+      "name": "P31 - Patrol Boat",
+      "seamark:type": "wreck",
+      "sport": "scuba_diving",
+      "tourism": "attraction",
+      "wheelchair": "no",
+      "wreck:date_sunk": "2009-08-25",
+      "wreck:visible_at_high_tide": "no",
+      "wreck:visible_at_low_tide": "no"
+    }
+  }
+}

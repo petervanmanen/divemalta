@@ -1,0 +1,26 @@
+{
+  "id": "node/13614926338",
+  "name": "Anchor Bay",
+  "lat": 35.9598731,
+  "lon": 14.3405804,
+  "maxDepth": "12m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Small bay below Popeye Village near Mellieħa. Shore dive from the jetty to a large anchor, a varied reef, a shallow training area and Scorpion Cave on the south side. Popular for training and first dives.",
+  "conditions": "One of the few sites still diveable in strong north-easterly winds.",
+  "sources": [
+    "https://maltadives.com/sites/anchorbay"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614926338"
+    ],
+    "tags": {
+      "name": "Anchor Bay (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

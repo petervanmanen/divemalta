@@ -1,0 +1,25 @@
+{
+  "id": "node/13614906769",
+  "name": "St. Elmo - Right Reef",
+  "lat": 35.9038826,
+  "lon": 14.5175274,
+  "maxDepth": "35m+",
+  "typicalDepth": "15m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Reef below Fort St. Elmo at the tip of Valletta, starting at about 13 m and dropping off to 35 m. Boulders and gullies with moray eels, octopus and groupers.",
+  "sources": [
+    "https://maltadives.com/sites/fortstelmo-valletta"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614906769"
+    ],
+    "tags": {
+      "name": "St. Elmo - Right Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

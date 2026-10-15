@@ -1,0 +1,29 @@
+{
+  "id": "node/4159831395",
+  "name": "Lantern Point",
+  "lat": 36.003745,
+  "lon": 14.325167,
+  "maxDepth": "50m",
+  "typicalDepth": "30m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "South-west tip of Comino by the lighthouse. A chimney drops from a plateau at about 6 m and comes out at 16 m; below it a wall with huge boulders, caverns and swim-throughs goes past 50 m.",
+  "conditions": "Very exposed: dive only in perfect weather.",
+  "sources": [
+    "https://www.calypsosac.org/lighthouse-reef/",
+    "https://maltadives.com/sites/lighthousereef-lanternpoint",
+    "https://www.duikersgids.nl/en/lantern-point"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831395"
+    ],
+    "tags": {
+      "name": "Lantern Point Dive Site",
+      "natural": "reef",
+      "sport": "scuba_diving",
+      "wheelchair": "no"
+    }
+  }
+}

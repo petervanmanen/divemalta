@@ -1,0 +1,28 @@
+{
+  "id": "node/387502484",
+  "name": "The Washing Machine",
+  "lat": 36.079787,
+  "lon": 14.246585,
+  "maxDepth": "15m+",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shallow site off Xwejni Bay near Marsalforn.",
+  "website": "https://maltadives.com/sites/washingmachine-xwejnibay/en",
+  "sources": [
+    "https://maltadives.com/sites/washingmachine-xwejnibay"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/387502484"
+    ],
+    "tags": {
+      "name": "The Washing Machine",
+      "scuba_diving:divespot": "yes",
+      "sport": "scuba_diving",
+      "website": "https://maltadives.com/sites/washingmachine-xwejnibay/en"
+    }
+  }
+}

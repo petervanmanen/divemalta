@@ -1,0 +1,27 @@
+{
+  "id": "node/6721841685",
+  "name": "Għar Lapsi",
+  "lat": 35.8270675,
+  "lon": 14.4235683,
+  "maxDepth": "25m",
+  "typicalDepth": "6m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Small sheltered cove on the south coast of Malta, one of the few shore entries there. Known for a shallow, sunlit cave system over 40 m long with many openings. Reefs (Finger Reef, Middle Reef, Black John) and an underwater nativity crib at 22 m are nearby.",
+  "conditions": "Steep steps down to the water; currents are common offshore.",
+  "sources": [
+    "https://maltadives.com/sites/gharlapsi",
+    "https://maltadives.com/sites/cave-gharlapsi"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/6721841685"
+    ],
+    "tags": {
+      "name": "diving site Għar Lapsi",
+      "tourism": "attraction"
+    }
+  }
+}

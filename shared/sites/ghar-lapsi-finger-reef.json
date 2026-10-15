@@ -1,0 +1,26 @@
+{
+  "id": "node/13614878289",
+  "name": "Ghar Lapsi - Finger Reef",
+  "lat": 35.825684,
+  "lon": 14.4205376,
+  "maxDepth": "20m",
+  "typicalDepth": "7m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Finger-shaped reef at Għar Lapsi with a small colourful wall and a cave you can leave through an opening in its ceiling.",
+  "conditions": "Currents are common.",
+  "sources": [
+    "https://maltadives.com/sites/fingerreef-gharlapsi"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614878289"
+    ],
+    "tags": {
+      "name": "Ghar Lapsi - Finger Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

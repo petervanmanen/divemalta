@@ -1,0 +1,29 @@
+{
+  "id": "node/4159831410",
+  "name": "Madonna Statue",
+  "lat": 35.9887449,
+  "lon": 14.3275591,
+  "type": "statue",
+  "maxDepth": "18m",
+  "typicalDepth": "18m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "A Madonna statue set in a small cave halfway along the Susie's Pool reef wall, at 18 m. Placed by the Amphibians Diving Club in 1987.",
+  "sources": [
+    "https://maltadives.com/sites/susiespool-cirkewwa"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831410"
+    ],
+    "tags": {
+      "artwork_type": "statue",
+      "name": "Madonna Statue (Dive Site)",
+      "sport": "diving",
+      "tourism": "artwork",
+      "wheelchair": "no"
+    }
+  }
+}

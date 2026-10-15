@@ -1,0 +1,15 @@
+{
+  "id": "node/13614831479",
+  "name": "Wall Stone Beach",
+  "lat": 35.9799298,
+  "lon": 14.361252,
+  "osm": {
+    "ids": [
+      "node/13614831479"
+    ],
+    "tags": {
+      "name": "Wall Stone Beach (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

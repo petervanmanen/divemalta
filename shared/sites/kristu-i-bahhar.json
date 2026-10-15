@@ -1,0 +1,25 @@
+{
+  "id": "node/13614926335",
+  "name": "Kristu I-Bahhar",
+  "lat": 35.9644721,
+  "lon": 14.4343175,
+  "type": "statue",
+  "maxDepth": "35m",
+  "level": "Experienced (Advanced Open Water and deep experience)",
+  "entry": "boat",
+  "description": "Kristu l-Baħħar: a 3 m statue of Christ standing on white sand at about 35 m off Qawra Point. First placed off St. Paul's Island in 1990, then relocated in 2000, next to the wreck of MV Imperial Eagle.",
+  "sources": [
+    "https://maltadives.com/sites/statueofchrist"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614926335"
+    ],
+    "tags": {
+      "artwork_type": "statue",
+      "name": "Kristu I-Bahhar (dive Site)",
+      "tourism": "artwork"
+    }
+  }
+}

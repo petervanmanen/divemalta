@@ -1,0 +1,33 @@
+{
+  "id": "node/322591289",
+  "name": "Il-Bajja tax-Xwejni",
+  "lat": 36.079171,
+  "lon": 14.248085,
+  "maxDepth": "45m+",
+  "typicalDepth": "15m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Bay west of Marsalforn and the entry point for several sites: the shallow reef, the Washing Machine, Double Arch, Calypso Cave and Submarine Cave.",
+  "sources": [
+    "https://maltadives.com/sites/xwejnibay"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/322591289",
+      "node/13624763580"
+    ],
+    "tags": {
+      "name": "Il-Bajja tax-Xwejni",
+      "name:en": "Xwejni Bay",
+      "natural": "beach",
+      "source": "signpost at the beach",
+      "sport": "scuba_diving",
+      "wikidata": "Q3571076",
+      "wikimedia_commons": "Category:Xwejni Bay",
+      "wikipedia": "en:Xwejni Bay",
+      "scuba_diving:divespot": "yes"
+    }
+  }
+}

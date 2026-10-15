@@ -1,0 +1,26 @@
+{
+  "id": "node/4159831392",
+  "name": "Crystal Lagoon",
+  "lat": 36.010089,
+  "lon": 14.327763,
+  "maxDepth": "22m",
+  "typicalDepth": "9m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "Lagoon beside the Blue Lagoon on Comino's west side. Reachable underwater through a tunnel from Alex's Cave.",
+  "sources": [
+    "https://maltadives.com/sites/crystallagoon",
+    "https://www.calypsosac.org/cominitto-cave-alexs-cave/"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/4159831392"
+    ],
+    "tags": {
+      "name": "Crystal Lagoon Dive Site",
+      "natural": "reef",
+      "sport": "scuba_diving"
+    }
+  }
+}

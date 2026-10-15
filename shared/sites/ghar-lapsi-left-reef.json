@@ -1,0 +1,15 @@
+{
+  "id": "node/13614878288",
+  "name": "Ghar Lapsi - Left Reef",
+  "lat": 35.8265924,
+  "lon": 14.4257978,
+  "osm": {
+    "ids": [
+      "node/13614878288"
+    ],
+    "tags": {
+      "name": "Ghar Lapsi - Left Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

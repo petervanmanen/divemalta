@@ -1,0 +1,25 @@
+{
+  "id": "node/13614926342",
+  "name": "Cirkewwa - Susie's Pool and Reef",
+  "lat": 35.9887528,
+  "lon": 14.3279996,
+  "maxDepth": "18m",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shallow rocky plateau at about 6 m, used for skills practice, next to a reef that drops to about 30 m. The Madonna statue sits in a small cave on the reef wall at 18 m.",
+  "sources": [
+    "https://maltadives.com/sites/susiespool-cirkewwa"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614926342"
+    ],
+    "tags": {
+      "name": "Cirkewwa - Susie's Pool and Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}

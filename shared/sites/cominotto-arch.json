@@ -1,0 +1,28 @@
+{
+  "id": "node/4159831396",
+  "name": "Cominotto Arch",
+  "lat": 36.01199,
+  "lon": 14.319341,
+  "maxDepth": "50m",
+  "typicalDepth": "12m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "boat",
+  "description": "At Cominotto's south-west tip: a vertical wall to about 39 m with huge boulders forming swim-throughs and caverns, with golden cup corals, chromis and groupers deeper down.",
+  "conditions": "Exposed with strong currents: experienced divers only.",
+  "sources": [
+    "https://www.calypsosac.org/cominotto-rock/",
+    "https://maltadives.com/sites/cominottorock-cominotto"
+  ],
+  "note": "Researched October 2026. Matched to Cominotto Rock by location.",
+  "osm": {
+    "ids": [
+      "node/4159831396"
+    ],
+    "tags": {
+      "name": "Cominotto Arch (Dive Site)",
+      "natural": "reef",
+      "sport": "scuba_diving",
+      "wheelchair": "no"
+    }
+  }
+}

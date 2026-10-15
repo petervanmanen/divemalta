@@ -1,0 +1,26 @@
+{
+  "id": "node/13614906771",
+  "name": "Tug 2 Reef",
+  "lat": 35.9189527,
+  "lon": 14.498372,
+  "type": "wreck",
+  "maxDepth": "25m",
+  "typicalDepth": "15m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Former Grand Harbour tug, 30 m long, scuttled off Exiles in Sliema in 2013. Lies at about 22 m, roughly 250 m from the entry; a storm in 2016 pushed it bow-first into the reef. Open and safe to swim through.",
+  "sources": [
+    "https://maltadives.com/sites/tug2-exiles"
+  ],
+  "note": "Researched October 2026.",
+  "osm": {
+    "ids": [
+      "node/13614906771"
+    ],
+    "tags": {
+      "name": "Tug 2 Reef (Dive Site)",
+      "natural": "reef"
+    }
+  }
+}
