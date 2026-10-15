@@ -81,6 +81,14 @@ jobs:
           echo "versionCode $VERSION_CODE, versionName $VERSION_NAME"
           ./gradlew bundleRelease -PversionCode=$VERSION_CODE -PversionName=$VERSION_NAME
 
+      - name: Check the Play service account
+        env:
+          PLAY_SERVICE_ACCOUNT_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$PLAY_SERVICE_ACCOUNT_JSON" ]; then
+            echo "::error::Secret PLAY_SERVICE_ACCOUNT_JSON is not set (see android/README.md › Google Play from GitHub)"; exit 1
+          fi
+
       - name: Upload to Google Play
         uses: r0adkll/upload-google-play@v1.1.5
         with:
