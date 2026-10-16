@@ -1,7 +1,7 @@
 # OSM dive sites Europe for Garmin watches
 
-`DiveSitesEurope.img` is a see-through Garmin map with 1,842 dive sites from OpenStreetMap in
-Europe. It lies on top of the watch's own map. You need a watch that shows maps
+`DiveSitesEurope.img` is a see-through Garmin map with 1,892 dive sites in Europe: 1,800 from
+OpenStreetMap, plus the 92 checked and researched Malta, Gozo and Comino sites of the Dive Malta apps. It lies on top of the watch's own map. You need a watch that shows maps
 (Descent Mk2/Mk3, Fenix, Epix, Enduro, Forerunner 955/965, …).
 
 - Dive sites are under **Find > Points of Interest > Attractions > Landmark**. They are drawn at every map
@@ -10,6 +10,9 @@ Europe. It lies on top of the watch's own map. You need a watch that shows maps
 - A watch only shows a point's name, so what OSM knows is added to it: maximum depth, type of site
   and entry, for example "Zeelandbrug (30m)" or "Cala des Tramadiu (18m, boat)". About a third of the
   sites have some of this; the rest show just the name.
+- Around Malta the OSM sites are replaced by the apps' own sites (`shared/sites/*.json`). Those
+  include sites that aren't in OSM (Blue Grotto caves, MV Rozi, P29, …), duplicates are merged and
+  each name has the researched depth, type and entry, for example "MV Rozi (34m, wreck, shore)".
 - Dive centres, shops and clubs are left out, including those OSM tags as dive sites (by their
   club/shop tags, sports centre or swimming pool tags, or a name like "Tauchbasis" or "Dive Centre").
 
@@ -27,7 +30,7 @@ Europe. It lies on top of the watch's own map. You need a watch that shows maps
 ```bash
 python3 garmin/fetch_europe.py            # worldwide OSM dive sites (cached) -> Europe -> europe-dive-sites.geojson
 python3 garmin/fetch_europe.py --refresh  # same, but download the worldwide data again
-python3 garmin/build.py                   # build garmin/DiveSitesEurope.img with mkgmap
+python3 garmin/build.py                   # build garmin/DiveSitesEurope.img (with shared/sites for Malta)
 ```
 
 The rules for what counts as a dive site and how depth, type and entry are read from OSM tags are
