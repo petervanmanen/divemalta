@@ -1,0 +1,18 @@
+{
+  "id": "custom/dwejra-coral-gardens",
+  "name": "Coral Gardens (Dwejra)",
+  "lat": 36.0529,
+  "lon": 14.1878,
+  "type": "reef",
+  "maxDepth": "10m+",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Shallow reef area next to the Blue Hole and the Azure Reef at Dwejra, mostly combined with those two, with the Blue Hole as entry and exit.",
+  "sources": [
+    "https://maltadives.com/sites/coralgardens-dwejra",
+    "https://maltadives.com/sites/dwejra"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Little detailed information found."
+}

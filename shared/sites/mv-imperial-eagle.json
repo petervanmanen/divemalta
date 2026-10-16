@@ -1,0 +1,21 @@
+{
+  "id": "node/4158240904",
+  "name": "MV Imperial Eagle",
+  "lat": 35.96456,
+  "lon": 14.43438,
+  "type": "wreck",
+  "maxDepth": "42m",
+  "typicalDepth": "32m",
+  "level": "Experienced (Advanced Open Water and deep experience)",
+  "entry": "boat",
+  "description": "Former Malta–Gozo ferry, about 45 m long, scuttled in 1999 in a protected marine area some 500 m off Qawra Point. Upright on sand at 42 m, its deck at 32 m; rooms and corridors can be swum through, though most wooden parts have rotted away. Right next to the Christ statue and Qawra Reef.",
+  "sources": [
+    "https://maltadives.com/sites/mvimperialeagle"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites.",
+  "osm": {
+    "ids": [
+      "node/4158240904"
+    ]
+  }
+}

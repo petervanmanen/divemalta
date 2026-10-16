@@ -1,0 +1,17 @@
+{
+  "id": "custom/sliema-coral-gardens",
+  "name": "Coral Gardens (Sliema)",
+  "lat": 35.9131,
+  "lon": 14.5083,
+  "type": "reef",
+  "maxDepth": "15m",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Easy shore dive off the Sliema promenade: a shallow reef cut by gullies, small canyons and valleys, with odd rock shapes, short tunnels and lots of small life, down to about 15 m. Good for photography and navigation practice. Together with Fortizza Reef next door it's known as the Sliema house reef.",
+  "sources": [
+    "https://maltadives.com/sites/coralgardens-sliema"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

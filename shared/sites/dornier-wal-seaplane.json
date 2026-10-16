@@ -1,0 +1,17 @@
+{
+  "id": "custom/dornier-wal",
+  "name": "Dornier Wal Seaplane",
+  "lat": 35.9217,
+  "lon": 14.3413,
+  "type": "wreck",
+  "maxDepth": "6m",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Remains of a Dornier Wal flying boat in Gnejna Bay, a sandy bay on Malta's north-west coast, at 5–6 m: part of the hull with its side floats and a few cockpit parts. After an emergency landing at sea in 1932, the plane was brought to Malta. Also a nice spot for snorkelling and freediving.",
+  "sources": [
+    "https://maltadives.com/sites/dornierwalxi"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Position approximate."
+}

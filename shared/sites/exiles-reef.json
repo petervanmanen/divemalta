@@ -1,0 +1,18 @@
+{
+  "id": "custom/exiles-reef",
+  "name": "Exiles Reef",
+  "lat": 35.9179,
+  "lon": 14.4973,
+  "maxDepth": "25m",
+  "typicalDepth": "14m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shore dive from St Julian's Tower in Sliema: rocky ground with gullies and overhangs, then seagrass and sand from about 10 m, and a wall that leads down to 25 m. Plenty of fish, with cuttlefish and flounder on the sand and groupers along the wall; good for training and night dives. The Tug 2 wreck lies at about 20 m further out.",
+  "conditions": "Best with southerly or south-westerly winds.",
+  "sources": [
+    "https://maltadives.com/sites/exilesreef-exiles",
+    "https://www.calypsosac.org/exiles-sliema/"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

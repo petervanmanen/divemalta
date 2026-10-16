@@ -1,0 +1,18 @@
+{
+  "id": "custom/merkanti-reef",
+  "name": "Merkanti Reef",
+  "lat": 35.9247,
+  "lon": 14.4972,
+  "type": "reef",
+  "maxDepth": "20m",
+  "typicalDepth": "10m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Offshore reef off St Julian's, about 150 m from the coast: two ridges parallel to the shore that reach up to the surface, with a canyon between them full of overhangs and crevices. Most of the dive stays within 10–12 m, though it goes past 20 m. Reach it by boat, or swim out a long way on the surface from the small bay between the Westin Dragonara and the Hilton.",
+  "conditions": "A marker pole stands on the outer ridge.",
+  "sources": [
+    "https://maltadives.com/sites/merkantireef"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

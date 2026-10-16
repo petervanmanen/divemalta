@@ -1,0 +1,17 @@
+{
+  "id": "custom/ras-il-hobz-east",
+  "name": "Ras il-Ħobż East",
+  "lat": 36.0165,
+  "lon": 14.2804,
+  "type": "reef",
+  "maxDepth": "20m+",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shallow reef on the east side of Ras il-Ħobż on Gozo's south coast, the easier neighbour of the Middle Finger pinnacle.",
+  "sources": [
+    "https://maltadives.com/sites/east-rasilhobz"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Little detailed information found."
+}

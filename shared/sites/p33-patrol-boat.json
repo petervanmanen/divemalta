@@ -1,0 +1,17 @@
+{
+  "id": "custom/p33-patrol-boat",
+  "name": "P33 - Patrol Boat",
+  "lat": 35.8658,
+  "lon": 14.5755,
+  "type": "wreck",
+  "maxDepth": "24m",
+  "typicalDepth": "20m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Former patrol boat of the Armed Forces of Malta, 23 m long, built in East Germany in 1971–72. Scuttled in July 2021 between the two tug wrecks at Marsaskala, but it is breaking up quickly on the seabed.",
+  "sources": [
+    "https://maltadives.com/sites/p33-marsaskala"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Position approximate (between the tugs)."
+}

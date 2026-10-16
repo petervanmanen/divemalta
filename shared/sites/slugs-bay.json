@@ -1,0 +1,18 @@
+{
+  "id": "custom/slugs-bay",
+  "name": "Slugs Bay",
+  "lat": 35.9797,
+  "lon": 14.3612,
+  "type": "reef",
+  "maxDepth": "12m",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Shallow bay on the north side of Mellieħa Bay: rocks, seagrass and sand to about 12 m, with a natural rock arch and lots of life. Sandy patches make it popular for training and try dives, and divers have found fossil shark teeth in the shingle on the east side. Entry from the concrete jetty or the rocks, or by boat.",
+  "conditions": "Sheltered from north to north-westerly winds; often used when other sites are too rough.",
+  "sources": [
+    "https://maltadives.com/sites/slugsbay"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "custom/coral-cave",
+  "name": "Coral Cave",
+  "lat": 36.0523,
+  "lon": 14.1881,
+  "type": "cave",
+  "maxDepth": "30m",
+  "typicalDepth": "20m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Large open cavern at Dwejra, its walls and ceiling covered in colourful, very fragile corals. The opening, about 30 m wide, spans 17–18 m at the top to 28–30 m at the bottom, and the cave goes 50–60 m in, its sandy floor rising to about 21 m at the back. Well lit all the way.",
+  "conditions": "Don't touch anything and keep your buoyancy and bubbles in check. Stay in the open part; the hole at the back is for trained cave divers only.",
+  "sources": [
+    "https://maltadives.com/sites/coralcave-dwejra"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

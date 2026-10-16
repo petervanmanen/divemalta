@@ -1,0 +1,18 @@
+{
+  "id": "custom/azure-reef",
+  "name": "Azure Reef",
+  "lat": 36.0536,
+  "lon": 14.1884,
+  "type": "reef",
+  "maxDepth": "40m+",
+  "typicalDepth": "20m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "The rubble of the Azure Window, the famous arch at Dwejra that collapsed in a storm in March 2017. Huge boulders from just below the surface to past 40 m, still mostly bare rock with algae and fish slowly moving in, and swim-throughs between the blocks. Usually entered through the Blue Hole and combined with Coral Gardens.",
+  "conditions": "The boulders can still shift; take care in the swim-throughs.",
+  "sources": [
+    "https://maltadives.com/sites/azurereef-dwejra"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

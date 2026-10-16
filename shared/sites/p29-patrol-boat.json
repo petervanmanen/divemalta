@@ -1,0 +1,23 @@
+{
+  "id": "node/4158241401",
+  "name": "P29 - Patrol Boat",
+  "lat": 35.98847,
+  "lon": 14.32609,
+  "type": "wreck",
+  "maxDepth": "34m",
+  "typicalDepth": "20m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Former patrol boat of the Armed Forces of Malta (built as the East German Boltenhagen), 52 m long, scuttled off Ċirkewwa in 2007 after being cleaned for divers. Sits upright at 34 m with its highest point at 12 m, about 150 m out and close to the tug Rozi. Openings were left for experienced divers to go inside.",
+  "conditions": "In summer a yellow buoy usually marks the wreck.",
+  "sources": [
+    "https://maltadives.com/sites/p29-cirkewwa"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites.",
+  "osm": {
+    "ids": [
+      "node/4158241401"
+    ]
+  }
+}

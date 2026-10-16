@@ -1,0 +1,17 @@
+{
+  "id": "custom/blue-grotto-caves",
+  "name": "Blue Grotto Caves",
+  "lat": 35.8212,
+  "lon": 14.4566,
+  "type": "cave",
+  "maxDepth": "14m",
+  "typicalDepth": "3m",
+  "level": "Beginner (Open Water)",
+  "entry": "boat",
+  "description": "The sea caves of the Blue Grotto below the cliffs east of Wied iż-Żurrieq: several caverns to explore in shallow water, lit by the famous blue light. Usually reached by boat; from the shore entry in the valley it's a swim of around 40 minutes.",
+  "conditions": "Lots of tourist boats in and out of the caves. Being shallow and open, the site gets rough in any swell.",
+  "sources": [
+    "https://maltadives.com/sites/bluegrottocaves-wiedizzurrieq"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

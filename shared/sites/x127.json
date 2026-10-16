@@ -1,0 +1,24 @@
+{
+  "id": "node/4159866493",
+  "name": "X127",
+  "lat": 35.90109,
+  "lon": 14.50375,
+  "type": "wreck",
+  "maxDepth": "22m",
+  "typicalDepth": "8m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "British water lighter from 1915, 24 m long, sunk in March 1942 in Marsamxett Harbour off Manoel Island. Lies upright on a slope from 5 m at the bow to 22 m at the stern, an easy shore dive for almost any level. For years divers called it Carolita or Coralita; it was identified as X127 in 2006.",
+  "conditions": "Harbour water: visibility is lower than on the open coast.",
+  "sources": [
+    "https://maltadives.com/sites/x127",
+    "https://www.calypsosac.org/x131-lighter-carolita-barge/"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites.",
+  "osm": {
+    "ids": [
+      "node/4159866493"
+    ]
+  }
+}

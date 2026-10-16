@@ -1,0 +1,18 @@
+{
+  "id": "custom/xrobb-l-ghagin",
+  "name": "Xrobb l-Għaġin",
+  "lat": 35.8406,
+  "lon": 14.5684,
+  "type": "rocks",
+  "maxDepth": "12m",
+  "typicalDepth": "3m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Easy shore dive on the east coast of Malta. Boulders and a weedy slope down to about 10–12 m, a reef with a sharp drop on the north-east side and a small islet in 3–6 m of water nearby. Not spectacular, but a relaxed dive with an easy entry.",
+  "sources": [
+    "https://maltadives.com/sites/xrobbilghagin",
+    "https://www.calypsosac.org/xrobb-l-ghagin/"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

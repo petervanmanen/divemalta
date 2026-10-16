@@ -1,0 +1,18 @@
+{
+  "id": "custom/submarine-cave",
+  "name": "Submarine Cave",
+  "lat": 36.0834,
+  "lon": 14.2492,
+  "type": "cave",
+  "maxDepth": "45m+",
+  "typicalDepth": "30m",
+  "level": "Experienced (Advanced Open Water and deep experience)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Deep cave off Xwejni Bay near Marsalforn, in the same area as Double Arch and Calypso Cave.",
+  "sources": [
+    "https://maltadives.com/sites/submarinecave-xwejnibay",
+    "https://maltadives.com/sites/xwejnibay"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Position approximate; little detailed information found."
+}

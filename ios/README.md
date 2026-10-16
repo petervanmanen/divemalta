@@ -8,7 +8,7 @@ bundled with the app, so everything works offline.
   [Protomaps](https://protomaps.com) daily build), drawn with [MapLibre](https://maplibre.org) in the
   Protomaps "light" style. Always north up, no tilting. When you pan away from Malta a message says the app only has Malta, with a button to go back;
   the location button only follows you inside Malta and otherwise shows a short message.
-- **Dive sites**: the 67 sites in `../shared/sites/` (one JSON file each, see its README). Wrecks are
+- **Dive sites**: the 92 sites in `../shared/sites/` (one JSON file each, see its README). Wrecks are
   purple, caves brown; nearby sites are grouped until you zoom in. Tap one for its depth, type,
   entry, level, description, conditions, sources, the seabed depth there and directions in Apple
   Maps. The list button searches all sites.

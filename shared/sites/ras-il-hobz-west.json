@@ -1,0 +1,17 @@
+{
+  "id": "custom/ras-il-hobz-west",
+  "name": "Ras il-Ħobż West",
+  "lat": 36.0161,
+  "lon": 14.2779,
+  "type": "wall",
+  "maxDepth": "30m+",
+  "typicalDepth": "20m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Wall dive on the west side of Ras il-Ħobż, also called Tal-Fessej, between the Middle Finger pinnacle and Fessej Rock on Gozo's south coast.",
+  "sources": [
+    "https://maltadives.com/sites/west-rasilhobz"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Little detailed information found."
+}

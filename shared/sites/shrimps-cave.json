@@ -1,0 +1,19 @@
+{
+  "id": "custom/shrimps-cave",
+  "name": "Shrimp's Cave",
+  "lat": 36.08192,
+  "lon": 14.2357,
+  "type": "cave",
+  "maxDepth": "34m",
+  "typicalDepth": "30m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Cave on the west side of Reqqa Point, in the same stretch as Billinghurst Cave and Bottleneck Cave, known for the many shrimps inside.",
+  "conditions": "Sharp rocks at the entry; northerly and westerly winds make getting in and out difficult.",
+  "sources": [
+    "https://maltadives.com/sites/shrimpscave-reqqapoint",
+    "https://www.calypsosac.org/reqqa-point/"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Little detailed information found. Position moved just off the west side of Reqqa Point (the source position fell on land)."
+}

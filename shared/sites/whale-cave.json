@@ -1,0 +1,18 @@
+{
+  "id": "custom/whale-cave",
+  "name": "Whale Cave",
+  "lat": 36.057,
+  "lon": 14.192,
+  "type": "cave",
+  "maxDepth": "30m+",
+  "typicalDepth": "10m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Crack in the cliff about 100 m north of the seaward end of the Inland Sea tunnel. The opening at 25 m is about 15 m wide and the crack, open to the sky along its whole length, runs about 80 m in, getting shallower towards the back. Also known as Għar in-Niexef or Audrey's Crack.",
+  "conditions": "Watch out for swell, currents and the small tourist boats that enter the cave.",
+  "sources": [
+    "https://maltadives.com/sites/whalecave-dwejra"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Position approximate."
+}

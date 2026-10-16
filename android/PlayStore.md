@@ -6,13 +6,13 @@ Dive Malta – Dive Sites Map
 
 ## Short description (max 80)
 
-Offline dive map of Malta, Gozo & Comino: 67 dive sites with depths and contours
+Offline dive map of Malta, Gozo & Comino: 92 dive sites with depths and contours
 
 ## Full description (max 4000)
 
 Dive Malta is a map of the dive sites of Malta, Gozo and Comino that works completely offline. Plan your dives at home, check a site on the boat or at the shore, and look up the depth anywhere — without mobile data.
 
-★ 67 DIVE SITES
+★ 92 DIVE SITES
 From the Blue Hole and the Inland Sea at Dwejra to the Um El Faroud, the Ċirkewwa arches, Santa Marija Caves and the wrecks at Xatt l-Aħmar. Each site shows what you need to choose a dive:
 • Maximum and typical depth
 • Level: Beginner, Advanced, Experienced or Technical

@@ -1,0 +1,23 @@
+{
+  "id": "node/13614878294",
+  "name": "St. Michael",
+  "lat": 35.86607,
+  "lon": 14.57602,
+  "type": "wreck",
+  "maxDepth": "22m",
+  "typicalDepth": "18m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Grand Harbour tug, 20 m long, scuttled off Żonqor Point in Marsaskala in 1998 alongside Tug Boat 10. Upright on sand at 22 m, its top at about 17 m, a little away from the reef. Normally combined with Tug Boat 10 and the P33.",
+  "conditions": "Expect less visibility here than at most Maltese sites.",
+  "sources": [
+    "https://maltadives.com/sites/stmichael-marsaskala"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites.",
+  "osm": {
+    "ids": [
+      "node/13614878294"
+    ]
+  }
+}

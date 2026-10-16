@@ -1,0 +1,18 @@
+{
+  "id": "custom/tal-barba-cave",
+  "name": "Tal-Barba Cave",
+  "lat": 36.059,
+  "lon": 14.191,
+  "type": "cave",
+  "maxDepth": "30m+",
+  "typicalDepth": "10m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Medium",
+  "description": "Less dived cave about 200 m north of the seaward end of the Inland Sea tunnel, following the wall. The entrance at about 25 m looks like a beard ('barba' in Maltese); the straight cave runs some 120 m in, the exit always in view, with an air pocket to surface in. A long swim from shore, so often done with a small boat from the Inland Sea.",
+  "sources": [
+    "https://maltadives.com/sites/talbarbacave-dwejra",
+    "https://www.atlantisgozo.com/dive-sites/barba-cave/"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites. Position approximate."
+}

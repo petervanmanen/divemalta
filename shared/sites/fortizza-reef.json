@@ -1,0 +1,17 @@
+{
+  "id": "custom/fortizza-reef",
+  "name": "Fortizza Reef",
+  "lat": 35.9151,
+  "lon": 14.5089,
+  "type": "reef",
+  "maxDepth": "15m",
+  "typicalDepth": "5m",
+  "level": "Beginner (Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Shallow reef off the Sliema seafront, full of small caverns, tunnels, arches and overhangs, down to around 15 m. More marine life than you'd expect so close to town; good for photography and navigation practice. Next to Coral Gardens.",
+  "sources": [
+    "https://maltadives.com/sites/fortizzareef-sliema"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites."
+}

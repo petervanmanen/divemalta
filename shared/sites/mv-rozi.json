@@ -1,0 +1,22 @@
+{
+  "id": "node/4158314992",
+  "name": "MV Rozi",
+  "lat": 35.98983,
+  "lon": 14.32664,
+  "type": "wreck",
+  "maxDepth": "34m",
+  "typicalDepth": "20m",
+  "level": "Advanced (Advanced Open Water)",
+  "entry": "shore",
+  "shoreAccess": "Easy",
+  "description": "Former Grand Harbour tug, about 35 m long, scuttled off Ċirkewwa in 1992, first for tourist submarine trips and now one of Malta's best-known dives. Upright on sand roughly 130 m from the entry, the mast starting at 20 m and the hull mostly at 30–34 m. Intact apart from the engine and propeller, with several places to look inside. Often combined with the P29 or the Arch.",
+  "sources": [
+    "https://maltadives.com/sites/rozi-cirkewwa"
+  ],
+  "note": "Researched October 2026; added because it was missing from OpenStreetMap's dive sites.",
+  "osm": {
+    "ids": [
+      "node/4158314992"
+    ]
+  }
+}
