@@ -32,7 +32,8 @@ startup.
   The grid shows the shape of the seabed, not individual rocks, and on steep slopes it can be off by
   tens of metres (about 23 m at MV Xlendi, which lies at 44 m). Don't plan dives on it alone.
 - **Our additions** in `enrichment/` (see its README): areas with a known depth (the Inland Sea at
-  2 m) and extra map lines (the Inland Sea tunnel).
+  2 m), measured depths (Xlendi Bay, from the bay's information board) and extra map lines (the
+  Inland Sea tunnel).
 
 ## Regenerating
 

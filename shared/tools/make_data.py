@@ -13,8 +13,8 @@ OpenStreetMap rules for what counts as a dive site (used by import_sites.py) and
 - malta-contours.geojson: depth contours at diving depths traced from that grid. EMODnet's own
   contour layer only has 50/100/200/500 m.
 
-Our own additions in ../enrichment/ (see its README) are merged over the EMODnet data: areas with a
-known depth, and extra map lines (malta-extras.geojson).
+Our own additions in ../enrichment/ (see its README) are merged over the EMODnet data: measured depths
+(soundings), areas with a known depth, and extra map lines (malta-extras.geojson).
 
 Standard library only.
 """
@@ -325,6 +325,8 @@ def corrected_grid():
           f"{land} cells EMODnet had as sea are land, {no_data} sea cells EMODnet has as land (no data)",
           file=sys.stderr)
 
+    apply_soundings(rows, mask, lon0, lat0, step)
+
     # Our own known depths win over both OSM and EMODnet.
     for feature in load_enrichment("depths.geojson", {"features": []})["features"]:
         depth = feature["properties"]["depth_m"]
@@ -339,6 +341,58 @@ def corrected_grid():
         print(f"  enrichment: {feature['properties'].get('name', 'area')} at {depth} m ({cells} cells)",
               file=sys.stderr)
     return rows, lon0, lat0, step
+
+
+SOUNDING_FULL_M = 40      # within this distance of a sounding the depth comes only from the soundings
+SOUNDING_BLEND_M = 160    # from FULL to BLEND it fades into EMODnet; beyond it the soundings have no effect
+SOUNDING_REACH_M = 300    # soundings further away than this don't take part in a cell's estimate
+
+
+def apply_soundings(rows, mask, lon0, lat0, step):
+    """Blend measured depths (../enrichment/soundings.geojson, e.g. from a bay's information board)
+    into the grid. Near the soundings the depth is their inverse-distance-weighted average; it fades
+    into EMODnet further out. OSM land stays land, and sea cells where EMODnet had no depth get one."""
+    points = [(f["geometry"]["coordinates"][1], f["geometry"]["coordinates"][0], f["properties"]["depth_m"])
+              for f in load_enrichment("soundings.geojson", {"features": []})["features"]]
+    if not points:
+        return
+    kx = 111_320 * math.cos(math.radians(points[0][0]))
+    xy = [((lon - lon0) * kx, (lat0 - lat) * 111_320, d) for lat, lon, d in points]
+    cell_m = step * 111_320
+    reach = int(SOUNDING_REACH_M / cell_m) + 1
+    rmin = max(0, int(min(y for _, y, _ in xy) / cell_m) - reach)
+    rmax = min(len(rows) - 1, int(max(y for _, y, _ in xy) / cell_m) + reach)
+    cmin = max(0, int(min(x for x, _, _ in xy) / (step * kx)) - reach)
+    cmax = min(len(rows[0]) - 1, int(max(x for x, _, _ in xy) / (step * kx)) + reach)
+    changed = 0
+    for r in range(rmin, rmax + 1):
+        for c in range(cmin, cmax + 1):
+            if mask[r][c]:
+                continue                       # OSM land stays land
+            x, y = c * step * kx, r * cell_m
+            near = [(math.hypot(px - x, py - y), d) for px, py, d in xy]
+            near = [(dist, d) for dist, d in near if dist <= SOUNDING_REACH_M]
+            if not near:
+                continue
+            closest = min(dist for dist, _ in near)
+            if closest >= SOUNDING_BLEND_M:
+                continue
+            weights = [1 / max(dist, 5) ** 3 for dist, _ in near]   # power 3 keeps small features like the reef
+            estimate = -sum(w * d for w, (_, d) in zip(weights, near)) / sum(weights)
+            a = 1.0 if closest <= SOUNDING_FULL_M else (SOUNDING_BLEND_M - closest) / (SOUNDING_BLEND_M - SOUNDING_FULL_M)
+            current = rows[r][c]
+            rows[r][c] = estimate if current != current else a * estimate + (1 - a) * current   # NaN = no data
+            changed += 1
+    # The cell a sounding lies in gets that measured depth (the shallowest, if several fall in one cell),
+    # so small features like the reef at Xlendi's entrance aren't averaged away.
+    exact = {}
+    for x, y, d in xy:
+        r, c = round(y / cell_m), round(x / (step * kx))
+        if 0 <= r < len(rows) and 0 <= c < len(rows[0]) and not mask[r][c]:
+            exact[(r, c)] = min(d, exact.get((r, c), d))
+    for (r, c), d in exact.items():
+        rows[r][c] = -d
+    print(f"  soundings: {len(points)} points adjusted {changed} cells", file=sys.stderr)
 
 
 def write_extras():
@@ -472,13 +526,22 @@ def length_m(coords):
 
 
 def make_contours(rows, lon0, lat0, step):
+    # Short contour scraps are dropped, except near our own soundings, where a small closed ring is
+    # real information (e.g. the reef at Xlendi's entrance).
+    soundings = [(f["geometry"]["coordinates"][1], f["geometry"]["coordinates"][0])
+                 for f in load_enrichment("soundings.geojson", {"features": []})["features"]]
+
+    def near_soundings(coords):
+        return any(math.hypot((lon - slon) * 111_320 * math.cos(math.radians(lat)), (lat - slat) * 111_320) < 150
+                   for lon, lat in coords[:: max(1, len(coords) // 8)] for slat, slon in soundings)
+
     features = []
     for depth in LEVELS:
         lines = 0
         for chain in trace(rows, -depth):
             coords = simplify(smooth([edge_point(rows, k, -depth, lon0, lat0, step) for k in chain]))
             length = length_m(coords)
-            if length < MIN_LINE_M:
+            if length < MIN_LINE_M and not near_soundings(coords):
                 continue
             lines += 1
             features.append({"type": "Feature", "properties": {"depth": depth},

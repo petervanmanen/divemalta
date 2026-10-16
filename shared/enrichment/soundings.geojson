@@ -1,0 +1,748 @@
+{
+ "type": "FeatureCollection",
+ "note": "Depth soundings. Xlendi Bay: Xlendi Bay information board (Ministry for Gozo / MTA), photographed by the app's author. Positions from lining up the board with the OSM coastline and the reef beacon (accurate to about 20-30 m).",
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 15
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.212714,
+     36.029632
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213053,
+     36.029803
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 8
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213216,
+     36.02986
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213053,
+     36.029642
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213082,
+     36.029427
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213241,
+     36.029176
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 8.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213444,
+     36.029022
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 9.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213628,
+     36.029011
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213496,
+     36.028888
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 22
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213436,
+     36.028768
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213753,
+     36.028755
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 12
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213999,
+     36.028862
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 22
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213618,
+     36.028594
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 15
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.21389,
+     36.028656
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214284,
+     36.02881
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 12
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214121,
+     36.02865
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 9.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214422,
+     36.028769
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 6.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214481,
+     36.028675
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 15
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214643,
+     36.028614
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.21462,
+     36.028973
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 7.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214078,
+     36.029386
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 8.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214297,
+     36.029522
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 9.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214077,
+     36.029272
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.213896,
+     36.029059
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 9.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214479,
+     36.029366
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 11
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214157,
+     36.029109
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 10
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214412,
+     36.029148
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 9.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214548,
+     36.029109
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 6.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214424,
+     36.02971
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 8.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214615,
+     36.029577
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 7.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.21497,
+     36.029716
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 8.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214797,
+     36.029407
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 6.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215147,
+     36.029552
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.2
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214885,
+     36.029323
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215284,
+     36.029421
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 6.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.21464,
+     36.030014
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 6.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214826,
+     36.029846
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 2.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.214956,
+     36.030191
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215153,
+     36.030111
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 5.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215488,
+     36.02984
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215756,
+     36.029994
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215738,
+     36.029618
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 2.4
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215802,
+     36.029559
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.3
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216022,
+     36.029768
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 2.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216095,
+     36.029705
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 4.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.21555,
+     36.030175
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 3.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.215797,
+     36.030299
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 3.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216085,
+     36.030207
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 3.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216294,
+     36.029862
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 2.7
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216309,
+     36.030108
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 2.7
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.21662,
+     36.02994
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 2.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216031,
+     36.030448
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 1.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216335,
+     36.030527
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 1.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216283,
+     36.030411
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 1.5
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216548,
+     36.030224
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 1.0
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.216859,
+     36.030125
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "depth_m": 1.0,
+    "name": "Xlendi reef (cardinal beacon)"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     14.21346,
+     36.028894
+    ]
+   }
+  }
+ ]
+}
