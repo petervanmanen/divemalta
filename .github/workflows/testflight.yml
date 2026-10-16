@@ -1,7 +1,8 @@
 # Builds the Dive Malta iOS app (ios/) and uploads it to App Store Connect, from where it goes to TestFlight.
 # The app bundles shared/data/, which is in the repo, so no data steps are needed.
 #
-# Runs when you push a tag like v1.0.1, or by hand (Actions › TestFlight › Run workflow).
+# Runs when you push a tag like v1.0.1 (the app gets version 1.0.1), or by hand (Actions › TestFlight ›
+# Run workflow; then the version in the Xcode project is used).
 # Needs three repository secrets from an App Store Connect API key (see ios/README.md › TestFlight from GitHub):
 #   ASC_KEY_ID       Key ID
 #   ASC_ISSUER_ID    Issuer ID
@@ -49,7 +50,15 @@ jobs:
           ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
         run: |
           xcodebuild -version
-          xcodebuild archive \
+          # The version comes from the tag (v1.0.1 -> 1.0.1), like on Android; runs started by hand keep
+          # the version in the project. App Store Connect picks the build number (ExportOptions.plist).
+          VERSION_ARGS=()
+          if [[ "$GITHUB_REF_TYPE" == tag ]]; then
+            VERSION="${GITHUB_REF_NAME#v}"
+            echo "Version $VERSION"
+            VERSION_ARGS=(MARKETING_VERSION="$VERSION")
+          fi
+          xcodebuild archive "${VERSION_ARGS[@]}" \
             -project DiveMalta.xcodeproj -scheme DiveMalta -configuration Release \
             -destination 'generic/platform=iOS' \
             -archivePath "$RUNNER_TEMP/DiveMalta.xcarchive" \

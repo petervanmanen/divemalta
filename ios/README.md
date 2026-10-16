@@ -33,7 +33,8 @@ steps are needed just to build it.
 Store Connect (then it shows up in TestFlight). It runs when you push a tag like `v1.0.1`
 (`git tag v1.0.1 && git push origin v1.0.1`) or by hand under Actions › TestFlight › Run workflow.
 App Store Connect picks the build number (`ios/ExportOptions.plist`), so runs never clash with each
-other or with uploads from Xcode. Raise `MARKETING_VERSION` in the project for a new version.
+other or with uploads from Xcode. The app's version comes from the tag (`v1.0.1` → 1.0.1), like on Android; runs started by hand use
+`MARKETING_VERSION` from the project.
 
 One-time setup:
 
