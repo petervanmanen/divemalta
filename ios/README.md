@@ -16,12 +16,15 @@ bundled with the app, so everything works offline.
   The contour button switches them off.
 - **Depth anywhere**: touch and hold the sea to look up the depth at that point.
 - **Our additions**: known depths and tunnels from `../shared/enrichment/`.
+- **iPhone Duo**: built with the iOS 27.1 SDK (Xcode 27.1), so the app fills the whole inner display.
+  When the phone is open like a book, the banner, messages and the bottom bar move to the left half so
+  they don't sit on the fold (`FoldLayout.swift`). Older Xcode versions give a smaller window there.
 
 Where the data comes from and how good it is: [../shared/README.md](../shared/README.md).
 
 ## Running
 
-Open `DiveMalta.xcodeproj` in Xcode and run on a simulator or your iPhone (team 9XCZUWMGXB,
+Open `DiveMalta.xcodeproj` in Xcode 27.1 or later and run on a simulator or your iPhone (team 9XCZUWMGXB,
 bundle id `nl.petervanmanen.DiveMalta`). The app bundles `../shared/data/` as a folder (`data/` in the
 app), and the build phase "Gather dive sites" adds the sites from `../shared/sites/` to it
 (`shared/tools/gather_sites.py`, needs `python3`). Everything it needs is in the repo, so no data

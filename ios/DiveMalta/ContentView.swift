@@ -31,8 +31,8 @@ struct ContentView: View {
         )
         .ignoresSafeArea()
         .overlay(alignment: .topTrailing) { controls }
-        .overlay(alignment: .bottom) { bottomBar }
-        .overlay(alignment: .top) {
+        .overlay { BesideFold(alignment: .bottom) { bottomBar } }
+        .overlay { BesideFold(alignment: .top) {
             if outside {
                 OutsideBanner {
                     followUser = false
@@ -42,9 +42,9 @@ struct ContentView: View {
                 .padding(.top, 8)
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
-        }
+        } }
         .animation(.default, value: outside)
-        .overlay(alignment: .top) {
+        .overlay { BesideFold(alignment: .top) {
             if let toast {
                 Text(toast)
                     .font(.footnote.weight(.medium))
@@ -57,7 +57,7 @@ struct ContentView: View {
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .onTapGesture { self.toast = nil }
             }
-        }
+        } }
         .animation(.default, value: toast)
         .sheet(item: $selected) { site in
             SiteDetailView(site: site)
