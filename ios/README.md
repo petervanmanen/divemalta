@@ -56,8 +56,9 @@ One-time setup:
 ## App Store screenshots
 
 ```bash
-ios/tools/screenshots.sh                   # 6.3" and 6.9" iPhone and 13" iPad
+ios/tools/screenshots.sh                   # 6.3" and 6.9" iPhone, 13" iPad, iPhone Duo outer display
 ios/tools/screenshots.sh "iPhone 18 Pro Max"  # or any simulators by name
+DUO_DISPLAY=inner ios/tools/screenshots.sh "iPhone Duo"  # inner display: first click Open in Device Hub
 ```
 
 The script builds the app, boots each simulator, sets the status bar to 9:41 with full battery, and
@@ -66,6 +67,14 @@ opening screen, map of Malta, contours around Comino, a site page (Um El Faroud)
 the site list. The JPEGs land in `ios/screenshots/<device>/` (not in git) at the device's native size, without alpha
 channel, and the script checks each size against the sizes App Store Connect accepts. The 6.3"
 iPhone and the 13" iPad are required; the 6.9" iPhone is recommended.
+
+The iPhone Duo has its own sizes for the outer (1398 × 2034) and inner (2007 × 2853) display. They
+are optional now, give the product page an "optimized for iPhone Duo" badge, and become required in
+April 2027 for apps built with the iOS 27.1 SDK. The script takes the outer display with the phone
+closed (`screenshots/iPhone-Duo-outer/`). `simctl` can't open the phone, so for the inner display
+click **Open** in Device Hub (the Simulator app in Xcode 27) and run with `DUO_DISPLAY=inner`
+(`screenshots/iPhone-Duo-inner/`); the script stops if that screen is still black. If a Duo
+simulator stops responding (`simctl launch` hangs), shut it down and boot it again.
 Set `WAIT=10` if the map hasn't finished drawing in a shot.
 
 ## Promotional images
