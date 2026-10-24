@@ -1,5 +1,6 @@
 package nl.petervanmanen.divemalta
 
+import android.content.pm.ApplicationInfo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,6 +13,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         MapLibre.getInstance(this)
         val scene = ScreenshotScene.from(intent.getStringExtra("screenshot"))
-        setContent { DiveMaltaApp(scene) }
+        // Debug builds: `--es diveLogFolder <path>` reads a test folder without the folder picker.
+        val debuggable = applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE != 0
+        val diveLogFolder = if (debuggable) intent.getStringExtra("diveLogFolder") else null
+        setContent { DiveMaltaApp(scene, diveLogFolder) }
     }
 }

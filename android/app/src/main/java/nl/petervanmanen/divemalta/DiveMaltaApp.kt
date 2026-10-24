@@ -17,7 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.MyLocation
-import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Layers
 import androidx.compose.material.icons.outlined.LayersClear
 import androidx.compose.material.icons.outlined.LocationSearching
@@ -38,15 +38,18 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
+import androidx.lifecycle.repeatOnLifecycle
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 val Accent = Color(0xFF0A84FF)
+/** Sites you dived (the green of their ring on the map). */
+val Visited = Color(0xFF30D158)
 private val Glass = Color(0xE6F2FBFD)
 
 @Composable
-fun DiveMaltaApp(scene: ScreenshotScene?) {
+fun DiveMaltaApp(scene: ScreenshotScene?, diveLogFolder: String? = null) {
     val context = LocalContext.current
     MaterialTheme(colorScheme = lightColorScheme(primary = Accent)) {
         // Loaded in the background so the first frame isn't held up (the depth grid is 3.4 MB).
@@ -61,6 +64,10 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
             }
         }
         val map = remember { MaltaMap(context) }
+        val diveLog = remember {
+            DiveLog(context).apply { debugFolder = diveLogFolder?.let { java.io.File(it) } }   // debug builds only (MainActivity)
+        }
+        LaunchedEffect(sites) { diveLog.setSites(sites) }
 
         var showSplash by remember { mutableStateOf(scene == null || scene == ScreenshotScene.SPLASH) }
         var showContours by rememberSaveable { mutableStateOf(true) }
@@ -87,6 +94,7 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
         LaunchedEffect(mapReady, showContours) { if (mapReady) map.setContours(showContours) }
         LaunchedEffect(mapReady, probe) { if (mapReady) map.setProbe(probe?.first, probe?.second) }
         LaunchedEffect(mapReady, following) { if (mapReady) map.setFollowing(following) }
+        LaunchedEffect(mapReady, diveLog.visits) { if (mapReady) map.setVisited(diveLog.visits.keys) }
         LaunchedEffect(toast) { if (toast != null) { delay(3000); toast = null } }
         LaunchedEffect(Unit) {
             if (scene == null) { delay(2500); showSplash = false }
@@ -99,6 +107,7 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
                 ScreenshotScene.SITE -> selected = sites.firstOrNull { it.id == ScreenshotScene.SITE_ID }
                 ScreenshotScene.LIST -> showList = true
                 ScreenshotScene.DEPTH -> probe = ScreenshotScene.PROBE_LAT to ScreenshotScene.PROBE_LON
+                ScreenshotScene.SETTINGS -> showAbout = true
                 else -> {}
             }
         }
@@ -116,6 +125,9 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
         }
 
         MapLifecycle(map)
+        // Your dive log: read at start and again when you come back to the app, for newly exported dives.
+        // App Store-style screenshots show the app without one, unless a test folder is given.
+        if (scene == null || diveLog.debugFolder != null) DiveLogRefresh(diveLog)
         Box(Modifier.fillMaxSize()) {
             AndroidView(factory = { map.view }, modifier = Modifier.fillMaxSize())
 
@@ -137,7 +149,7 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
                             "Show my location", tint = Accent)
                     }
                     IconButton(onClick = { showAbout = true }) {
-                        Icon(Icons.Outlined.Info, "About and credits", tint = Accent)
+                        Icon(Icons.Outlined.Settings, "Settings and about", tint = Accent)
                     }
                 }
             }
@@ -190,12 +202,12 @@ fun DiveMaltaApp(scene: ScreenshotScene?) {
 
             selected?.let { site ->
                 LaunchedEffect(site.id) { map.focus(site.lat, site.lon).takeIf { scene == null } }
-                SiteSheet(site, grid) { selected = null }
+                SiteSheet(site, grid, diveLog.visits[site.id].orEmpty()) { selected = null }
             }
-            if (showList) SiteList(sites, onDismiss = { showList = false }) { site ->
+            if (showList) SiteList(sites, diveLog.visits, onDismiss = { showList = false }) { site ->
                 showList = false; following = false; selected = site; map.focus(site.lat, site.lon)
             }
-            if (showAbout) AboutScreen { showAbout = false }
+            if (showAbout) AboutScreen(diveLog) { showAbout = false }
 
             AnimatedVisibility(showSplash, enter = fadeIn(), exit = fadeOut()) {
                 Splash(Modifier.clickable { showSplash = false })
@@ -218,6 +230,15 @@ private fun ProbeCard(lat: Double, lon: Double, text: String, onClose: () -> Uni
             }
             IconButton(onClick = onClose) { Icon(Icons.Filled.Close, "Close", tint = Color(0xFF5F6B70)) }
         }
+    }
+}
+
+/** Reads the dive log folder when the app starts and every time it comes back to the foreground. */
+@Composable
+private fun DiveLogRefresh(diveLog: DiveLog) {
+    val lifecycle = LocalLifecycleOwner.current.lifecycle
+    LaunchedEffect(lifecycle) {
+        lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) { diveLog.scan() }
     }
 }
 

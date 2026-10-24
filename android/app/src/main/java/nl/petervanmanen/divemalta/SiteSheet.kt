@@ -9,6 +9,7 @@ import androidx.compose.material.icons.automirrored.outlined.DirectionsWalk
 import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -19,10 +20,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
+import java.text.DateFormat
+import java.util.Date
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SiteSheet(site: DiveSite, grid: BathymetryGrid?, onDismiss: () -> Unit) {
+fun SiteSheet(site: DiveSite, grid: BathymetryGrid?, dives: List<DiveLog.Dive>, onDismiss: () -> Unit) {
     val uri = LocalUriHandler.current
     val context = LocalContext.current
     val seabed = if (grid == null) "…" else when (val s = grid.sample(site.lat, site.lon)) {
@@ -41,6 +44,16 @@ fun SiteSheet(site: DiveSite, grid: BathymetryGrid?, onDismiss: () -> Unit) {
             Text(site.displayName, style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold,
                 modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
             Spacer(Modifier.height(12.dp))
+            if (dives.isNotEmpty()) {
+                Section(if (dives.size == 1) "Your dive here" else "Your ${dives.size} dives here") {
+                    val format = remember { DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT) }
+                    dives.forEach { dive ->
+                        Row(Icons.Outlined.CheckCircle, dive.fit.startMillis?.let { format.format(Date(it)) } ?: dive.file,
+                            dive.fit.maxDepth?.let { "%.1f m".format(it) } ?: "", tint = Visited)
+                    }
+                }
+                Spacer(Modifier.height(12.dp))
+            }
             Card {
                 site.maxDepth?.let { Row(Icons.Outlined.ArrowDownward, "Max depth", it) }
                 site.typicalDepth?.let { Row(Icons.Outlined.VerticalAlignBottom, "Typical depth", it) }
@@ -75,9 +88,9 @@ fun SiteSheet(site: DiveSite, grid: BathymetryGrid?, onDismiss: () -> Unit) {
 }
 
 @Composable
-private fun Row(icon: ImageVector, title: String, value: String) {
+private fun Row(icon: ImageVector, title: String, value: String, tint: Color = Accent) {
     Row(Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 12.dp), verticalAlignment = Alignment.CenterVertically) {
-        Icon(icon, null, tint = Accent, modifier = Modifier.size(22.dp))
+        Icon(icon, null, tint = tint, modifier = Modifier.size(22.dp))
         Spacer(Modifier.width(14.dp))
         Text(title, Modifier.padding(end = 16.dp))
         Text(value, color = Color(0xFF6B7378), textAlign = TextAlign.End, modifier = Modifier.weight(1f))

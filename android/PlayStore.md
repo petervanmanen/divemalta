@@ -55,6 +55,7 @@ Depths, levels and conditions are a guide only. The depth model shows the shape 
 ## Data safety form
 
 - Does the app collect or share user data? **No.** (Location is only used on the device to show
-  the user's position and is never sent anywhere; nothing else is collected.)
+  the user's position and is never sent anywhere. FIT files from a folder the user chooses are only
+  read on the device to show which dive sites they visited; nothing is sent anywhere.)
 - Is data encrypted in transit? Not applicable (no data is transmitted).
 - Account deletion: not applicable (no accounts).

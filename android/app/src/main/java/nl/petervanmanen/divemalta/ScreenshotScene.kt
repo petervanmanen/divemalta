@@ -6,7 +6,9 @@ package nl.petervanmanen.divemalta
  * android/tools/screenshots.sh). Without it the app behaves normally.
  */
 enum class ScreenshotScene {
-    SPLASH, MAP, CONTOURS, SITE, DEPTH, LIST;
+    SPLASH, MAP, CONTOURS, SITE, DEPTH, LIST,
+    /** Only for checking the settings screen; not a Play Store screenshot. */
+    SETTINGS;
 
     /** Where the map starts (lat, lon, zoom); null = all of Malta. */
     val camera: Triple<Double, Double, Double>?

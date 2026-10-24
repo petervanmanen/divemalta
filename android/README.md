@@ -13,7 +13,14 @@ needs `python3`). Package name `nl.petervanmanen.divemalta`.
   conditions, description, sources, the seabed depth and directions.
 - Depth contours (button to switch them off) and depth anywhere by touching and holding the sea;
   a tap elsewhere clears it.
-- Opening screen with the author's photo; About screen with credits and licences.
+- My dives: in the settings (gear button) you choose a folder with FIT files from your dive computer
+  with the system folder picker, for example in Google Drive or Downloads (`DiveLog.kt`,
+  `FitFile.kt`, same rules as iOS). Dives in Malta mark the nearest site within 400 m as visited:
+  a green ring on the map (and on clusters holding it), "Your dive here" on the site page and a
+  check in the list. The folder is read again whenever the app comes back to the foreground; a
+  cache in the app's files keeps each file's result. Debug builds accept
+  `--es diveLogFolder <path on the device>` to read a test folder without the picker.
+- Opening screen with the author's photo; settings and About screen with credits and licences.
 
 ## Building
 

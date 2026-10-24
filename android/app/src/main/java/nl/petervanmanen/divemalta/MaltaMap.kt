@@ -22,6 +22,7 @@ import org.maplibre.android.style.layers.CircleLayer
 import org.maplibre.android.style.layers.Property
 import org.maplibre.android.style.layers.PropertyFactory
 import org.maplibre.android.style.sources.GeoJsonSource
+import org.maplibre.geojson.Feature
 import org.maplibre.geojson.FeatureCollection
 import org.maplibre.geojson.Point
 
@@ -45,6 +46,12 @@ class MaltaMap(context: Context) {
     private var outside = false
     private var following = false
     private var waitingForLocation = false
+    private var visitedShown: Set<String>? = null
+    private val bundledSites: List<Feature> by lazy {
+        view.context.assets.open("data/malta-dive-sites.geojson").bufferedReader().use {
+            FeatureCollection.fromJson(it.readText()).features().orEmpty()
+        }
+    }
 
     companion object {
         /** What the bundled map covers. */
@@ -124,6 +131,24 @@ class MaltaMap(context: Context) {
     fun setContours(visible: Boolean) {
         val v = PropertyFactory.visibility(if (visible) Property.VISIBLE else Property.NONE)
         listOf("contours", "contour-labels").forEach { style?.getLayer(it)?.setProperties(v) }
+    }
+
+    /**
+     * Sets "visited" on the sites from your dive log; the style gives them, and clusters holding one,
+     * a thick green ring (shared/tools/style/make_style.mjs).
+     */
+    fun setVisited(ids: Set<String>) {
+        val source = style?.getSourceAs<GeoJsonSource>("sites") ?: return
+        if (ids == visitedShown) return
+        // Before the first dive log scan there is nothing to change in the bundled data.
+        if (visitedShown == null && ids.isEmpty()) { visitedShown = ids; return }
+        visitedShown = ids
+        source.setGeoJson(FeatureCollection.fromFeatures(bundledSites.map { feature ->
+            val id = if (feature.hasProperty("id")) feature.getStringProperty("id") else null
+            if (id != null && id in ids) {
+                Feature.fromJson(feature.toJson()).also { it.addBooleanProperty("visited", true) }
+            } else feature
+        }))
     }
 
     fun setProbe(lat: Double?, lon: Double?) {
