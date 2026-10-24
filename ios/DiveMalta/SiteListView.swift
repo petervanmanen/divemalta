@@ -3,6 +3,7 @@ import SwiftUI
 struct SiteListView: View {
     let sites: [DiveSite]
     let onPick: (DiveSite) -> Void
+    @Environment(DiveLog.self) private var diveLog
     @State private var search = ""
 
     private var filtered: [DiveSite] {
@@ -16,10 +17,19 @@ struct SiteListView: View {
                 Button {
                     onPick(site)
                 } label: {
-                    VStack(alignment: .leading, spacing: 2) {
-                        Text(site.displayName).foregroundStyle(.primary)
-                        if let summary = site.summary {
-                            Text(summary).font(.caption).foregroundStyle(.secondary)
+                    HStack {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(site.displayName).foregroundStyle(.primary)
+                            if let summary = site.summary {
+                                Text(summary).font(.caption).foregroundStyle(.secondary)
+                            }
+                        }
+                        Spacer()
+                        if let dives = diveLog.visits[site.id] {
+                            Label("\(dives.count)", systemImage: "checkmark.circle.fill")
+                                .font(.caption)
+                                .foregroundStyle(.green)
+                                .accessibilityLabel(dives.count == 1 ? "Dived once" : "Dived \(dives.count) times")
                         }
                     }
                 }

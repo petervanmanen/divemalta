@@ -3,6 +3,7 @@ import SwiftUI
 
 struct SiteDetailView: View {
     let site: DiveSite
+    @Environment(DiveLog.self) private var diveLog
     @State private var seabed: String?
 
     private var entryText: String? {
@@ -14,6 +15,20 @@ struct SiteDetailView: View {
     var body: some View {
         NavigationStack {
             List {
+                if let dives = diveLog.visits[site.id], !dives.isEmpty {
+                    Section(dives.count == 1 ? "Your dive here" : "Your \(dives.count) dives here") {
+                        ForEach(dives) { dive in
+                            LabeledContent {
+                                if let depth = dive.fit.maxDepth { Text("\(depth, format: .number.precision(.fractionLength(1))) m") }
+                            } label: {
+                                Label(dive.fit.start?.formatted(date: .abbreviated, time: .shortened) ?? dive.file,
+                                      systemImage: "checkmark.circle.fill")
+                                    .foregroundStyle(.green, .primary)
+                            }
+                        }
+                    }
+                }
+
                 Section {
                     if let maxDepth = site.maxDepth { row("Max depth", maxDepth, "arrow.down") }
                     if let typical = site.typicalDepth { row("Typical depth", typical, "arrow.down.to.line") }

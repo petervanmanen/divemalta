@@ -7,6 +7,8 @@ import SwiftUI
 struct MapView: UIViewRepresentable {
     let sites: [DiveSite]
     var showContours: Bool
+    /// Ids of sites from your own dive log; they get a green ring.
+    var visited: Set<String> = []
     /// Set by the caller to fly to a site (e.g. picked from the list).
     var focus: DiveSite?
     var followUser: Bool
@@ -69,6 +71,7 @@ struct MapView: UIViewRepresentable {
         let c = context.coordinator
         c.parent = self
         c.applyContours(map)
+        c.applyVisited(map)
 
         if let focus, focus.id != c.lastFocusID {
             c.lastFocusID = focus.id
@@ -120,6 +123,7 @@ struct MapView: UIViewRepresentable {
         var following = false
         var resetToken = 0
         private var contoursShown: Bool?
+        private var visitedShown: Set<String>?
         private var outside = false
         /// Following was asked for before the first location fix came in.
         var waitingForLocation = false
@@ -164,6 +168,35 @@ struct MapView: UIViewRepresentable {
             }
         }
 
+        /// Sets "visited" on the sites from your dive log; the style gives them, and clusters holding one,
+        /// a thick green ring (shared/tools/style/make_style.mjs).
+        func applyVisited(_ map: MLNMapView) {
+            guard let source = map.style?.source(withIdentifier: "sites") as? MLNShapeSource,
+                  visitedShown != parent.visited else { return }
+            // Before the first dive log scan there is nothing to change in the bundled data.
+            if visitedShown == nil, parent.visited.isEmpty {
+                visitedShown = parent.visited
+                return
+            }
+            visitedShown = parent.visited
+            guard let url = Bundle.main.url(forResource: "malta-dive-sites", withExtension: "geojson", subdirectory: "data"),
+                  let data = try? Data(contentsOf: url),
+                  var geojson = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+                  let features = geojson["features"] as? [[String: Any]]
+            else { return }
+            geojson["features"] = features.map { feature -> [String: Any] in
+                var feature = feature
+                var properties = feature["properties"] as? [String: Any] ?? [:]
+                if let id = properties["id"] as? String, parent.visited.contains(id) { properties["visited"] = true }
+                feature["properties"] = properties
+                return feature
+            }
+            guard let updated = try? JSONSerialization.data(withJSONObject: geojson),
+                  let shape = try? MLNShape(data: updated, encoding: String.Encoding.utf8.rawValue)
+            else { return }
+            source.shape = shape
+        }
+
         func showProbe(_ coordinate: CLLocationCoordinate2D?, on map: MLNMapView) {
             let shown = map.annotations?.contains { $0 === probePin } ?? false
             if let coordinate {
@@ -202,7 +235,9 @@ struct MapView: UIViewRepresentable {
 
         func mapView(_ mapView: MLNMapView, didFinishLoading style: MLNStyle) {
             contoursShown = nil
+            visitedShown = nil
             applyContours(mapView)
+            applyVisited(mapView)
             // Fit Malta once the view has its real size.
             if !placed, let camera = ScreenshotScene.current?.camera {
                 placed = true

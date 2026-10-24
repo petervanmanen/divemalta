@@ -16,6 +16,14 @@ bundled with the app, so everything works offline.
   The contour button switches them off.
 - **Depth anywhere**: touch and hold the sea to look up the depth at that point.
 - **Our additions**: known depths and tunnels from `../shared/enrichment/`.
+- **My dives**: in the settings (gear button) you can choose a folder with FIT files from your dive
+  computer, for example in iCloud Drive (`DiveLog.swift`, `FitFile.swift`). The app reads them on the
+  phone: files whose sport is diving and that have a GPS position count as dives. A dive in Malta is
+  matched to the nearest site within 400 m of where it started. That site, and any cluster holding
+  it, gets a green ring on the map. The site page lists your dives there and the list shows a check.
+  The folder is read again whenever you come back to the app. A cache in Application Support keeps
+  each file's result, so only new or changed files are read. For testing in the simulator, a debug
+  build accepts `-diveLogFolder <path on the Mac>` instead of the folder picker.
 - **iPhone Duo**: built with the iOS 27.1 SDK (Xcode 27.1), so the app fills the whole inner display.
   When the phone is open like a book, the banner, messages and the bottom bar move to the left half so
   they don't sit on the fold (`FoldLayout.swift`). Older Xcode versions give a smaller window there.

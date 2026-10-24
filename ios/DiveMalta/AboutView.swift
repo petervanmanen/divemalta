@@ -1,7 +1,9 @@
 import SwiftUI
 
-/// Credits for the data and photo, and the open-source licences (Licenses.txt).
+/// Settings (your dive log folder), credits for the data and photo, and the open-source licences (Licenses.txt).
 struct AboutView: View {
+    @Environment(DiveLog.self) private var diveLog
+    @State private var choosingFolder = false
     private let licences: String = Bundle.main.url(forResource: "Licenses", withExtension: "txt", subdirectory: "data")
         .flatMap { try? String(contentsOf: $0, encoding: .utf8) } ?? ""
 
@@ -13,6 +15,8 @@ struct AboutView: View {
     var body: some View {
         NavigationStack {
             List {
+                diveLogSection
+
                 Section {
                     Text("Dive sites of Malta, Gozo and Comino with depth contours, on a map that works offline.")
                     LabeledContent("Version", value: version)
@@ -39,8 +43,44 @@ struct AboutView: View {
                         .textSelection(.enabled)
                 }
             }
-            .navigationTitle("About Dive Malta")
+            .navigationTitle("Dive Malta")
             .navigationBarTitleDisplayMode(.inline)
+            .fileImporter(isPresented: $choosingFolder, allowedContentTypes: [.folder]) { result in
+                if case .success(let url) = result {
+                    Task { await diveLog.choose(folder: url) }
+                }
+            }
+        }
+    }
+
+    private var diveLogSection: some View {
+        Section {
+            if let folder = diveLog.folderName {
+                LabeledContent {
+                    if diveLog.isScanning { ProgressView() } else { Text(folder) }
+                } label: {
+                    Label("Folder", systemImage: "folder")
+                }
+                if !diveLog.isScanning {
+                    LabeledContent("FIT files", value: "\(diveLog.fitFileCount)")
+                    LabeledContent("Dives", value: "\(diveLog.dives.count)")
+                    LabeledContent("Dives in Malta", value: "\(diveLog.maltaDiveCount)")
+                    LabeledContent("Dive sites visited", value: "\(diveLog.visits.count)")
+                }
+                Button("Choose Another Folder", systemImage: "folder.badge.gearshape") { choosingFolder = true }
+                Button("Read Folder Again", systemImage: "arrow.clockwise") { Task { await diveLog.scan() } }
+                    .disabled(diveLog.isScanning)
+                Button("Stop Using Dive Log", systemImage: "xmark.circle", role: .destructive) { diveLog.forget() }
+            } else {
+                Button("Choose Folder", systemImage: "folder.badge.plus") { choosingFolder = true }
+            }
+            if let error = diveLog.error {
+                Text(error).font(.footnote).foregroundStyle(.red)
+            }
+        } header: {
+            Text("My dives")
+        } footer: {
+            Text("Choose a folder with FIT files from your dive computer, for example in iCloud Drive. Dives in Malta are matched to the nearest dive site (within \(Int(DiveLog.matchDistance)) m of where you started), and those sites get a green ring on the map. The files are only read on this device.")
         }
     }
 

@@ -2,7 +2,9 @@ import CoreLocation
 import SwiftUI
 
 struct ContentView: View {
-    @State private var sites = DiveSite.loadBundled()
+    @State private var sites: [DiveSite]
+    @State private var diveLog: DiveLog
+    @Environment(\.scenePhase) private var scenePhase
     @AppStorage("showContours") private var showContours = true
     @State private var selected: DiveSite?
     @State private var focus: DiveSite?
@@ -14,10 +16,17 @@ struct ContentView: View {
     @State private var toast: String?
     @State private var resetToken = 0
 
+    init() {
+        let sites = DiveSite.loadBundled()
+        _sites = State(initialValue: sites)
+        _diveLog = State(initialValue: DiveLog(sites: sites))
+    }
+
     var body: some View {
         MapView(
             sites: sites,
             showContours: showContours,
+            visited: Set(diveLog.visits.keys),
             focus: focus,
             followUser: followUser,
             probe: probe?.coordinate,
@@ -65,6 +74,11 @@ struct ContentView: View {
         }
         .sheet(isPresented: $showAbout) { AboutView() }
         .task { await setUpScreenshot() }
+        // Your dive log: read at start and again when you come back to the app, for newly exported dives.
+        .task { await diveLog.scan() }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { Task { await diveLog.scan() } }
+        }
         // Load the 3.4 MB depth grid in the background now, instead of on the main thread the first
         // time a site page or depth lookup needs it.
         .task(priority: .utility) { await Task.detached(priority: .utility) { _ = BathymetryGrid.malta }.value }
@@ -76,6 +90,7 @@ struct ContentView: View {
                 selected = site
             }
         }
+        .environment(diveLog)   // for the site page, list and settings
     }
 
     private var controls: some View {
@@ -108,10 +123,10 @@ struct ContentView: View {
             Button {
                 showAbout = true
             } label: {
-                Image(systemName: "info.circle")
+                Image(systemName: "gearshape")
                     .frame(width: 44, height: 44)
             }
-            .accessibilityLabel("About and credits")
+            .accessibilityLabel("Settings and about")
         }
         .font(.title3)
         .buttonStyle(.plain)
@@ -151,6 +166,7 @@ struct ContentView: View {
         case .site: selected = sites.first { $0.id == ScreenshotScene.siteID }
         case .list: showList = true
         case .depth: lookUpDepth(at: ScreenshotScene.probe)
+        case .settings: showAbout = true
         case .splash, .map, .contours: break
         }
     }

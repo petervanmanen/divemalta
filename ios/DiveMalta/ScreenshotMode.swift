@@ -1,10 +1,11 @@
 import CoreLocation
 
 /// Fixed app states for App Store screenshots, chosen with a launch argument:
-/// `-screenshot splash|map|contours|site|list|depth` (see tools/screenshots.sh).
+/// `-screenshot splash|map|contours|site|list|depth|settings` (see tools/screenshots.sh; settings is
+/// only for checking the settings screen).
 /// Without the argument the app behaves normally.
 enum ScreenshotScene: String {
-    case splash, map, contours, site, list, depth
+    case splash, map, contours, site, list, depth, settings
 
     static let current: ScreenshotScene? = {
         let args = ProcessInfo.processInfo.arguments

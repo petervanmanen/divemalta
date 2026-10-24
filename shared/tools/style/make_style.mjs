@@ -51,12 +51,21 @@ const extraLayers = [
   },
 ];
 
+// Sites you dived (the apps set "visited": true on them from your dive log) and clusters holding
+// at least one of them get a thick green ring instead of the white one.
+const visitedSite = ["==", ["get", "visited"], true];
+const visitedCluster = [">", ["get", "visited"], 0];
+const ring = (visited) => ({
+  "circle-stroke-color": ["case", visited, "#30d158", "#ffffff"],
+  "circle-stroke-width": ["case", visited, 4, 2],
+});
+
 const siteLayers = [
   {
     id: "site-clusters", type: "circle", source: "sites", filter: ["has", "point_count"],
     paint: {
       "circle-color": "#0a84ff", "circle-radius": ["step", ["get", "point_count"], 15, 10, 19],
-      "circle-stroke-color": "#ffffff", "circle-stroke-width": 2,
+      ...ring(visitedCluster),
     },
   },
   {
@@ -69,7 +78,7 @@ const siteLayers = [
     id: "sites", type: "circle", source: "sites", filter: ["!", ["has", "point_count"]],
     paint: {
       "circle-color": ["match", ["get", "type"], "wreck", "#5e5ce6", "cave", "#a2845e", "#0a84ff"],
-      "circle-radius": 8, "circle-stroke-color": "#ffffff", "circle-stroke-width": 2,
+      "circle-radius": ["case", visitedSite, 9, 8], ...ring(visitedSite),
     },
   },
   {
@@ -104,7 +113,9 @@ const style = {
     contours: { type: "geojson", data: "{ASSETS}/malta-contours.geojson" },
     extras: { type: "geojson", data: "{ASSETS}/malta-extras.geojson" },
     sites: { type: "geojson", data: "{ASSETS}/malta-dive-sites.geojson", cluster: true,
-             clusterRadius: 40, clusterMaxZoom: 13 },
+             clusterRadius: 40, clusterMaxZoom: 13,
+             // Number of visited sites in a cluster.
+             clusterProperties: { visited: ["+", ["case", visitedSite, 1, 0]] } },
   },
   layers: [...base.slice(0, firstSymbol), ...contourLayers, ...base.slice(firstSymbol), ...extraLayers, ...siteLayers],
 };

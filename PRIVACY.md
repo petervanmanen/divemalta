@@ -1,6 +1,6 @@
 # Dive Malta — Privacy Policy
 
-Last updated: 14 October 2026
+Last updated: 24 October 2026
 
 Dive Malta does not collect, store or share any personal data.
 
@@ -13,6 +13,12 @@ Dive Malta does not collect, store or share any personal data.
   does not contact any server to show them. Links you tap yourself (a dive site's website, its
   sources, OpenStreetMap, or directions in Apple Maps) open in Safari or Maps, which have their own
   privacy policies.
-- **Settings.** The app only remembers on your device whether the depth contours are switched on.
+- **Your dive log (iPhone and iPad, optional).** If you choose a folder with FIT files from your
+  dive computer, the app reads those files on your device to find your dives and show which dive
+  sites you visited. It remembers the folder and keeps a small summary of each dive (date, position,
+  maximum depth) on your device so it doesn't have to read every file again. Nothing is sent
+  anywhere. "Stop Using Dive Log" in the settings removes the folder and the summary.
+- **Settings.** The app only remembers on your device whether the depth contours are switched on
+  and, if you chose one, your dive log folder.
 
 Questions: tandrad-vierde-9q@icloud.com
