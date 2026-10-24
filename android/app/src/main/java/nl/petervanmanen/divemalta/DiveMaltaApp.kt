@@ -13,6 +13,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.systemGestureExclusion
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.filled.Close
@@ -131,10 +132,13 @@ fun DiveMaltaApp(scene: ScreenshotScene?, diveLogFolder: String? = null) {
         Box(Modifier.fillMaxSize()) {
             AndroidView(factory = { map.view }, modifier = Modifier.fillMaxSize())
 
-            // Buttons, top right.
+            // Buttons, top right. With gesture navigation the screen edge belongs to the system's back
+            // gesture, which swallowed taps on these buttons on some phones: keep them away from the edge
+            // and claim their area from the gesture (systemGestureExclusion).
             Surface(
                 shape = RoundedCornerShape(22.dp), color = Glass, shadowElevation = 4.dp,
-                modifier = Modifier.align(Alignment.TopEnd).safeDrawingPadding().padding(top = 8.dp, end = 12.dp),
+                modifier = Modifier.align(Alignment.TopEnd).safeDrawingPadding().padding(top = 8.dp, end = 20.dp)
+                    .systemGestureExclusion(),
             ) {
                 Column {
                     IconButton(onClick = { showContours = !showContours }) {

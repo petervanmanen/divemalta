@@ -94,13 +94,16 @@ struct ContentView: View {
     }
 
     private var controls: some View {
-        VStack(spacing: 12) {
+        // No spacing: each button's tap area runs up to the next one (4 × 53 = the old 44 pt buttons
+        // with 12 pt gaps).
+        VStack(spacing: 0) {
             Button {
                 showContours.toggle()
             } label: {
                 Image(systemName: "point.topleft.down.to.point.bottomright.curvepath")
                     .symbolVariant(showContours ? .none : .slash)
-                    .frame(width: 44, height: 44)
+                    .frame(width: 48, height: 53)
+                    .contentShape(.rect)   // the whole button, not just the thin icon lines
             }
             .accessibilityLabel(showContours ? "Hide depth contours" : "Show depth contours")
 
@@ -108,7 +111,8 @@ struct ContentView: View {
                 showList = true
             } label: {
                 Image(systemName: "list.bullet")
-                    .frame(width: 44, height: 44)
+                    .frame(width: 48, height: 53)
+                    .contentShape(.rect)   // the whole button, not just the thin icon lines
             }
             .accessibilityLabel("Dive sites")
 
@@ -116,7 +120,8 @@ struct ContentView: View {
                 followUser.toggle()
             } label: {
                 Image(systemName: followUser ? "location.fill" : "location")
-                    .frame(width: 44, height: 44)
+                    .frame(width: 48, height: 53)
+                    .contentShape(.rect)   // the whole button, not just the thin icon lines
             }
             .accessibilityLabel("Show my location")
 
@@ -124,7 +129,8 @@ struct ContentView: View {
                 showAbout = true
             } label: {
                 Image(systemName: "gearshape")
-                    .frame(width: 44, height: 44)
+                    .frame(width: 48, height: 53)
+                    .contentShape(.rect)   // the whole button, not just the thin icon lines
             }
             .accessibilityLabel("Settings and about")
         }
@@ -132,7 +138,7 @@ struct ContentView: View {
         .buttonStyle(.plain)
         .foregroundStyle(.tint)
         .glassEffect(in: .rect(cornerRadius: 22))
-        .padding(.trailing, 12)
+        .padding(.trailing, 20)
         .padding(.top, 8)
     }
 
