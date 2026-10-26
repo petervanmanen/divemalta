@@ -11,7 +11,7 @@ bundled with the app, so everything works offline.
 - **Dive sites**: the 92 sites in `../shared/sites/` (one JSON file each, see its README). Wrecks are
   purple, caves brown; nearby sites are grouped until you zoom in. Tap one for its depth, type,
   entry, level, description, conditions, sources, the seabed depth there and directions in Apple
-  Maps. The list button searches all sites.
+  Maps. The search bar on the map and the list find sites by name or type, typo-tolerant and without accents (`SiteSearch.swift`).
 - **Depth contours**: 5, 10, 15, 20, 30, 40, 50, 60, 80, 100, 150 and 200 m, labelled along the lines.
   The contour button switches them off.
 - **Depth anywhere**: touch and hold the sea to look up the depth at that point.

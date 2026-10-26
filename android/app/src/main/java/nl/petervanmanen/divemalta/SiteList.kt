@@ -19,9 +19,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun SiteList(sites: List<DiveSite>, visits: Map<String, List<DiveLog.Dive>>, onDismiss: () -> Unit, onPick: (DiveSite) -> Unit) {
     var search by remember { mutableStateOf("") }
-    val filtered = remember(search) {
-        if (search.isBlank()) sites else sites.filter { it.displayName.contains(search.trim(), ignoreCase = true) }
-    }
+    val filtered = remember(search) { SiteSearch.results(search, sites) }
     ModalBottomSheet(onDismissRequest = onDismiss, sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)) {
         Text("${sites.size} dive sites", style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.SemiBold,
             modifier = Modifier.padding(horizontal = 20.dp))

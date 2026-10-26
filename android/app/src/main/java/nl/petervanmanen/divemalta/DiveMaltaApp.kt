@@ -14,24 +14,35 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.systemGestureExclusion
+import androidx.compose.foundation.text.BasicTextField
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.filled.Cancel
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.MyLocation
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material.icons.outlined.Layers
 import androidx.compose.material.icons.outlined.LayersClear
 import androidx.compose.material.icons.outlined.LocationSearching
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.VerticalAlignBottom
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -158,9 +169,15 @@ fun DiveMaltaApp(scene: ScreenshotScene?, diveLogFolder: String? = null) {
                 }
             }
 
-            // Outside-the-map banner and toast, top.
+            // Search, top left, clear of the buttons.
+            SearchBar(sites, diveLog.visits,
+                Modifier.align(Alignment.TopStart).safeDrawingPadding().padding(top = 8.dp, start = 20.dp, end = 88.dp)) { site ->
+                following = false; selected = site; map.focus(site.lat, site.lon)
+            }
+
+            // Outside-the-map banner and toast, top, below the search bar.
             Column(
-                Modifier.align(Alignment.TopCenter).safeDrawingPadding().padding(top = 8.dp, start = 72.dp, end = 72.dp),
+                Modifier.align(Alignment.TopCenter).safeDrawingPadding().padding(top = 64.dp, start = 72.dp, end = 72.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 AnimatedVisibility(outside, enter = slideInVertically() + fadeIn(), exit = slideOutVertically() + fadeOut()) {
@@ -215,6 +232,64 @@ fun DiveMaltaApp(scene: ScreenshotScene?, diveLogFolder: String? = null) {
 
             AnimatedVisibility(showSplash, enter = fadeIn(), exit = fadeOut()) {
                 Splash(Modifier.clickable { showSplash = false })
+            }
+        }
+    }
+}
+
+/** Search field on the map, with the best matching sites below it while you type. */
+@Composable
+private fun SearchBar(sites: List<DiveSite>, visits: Map<String, List<DiveLog.Dive>>, modifier: Modifier,
+                      onPick: (DiveSite) -> Unit) {
+    var text by remember { mutableStateOf("") }
+    var focused by remember { mutableStateOf(false) }
+    val focusManager = LocalFocusManager.current
+    val suggestions = remember(text, sites) { if (text.isBlank()) emptyList() else SiteSearch.results(text, sites).take(6) }
+    fun pick(site: DiveSite) { text = ""; focusManager.clearFocus(); onPick(site) }
+
+    Column(modifier) {
+        Surface(shape = RoundedCornerShape(50), color = Glass, shadowElevation = 4.dp) {
+            Row(Modifier.height(48.dp).padding(start = 14.dp, end = 2.dp), verticalAlignment = Alignment.CenterVertically) {
+                Icon(Icons.Outlined.Search, null, tint = Color(0xFF5F6B70))
+                Spacer(Modifier.width(8.dp))
+                Box(Modifier.weight(1f)) {
+                    if (text.isEmpty()) Text("Search dive sites", color = Color(0xFF6B7378))
+                    BasicTextField(text, { text = it },
+                        Modifier.fillMaxWidth().onFocusChanged { focused = it.isFocused },
+                        singleLine = true, textStyle = MaterialTheme.typography.bodyLarge, cursorBrush = SolidColor(Accent),
+                        // Site names aren't dictionary words.
+                        keyboardOptions = KeyboardOptions(KeyboardCapitalization.None, autoCorrectEnabled = false,
+                            imeAction = ImeAction.Search),
+                        keyboardActions = KeyboardActions(onSearch = { suggestions.firstOrNull()?.let(::pick) }))
+                }
+                if (text.isNotEmpty() || focused) {
+                    IconButton(onClick = { text = ""; focusManager.clearFocus() }) {
+                        Icon(Icons.Filled.Cancel, "Clear search", tint = Color(0xFF8E9599))
+                    }
+                }
+            }
+        }
+        AnimatedVisibility(focused && text.isNotEmpty(), enter = fadeIn(), exit = fadeOut()) {
+            Surface(shape = RoundedCornerShape(20.dp), color = Glass, shadowElevation = 4.dp,
+                modifier = Modifier.fillMaxWidth().padding(top = 8.dp)) {
+                Column {
+                    if (suggestions.isEmpty()) {
+                        Text("No dive sites match \"$text\"", Modifier.padding(14.dp), color = Color(0xFF6B7378))
+                    }
+                    suggestions.forEachIndexed { i, site ->
+                        Row(Modifier.fillMaxWidth().clickable { pick(site) }.padding(horizontal = 14.dp, vertical = 9.dp),
+                            verticalAlignment = Alignment.CenterVertically) {
+                            Column(Modifier.weight(1f)) {
+                                Text(site.displayName, color = Accent)
+                                site.summary?.let { Text(it, style = MaterialTheme.typography.bodySmall, color = Color(0xFF6B9FC4)) }
+                            }
+                            if (visits[site.id] != null) {
+                                Icon(Icons.Filled.CheckCircle, "Dived", tint = Visited, modifier = Modifier.size(18.dp))
+                            }
+                        }
+                        if (i < suggestions.lastIndex) HorizontalDivider(Modifier.padding(start = 14.dp))
+                    }
+                }
             }
         }
     }

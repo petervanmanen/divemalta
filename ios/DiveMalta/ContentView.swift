@@ -40,6 +40,12 @@ struct ContentView: View {
         )
         .ignoresSafeArea()
         .overlay(alignment: .topTrailing) { controls }
+        .overlay { BesideFold(alignment: .topLeading) {
+            SearchBar(sites: sites) { pick($0) }
+                .padding(.leading, 20)
+                .padding(.trailing, 80)   // clear of the buttons
+                .padding(.top, 8)
+        } }
         .overlay { BesideFold(alignment: .bottom) { bottomBar } }
         .overlay { BesideFold(alignment: .top) {
             if outside {
@@ -48,7 +54,7 @@ struct ContentView: View {
                     resetToken += 1
                 }
                 .padding(.horizontal, 72)
-                .padding(.top, 8)
+                .padding(.top, 64)   // below the search bar
                 .transition(.move(edge: .top).combined(with: .opacity))
             }
         } }
@@ -62,7 +68,7 @@ struct ContentView: View {
                     .padding(.vertical, 10)
                     .glassEffect(in: .capsule)
                     .padding(.horizontal, 72)
-                    .padding(.top, 8)
+                    .padding(.top, 64)   // below the search bar
                     .transition(.move(edge: .top).combined(with: .opacity))
                     .onTapGesture { self.toast = nil }
             }
@@ -85,9 +91,7 @@ struct ContentView: View {
         .sheet(isPresented: $showList) {
             SiteListView(sites: sites) { site in
                 showList = false
-                followUser = false
-                focus = site
-                selected = site
+                pick(site)
             }
         }
         .environment(diveLog)   // for the site page, list and settings
@@ -177,6 +181,13 @@ struct ContentView: View {
         }
     }
 
+    /// Shows a site chosen from the search bar or the list: the map goes there and its page opens.
+    private func pick(_ site: DiveSite) {
+        followUser = false
+        focus = site
+        selected = site
+    }
+
     private func showToast(_ text: String) {
         toast = text
         Task {
@@ -239,6 +250,98 @@ private struct ProbeCard: View {
         }
         .padding(12)
         .glassEffect(in: .rect(cornerRadius: 16))
+    }
+}
+
+/// Search field on the map, with the best matching sites below it while you type.
+private struct SearchBar: View {
+    let sites: [DiveSite]
+    let onPick: (DiveSite) -> Void
+    @Environment(DiveLog.self) private var diveLog
+    @State private var text = ""
+    @FocusState private var focused: Bool
+
+    private var suggestions: [DiveSite] {
+        text.trimmingCharacters(in: .whitespaces).isEmpty ? [] : Array(SiteSearch.results(text, in: sites).prefix(6))
+    }
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(spacing: 8) {
+                Image(systemName: "magnifyingglass")
+                    .foregroundStyle(.secondary)
+                TextField("Search dive sites", text: $text)
+                    .focused($focused)
+                    .autocorrectionDisabled()   // site names aren't dictionary words
+                    .textInputAutocapitalization(.never)
+                    .submitLabel(.search)
+                    .onSubmit { if let first = suggestions.first { pick(first) } }
+                if !text.isEmpty || focused {
+                    Button {
+                        text = ""
+                        focused = false
+                    } label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundStyle(.secondary)
+                            .frame(width: 32, height: 32)
+                            .contentShape(.rect)
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityLabel("Clear search")
+                }
+            }
+            .padding(.leading, 14)
+            .padding(.trailing, 6)
+            .frame(height: 48)
+            .glassEffect(in: .capsule)
+
+            if focused && !text.isEmpty {
+                suggestionList
+            }
+        }
+        .animation(.default, value: suggestions.map(\.id))
+    }
+
+    private var suggestionList: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            if suggestions.isEmpty {
+                Text("No dive sites match \"\(text)\"")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .padding(14)
+            }
+            ForEach(suggestions) { site in
+                Button { pick(site) } label: {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text(site.displayName).foregroundStyle(.primary)
+                            if let summary = site.summary {
+                                Text(summary).font(.caption).foregroundStyle(.secondary)
+                            }
+                        }
+                        Spacer()
+                        if diveLog.visits[site.id] != nil {
+                            Image(systemName: "checkmark.circle.fill")
+                                .foregroundStyle(.green)
+                                .accessibilityLabel("Dived")
+                        }
+                    }
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 9)
+                    .contentShape(.rect)
+                }
+                .buttonStyle(.plain)
+                if site.id != suggestions.last?.id { Divider().padding(.leading, 14) }
+            }
+        }
+        .glassEffect(in: .rect(cornerRadius: 20))
+        .transition(.opacity)
+    }
+
+    private func pick(_ site: DiveSite) {
+        text = ""
+        focused = false
+        onPick(site)
     }
 }
 

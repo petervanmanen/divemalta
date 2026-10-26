@@ -9,7 +9,7 @@ needs `python3`). Package name `nl.petervanmanen.divemalta`.
 - Map: offline OpenStreetMap vector tiles in the same style as iOS, always north up, no tilting.
   Panning away from Malta shows "Outside the map" with a button back; the location button only
   follows you inside Malta and otherwise shows a short message.
-- Dive sites with clusters, a searchable list, and a site page with depth, level, entry,
+- Dive sites with clusters, a search bar with suggestions (typo-tolerant, `SiteSearch.kt`), a searchable list, and a site page with depth, level, entry,
   conditions, description, sources, the seabed depth and directions.
 - Depth contours (button to switch them off) and depth anywhere by touching and holding the sea;
   a tap elsewhere clears it.

@@ -32,7 +32,7 @@ Touch and hold the sea to see how deep it is at that spot.
 The map, the dive sites and the depth data are all inside the app. No account, no downloads, no mobile data needed — ideal on the coast or out at sea.
 
 ★ SEARCH AND LOCATION
-Search all dive sites by name, and see where you are on the map when you're in Malta.
+Search all dive sites from the search bar on the map, even with typos or without the Maltese letters, and see where you are on the map when you're in Malta.
 
 ★ PRIVATE
 No account, no tracking, no ads. Your location is only used on your phone to show where you are.

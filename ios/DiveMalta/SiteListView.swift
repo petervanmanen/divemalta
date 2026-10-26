@@ -7,8 +7,7 @@ struct SiteListView: View {
     @State private var search = ""
 
     private var filtered: [DiveSite] {
-        guard !search.isEmpty else { return sites }
-        return sites.filter { $0.displayName.localizedCaseInsensitiveContains(search) }
+        SiteSearch.results(search, in: sites)
     }
 
     var body: some View {
