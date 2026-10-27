@@ -12,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.core.content.edit
 import androidx.core.net.toUri
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
@@ -35,6 +36,8 @@ class DiveLog(private val context: Context) {
         const val MATCH_DISTANCE_M = 400f
         private const val PREFS = "dive-log"
         private const val KEY_FOLDER = "folder"
+        private const val RETRY_DELAY_MS = 5_000L
+        private const val MAX_RETRIES = 12
     }
 
     var folderName by mutableStateOf<String?>(null); private set
@@ -93,16 +96,28 @@ class DiveLog(private val context: Context) {
     /**
      * Reads the folder again; called at start and whenever the app comes back to the foreground, so
      * newly exported dives show up. Files that haven't changed since the last scan come from the cache.
+     * A cloud folder (Google Drive) may still be fetching its file list, or a file may not be readable
+     * yet: then the folder is read again every few seconds (for up to a minute) until it's all in, so
+     * new dives show up without reading the folder by hand.
      */
     suspend fun scan() {
-        if (!scanLock.tryLock()) return
+        for (attempt in 0..MAX_RETRIES) {
+            if (attempt > 0) delay(RETRY_DELAY_MS)
+            val complete = scanOnce() ?: return
+            if (complete) return
+        }
+    }
+
+    /** One read of the folder: true when everything was read, false when some of it wasn't there yet, null when skipped. */
+    private suspend fun scanOnce(): Boolean? {
+        if (!scanLock.tryLock()) return null
         try {
             val debug = debugFolder
             val tree = prefs.getString(KEY_FOLDER, null)?.toUri()
             val source = when {
                 debug != null -> FileSource(debug)
                 tree != null -> TreeSource(context, tree)
-                else -> return
+                else -> return null
             }
             isScanning = true
             val result = withContext(Dispatchers.IO) { read(source) }
@@ -111,6 +126,7 @@ class DiveLog(private val context: Context) {
             fitFileCount = result.fitFiles
             dives = result.dives.sortedByDescending { it.fit.startMillis ?: Long.MIN_VALUE }
             match()
+            return !result.incomplete
         } finally {
             isScanning = false
             scanLock.unlock()
@@ -144,11 +160,14 @@ class DiveLog(private val context: Context) {
         val name: String?
         /** Every .fit file in the folder and its subfolders. */
         fun fitFiles(): List<Entry>
+        /** After fitFiles(): whether the provider said it was still fetching part of the list. */
+        val stillLoading: Boolean get() = false
     }
 
     /** A folder from the system folder picker (Storage Access Framework). */
     private class TreeSource(private val context: Context, private val tree: Uri) : Source {
         private val resolver = context.contentResolver
+        override var stillLoading = false; private set
         override val name: String? = runCatching {
             val doc = DocumentsContract.buildDocumentUriUsingTree(tree, DocumentsContract.getTreeDocumentId(tree))
             resolver.query(doc, arrayOf(DocumentsContract.Document.COLUMN_DISPLAY_NAME), null, null, null)?.use {
@@ -168,6 +187,8 @@ class DiveLog(private val context: Context) {
                 val (parent, path) = pending.removeFirst()
                 val children = DocumentsContract.buildChildDocumentsUriUsingTree(tree, parent)
                 resolver.query(children, columns, null, null, null)?.use { c ->
+                    // Cloud providers answer with what they have and fetch the rest in the background.
+                    if (c.extras.getBoolean(DocumentsContract.EXTRA_LOADING)) stillLoading = true
                     while (c.moveToNext()) {
                         val id = c.getString(0)
                         val name = c.getString(1) ?: continue
@@ -196,7 +217,8 @@ class DiveLog(private val context: Context) {
             .toList()
     }
 
-    private class ReadResult(val folderName: String?, val dives: List<Dive>, val fitFiles: Int, val error: String?)
+    private class ReadResult(val folderName: String?, val dives: List<Dive>, val fitFiles: Int, val error: String?,
+                             val incomplete: Boolean = false)
 
     private fun read(source: Source): ReadResult {
         val files = try {
@@ -207,13 +229,14 @@ class DiveLog(private val context: Context) {
         val cache = runCatching { JSONObject(cacheFile.readText()) }.getOrNull() ?: JSONObject()
         val newCache = JSONObject()
         val dives = ArrayList<Dive>()
+        var unread = 0
         for (file in files) {
             val cached = cache.optJSONObject(file.key)
             val entry = if (cached != null && file.size >= 0 && cached.optLong("size") == file.size &&
                 cached.optLong("modified") == file.modified) {
                 cached
             } else {
-                val bytes = file.open() ?: continue      // not readable now; tried again next scan
+                val bytes = file.open() ?: run { unread++; continue }   // not readable now; scan() tries again
                 val dive = runCatching { FitFile.dive(bytes) }.getOrNull()
                 JSONObject().apply {
                     put("size", bytes.size.toLong()); put("modified", file.modified)
@@ -234,6 +257,6 @@ class DiveLog(private val context: Context) {
             }
         }
         runCatching { cacheFile.writeText(newCache.toString()) }
-        return ReadResult(source.name, dives, files.size, null)
+        return ReadResult(source.name, dives, files.size, null, incomplete = unread > 0 || source.stillLoading)
     }
 }

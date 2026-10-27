@@ -65,8 +65,17 @@ final class DiveLog {
 
     /// Reads the folder again. Files that haven't changed since the last scan come from the cache.
     /// ContentView calls this at start and whenever the app comes back to the foreground, so newly
-    /// exported dives show up.
+    /// exported dives show up. iCloud files that aren't on the phone yet start downloading, and the
+    /// folder is read again every few seconds (for up to a minute) until they're in, so they show up
+    /// without reading the folder by hand.
     func scan() async {
+        await scan(attempt: 0)
+    }
+
+    private static let retryDelay: Duration = .seconds(5)
+    private static let maxRetries = 12
+
+    private func scan(attempt: Int) async {
         guard !isScanning else { return }
         var stale = false
         let folder: URL
@@ -93,6 +102,12 @@ final class DiveLog {
         fitFileCount = result.fitFiles
         dives = result.dives.sorted { ($0.fit.start ?? .distantPast) > ($1.fit.start ?? .distantPast) }
         match()
+        if result.pending > 0 && attempt < Self.maxRetries {
+            Task {
+                try? await Task.sleep(for: Self.retryDelay)
+                await scan(attempt: attempt + 1)
+            }
+        }
     }
 
     /// For testing in the simulator: `-diveLogFolder <path on the Mac>` reads that folder without the picker.
@@ -135,6 +150,8 @@ final class DiveLog {
     private struct ReadResult: Sendable {
         var dives: [Dive] = []
         var fitFiles = 0
+        /// Files that couldn't be read yet (still downloading from iCloud).
+        var pending = 0
         var error: String?
         var bookmark: Data?
     }
@@ -188,7 +205,7 @@ final class DiveLog {
             } else {
                 var data: Data?
                 NSFileCoordinator().coordinate(readingItemAt: url, options: [.withoutChanges], error: nil) { data = try? Data(contentsOf: $0) }
-                guard let data else { continue }    // not downloaded yet; tried again next scan
+                guard let data else { result.pending += 1; continue }    // not downloaded yet; scan() tries again
                 entry = CacheEntry(size: data.count, modified: modified, dive: try? FitFile.dive(in: data))
             }
             newCache[relative] = entry
