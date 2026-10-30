@@ -19,7 +19,8 @@ bundled with the app, so everything works offline.
 - **My dives**: in the settings (gear button) you can choose a folder with FIT files from your dive
   computer, for example in iCloud Drive (`DiveLog.swift`, `FitFile.swift`). The app reads them on the
   phone: files whose sport is diving and that have a GPS position count as dives. A dive in Malta is
-  matched to the nearest site within 400 m of where it started. That site, and any cluster holding
+  matched to the site named in its file name ("Cirkewwa right arch.fit", within 1 km, for sites close
+  together) or else to the nearest site within 400 m of where it started. That site, and any cluster holding
   it, gets a green ring on the map. The site page lists your dives there and the list shows a check.
   The folder is read again whenever you come back to the app. A cache in Application Support keeps
   each file's result, so only new or changed files are read. For testing in the simulator, a debug

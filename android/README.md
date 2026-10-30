@@ -15,7 +15,8 @@ needs `python3`). Package name `nl.petervanmanen.divemalta`.
   a tap elsewhere clears it.
 - My dives: in the settings (gear button) you choose a folder with FIT files from your dive computer
   with the system folder picker, for example in Google Drive or Downloads (`DiveLog.kt`,
-  `FitFile.kt`, same rules as iOS). Dives in Malta mark the nearest site within 400 m as visited:
+  `FitFile.kt`, same rules as iOS). Dives in Malta mark the site named in the file name
+  (within 1 km, `SiteSearch.siteNamedIn`), or else the nearest site within 400 m, as visited:
   a green ring on the map (and on clusters holding it), "Your dive here" on the site page and a
   check in the list. The folder is read again whenever the app comes back to the foreground; a
   cache in the app's files keeps each file's result. Debug builds accept

@@ -3,8 +3,9 @@ import Foundation
 import Observation
 
 /// Your own dives, read from the FIT files in a folder you choose (for example an iCloud Drive folder
-/// your dive computer's app exports to). Dives in Malta are matched to the nearest dive site, which
-/// is then shown as visited. Everything stays on the phone.
+/// your dive computer's app exports to). Dives in Malta are matched to the dive site named in the file
+/// name, or else to the nearest dive site, which is then shown as visited. Everything stays on the
+/// phone.
 @MainActor @Observable
 final class DiveLog {
     struct Dive: Identifiable, Hashable {
@@ -16,6 +17,10 @@ final class DiveLog {
     /// A dive counts for a site when it starts within this distance of it. Dive computers get their
     /// position at the surface, so this is where you got in (shore) or where the boat was.
     static let matchDistance: CLLocationDistance = 400
+    /// A site named in the dive's title (its file name, "Ghar Lapsi left reef.fit") counts within this
+    /// distance, instead of the nearest one: sites can be closer to each other than the start of a
+    /// dive is to the site.
+    static let titleMatchDistance: CLLocationDistance = 1000
 
     private(set) var folderName: String?
     private(set) var isScanning = false
@@ -126,10 +131,14 @@ final class DiveLog {
         var unmatched: [Dive] = []
         for dive in dives where MapView.contains(.init(latitude: dive.fit.latitude, longitude: dive.fit.longitude)) {
             let here = CLLocation(latitude: dive.fit.latitude, longitude: dive.fit.longitude)
-            let nearest = sites
+            let byDistance = sites
                 .map { ($0, here.distance(from: CLLocation(latitude: $0.lat, longitude: $0.lon))) }
-                .min { $0.1 < $1.1 }
-            if let (site, distance) = nearest, distance <= Self.matchDistance {
+                .sorted { $0.1 < $1.1 }
+            let title = ((dive.file as NSString).lastPathComponent as NSString).deletingPathExtension
+            if let named = SiteSearch.site(namedIn: title,
+                                           among: byDistance.prefix { $0.1 <= Self.titleMatchDistance }.map(\.0)) {
+                visits[named.id, default: []].append(dive)
+            } else if let (site, distance) = byDistance.first, distance <= Self.matchDistance {
                 visits[site.id, default: []].append(dive)
             } else {
                 unmatched.append(dive)

@@ -44,6 +44,36 @@ enum SiteSearch {
         return 800 - total * 100 + (startsAtFirstWord ? 50 : 0)
     }
 
+    /// The site a dive's title names ("Cirkewwa right arch", "ghar lapsi finger reef"), out of
+    /// `candidates` ordered nearest first; nil when it names none of them. Used to tell apart sites
+    /// close to each other. The site with the most of its name in the title wins, then the one with
+    /// the fewest name words missing, then the nearest ("Cirkewwa" names four sites).
+    static func site(namedIn title: String, among candidates: [DiveSite]) -> DiveSite? {
+        let titleWords = normalize(title).split(separator: " ").map(String.init)
+        guard !titleWords.isEmpty else { return nil }
+        var best: (site: DiveSite, found: Int, missing: Int)?
+        for site in candidates {
+            let nameWords = normalize(site.name).split(separator: " ").map(String.init)
+            let found = nameWords.filter { word in
+                titleWords.contains { wholeWordTypos(word, $0) <= allowedTypos(word) }
+            }
+            // "reef" or "cave" alone in a title doesn't name a site.
+            guard found.contains(where: { !genericWords.contains($0) }) else { continue }
+            let missing = nameWords.count - found.count
+            if best == nil || found.count > best!.found || (found.count == best!.found && missing < best!.missing) {
+                best = (site, found.count, missing)
+            }
+        }
+        return best?.site
+    }
+
+    /// Words in many site names, which don't say which site is meant on their own.
+    private static let genericWords: Set<String> = [
+        "reef", "cave", "caves", "point", "bay", "arch", "rock", "tunnel", "wreck", "statue", "beach",
+        "pool", "boat", "tug", "left", "right", "north", "south", "east", "west", "outer", "the", "of",
+        "and", "il", "ta", "tal", "tax", "ix", "ir", "l", "mv", "mt", "hms", "ss", "st",
+    ]
+
     private static func allowedTypos(_ word: String) -> Int {
         word.count <= 2 ? 0 : word.count <= 5 ? 1 : 2
     }
@@ -51,7 +81,20 @@ enum SiteSearch {
     /// Typos between a query word and a name word it may be the start of: the fewest edits to turn
     /// the query word into the name word or into its start of about the same length.
     private static func typos(_ word: String, _ nameWord: String) -> Int {
-        let a = Array(word), b = Array(nameWord)
+        let previous = distances(word, nameWord)
+        // A prefix of the name word at least as long as the query word, minus a missed letter.
+        let from = max(0, word.count - 1)
+        return from < previous.count ? previous[from...].min()! : previous.last!
+    }
+
+    /// Typos between two whole words.
+    private static func wholeWordTypos(_ a: String, _ b: String) -> Int {
+        distances(a, b).last!
+    }
+
+    /// The typos between `word` and each start of `other` (index = its length).
+    private static func distances(_ word: String, _ other: String) -> [Int] {
+        let a = Array(word), b = Array(other)
         // Damerau-Levenshtein (optimal string alignment), keeping the whole last row so any prefix
         // of the name word can be the target.
         var previous2 = [Int](), previous = Array(0...b.count)
@@ -67,9 +110,7 @@ enum SiteSearch {
             previous2 = previous
             previous = row
         }
-        // A prefix of the name word at least as long as the query word, minus a missed letter.
-        let from = max(0, a.count - 1)
-        return from <= b.count ? previous[from...].min()! : previous[b.count]
+        return previous
     }
 
     /// Lowercase, without accents (ħ → h, ż → z), apostrophes dropped and other punctuation as spaces.

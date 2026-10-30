@@ -80,7 +80,7 @@ struct AboutView: View {
         } header: {
             Text("My dives")
         } footer: {
-            Text("Choose a folder with FIT files from your dive computer, for example in iCloud Drive. Dives in Malta are matched to the nearest dive site (within \(Int(DiveLog.matchDistance)) m of where you started), and those sites get a green ring on the map. The files are only read on this device.")
+            Text("Choose a folder with FIT files from your dive computer, for example in iCloud Drive. Dives in Malta are matched to the nearest dive site (within \(Int(DiveLog.matchDistance)) m of where you started), or to a site named in the file name, like \"Cirkewwa right arch.fit\". Those sites get a green ring on the map. The files are only read on this device.")
         }
     }
 

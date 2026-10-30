@@ -21,8 +21,8 @@ import java.io.File
 
 /**
  * Your own dives, read from the FIT files in a folder you choose (for example a Google Drive or
- * Downloads folder your dive computer's app exports to). Dives in Malta are matched to the nearest
- * dive site, which is then shown as visited. Everything stays on the phone. Same rules as the iOS
+ * Downloads folder your dive computer's app exports to). Dives in Malta are matched to the dive site
+ * named in the file name, or else to the nearest dive site, which is then shown as visited. Everything stays on the phone. Same rules as the iOS
  * app (ios/DiveMalta/DiveLog.swift).
  */
 class DiveLog(private val context: Context) {
@@ -34,6 +34,12 @@ class DiveLog(private val context: Context) {
          * position at the surface, so this is where you got in (shore) or where the boat was.
          */
         const val MATCH_DISTANCE_M = 400f
+        /**
+         * A site named in the dive's title (its file name, "Ghar Lapsi left reef.fit") counts within this
+         * distance, instead of the nearest one: sites can be closer to each other than the start of a
+         * dive is to the site.
+         */
+        const val TITLE_MATCH_DISTANCE_M = 1000f
         private const val PREFS = "dive-log"
         private const val KEY_FOLDER = "folder"
         private const val RETRY_DELAY_MS = 5_000L
@@ -139,13 +145,15 @@ class DiveLog(private val context: Context) {
         val distance = FloatArray(1)
         for (dive in dives) {
             if (!MaltaMap.contains(dive.fit.latitude, dive.fit.longitude)) continue
-            var best: DiveSite? = null
-            var bestDistance = Float.MAX_VALUE
-            for (site in sites) {
+            val byDistance = sites.map { site ->
                 Location.distanceBetween(dive.fit.latitude, dive.fit.longitude, site.lat, site.lon, distance)
-                if (distance[0] < bestDistance) { bestDistance = distance[0]; best = site }
-            }
-            if (best != null && bestDistance <= MATCH_DISTANCE_M) visits.getOrPut(best.id) { ArrayList() }.add(dive)
+                site to distance[0]
+            }.sortedBy { it.second }
+            val title = dive.file.substringAfterLast('/').substringBeforeLast('.')
+            val named = SiteSearch.siteNamedIn(title, byDistance.takeWhile { it.second <= TITLE_MATCH_DISTANCE_M }.map { it.first })
+            val nearest = byDistance.firstOrNull()?.takeIf { it.second <= MATCH_DISTANCE_M }?.first
+            val site = named ?: nearest
+            if (site != null) visits.getOrPut(site.id) { ArrayList() }.add(dive)
             else unmatched.add(dive)
         }
         this.visits = visits

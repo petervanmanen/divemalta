@@ -88,7 +88,7 @@ private fun DiveLogSettings(diveLog: DiveLog) {
     }
     Text("Choose a folder with FIT files from your dive computer, for example in Google Drive or Downloads. " +
         "Dives in Malta are matched to the nearest dive site (within ${DiveLog.MATCH_DISTANCE_M.toInt()} m of where " +
-        "you started), and those sites get a green ring on the map. The files are only read on this device.",
+        "you started), or to a site named in the file name, like \"Cirkewwa right arch.fit\". Those sites get a green ring on the map. The files are only read on this device.",
         style = MaterialTheme.typography.bodySmall, color = Color(0xFF6B7378), modifier = Modifier.padding(8.dp))
 }
 

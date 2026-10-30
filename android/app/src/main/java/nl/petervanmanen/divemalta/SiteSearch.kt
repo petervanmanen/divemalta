@@ -47,6 +47,38 @@ object SiteSearch {
         return 800 - total * 100 + if (startsAtFirstWord) 50 else 0
     }
 
+    /**
+     * The site a dive's title names ("Cirkewwa right arch", "ghar lapsi finger reef"), out of
+     * [candidates] ordered nearest first; null when it names none of them. Used to tell apart sites
+     * close to each other. The site with the most of its name in the title wins, then the one with
+     * the fewest name words missing, then the nearest ("Cirkewwa" names four sites).
+     */
+    fun siteNamedIn(title: String, candidates: List<DiveSite>): DiveSite? {
+        val titleWords = normalize(title).split(" ").filter { it.isNotEmpty() }
+        if (titleWords.isEmpty()) return null
+        var best: DiveSite? = null
+        var bestFound = 0
+        var bestMissing = 0
+        for (site in candidates) {
+            val nameWords = normalize(site.name).split(" ")
+            val found = nameWords.filter { word -> titleWords.any { wholeWordTypos(word, it) <= allowedTypos(word) } }
+            // "reef" or "cave" alone in a title doesn't name a site.
+            if (found.none { it !in genericWords }) continue
+            val missing = nameWords.size - found.size
+            if (best == null || found.size > bestFound || (found.size == bestFound && missing < bestMissing)) {
+                best = site; bestFound = found.size; bestMissing = missing
+            }
+        }
+        return best
+    }
+
+    /** Words in many site names, which don't say which site is meant on their own. */
+    private val genericWords = setOf(
+        "reef", "cave", "caves", "point", "bay", "arch", "rock", "tunnel", "wreck", "statue", "beach",
+        "pool", "boat", "tug", "left", "right", "north", "south", "east", "west", "outer", "the", "of",
+        "and", "il", "ta", "tal", "tax", "ix", "ir", "l", "mv", "mt", "hms", "ss", "st",
+    )
+
     private fun allowedTypos(word: String) = if (word.length <= 2) 0 else if (word.length <= 5) 1 else 2
 
     /**
@@ -54,7 +86,18 @@ object SiteSearch {
      * the query word into the name word or into its start of about the same length.
      */
     private fun typos(word: String, nameWord: String): Int {
-        val a = word; val b = nameWord
+        val previous = distances(word, nameWord)
+        // A prefix of the name word at least as long as the query word, minus a missed letter.
+        val from = maxOf(0, word.length - 1)
+        return if (from < previous.size) previous.drop(from).min() else previous.last()
+    }
+
+    /** Typos between two whole words. */
+    private fun wholeWordTypos(a: String, b: String) = distances(a, b).last()
+
+    /** The typos between [word] and each start of [other] (index = its length). */
+    private fun distances(word: String, other: String): IntArray {
+        val a = word; val b = other
         // Damerau-Levenshtein (optimal string alignment), keeping the whole last row so any prefix
         // of the name word can be the target.
         var previous2 = IntArray(0)
@@ -71,9 +114,7 @@ object SiteSearch {
             previous2 = previous
             previous = row
         }
-        // A prefix of the name word at least as long as the query word, minus a missed letter.
-        val from = maxOf(0, a.length - 1)
-        return if (from <= b.length) previous.drop(from).min() else previous[b.length]
+        return previous
     }
 
     /** Lowercase, without accents (ħ → h, ż → z), apostrophes dropped and other punctuation as spaces. */
